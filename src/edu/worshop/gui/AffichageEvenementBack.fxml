@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AffichageEvenementBackController">
+   <children>
+      <ListView fx:id="affichageEvenementBackfx" layoutX="48.0" layoutY="30.0" prefHeight="320.0" prefWidth="493.0" />
+      <Button layoutX="402.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerEvenementBack" text="Supprimer" />
+      <Button layoutX="338.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutEvenementBack" text="Ajouter" />
+      <Button layoutX="489.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierEvenementBack" text="Modifier" />
+   </children>
+</AnchorPane>
