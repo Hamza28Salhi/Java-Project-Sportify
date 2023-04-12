@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.UserController">
+   <children>
+      <Button layoutX="33.0" layoutY="275.0" mnemonicParsing="false" onAction="#ajouterclient" text="ajouter" />
+      <Button layoutX="177.0" layoutY="275.0" mnemonicParsing="false" onAction="#supprimerclient" text="supprimer" />
+      <Button layoutX="105.0" layoutY="275.0" mnemonicParsing="false" onAction="#modifierclient" text="modifier" />
+      <TextField fx:id="fullnameF" layoutX="87.0" layoutY="39.0" />
+      <TextField fx:id="emailF" layoutX="87.0" layoutY="77.0" />
+      <TextField fx:id="passwordF" layoutX="87.0" layoutY="115.0" />
+      <TextField fx:id="adreeseF" layoutX="87.0" layoutY="152.0" />
+      <Label layoutX="19.0" layoutY="43.0" text="name" />
+      <Label layoutX="19.0" layoutY="156.0" text="adresse" />
+      <Label layoutX="19.0" layoutY="119.0" text="password" />
+      <Label layoutX="19.0" layoutY="81.0" text="email" />
+      <TableView fx:id="usertable" layoutX="292.0" layoutY="41.0" onMouseClicked="#clique" prefHeight="200.0" prefWidth="303.0">
+        <columns>
+            <TableColumn fx:id="dt" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="namet" prefWidth="75.0" text="name" />
+          <TableColumn fx:id="emailt" prefWidth="75.0" text="email" />
+            <TableColumn fx:id="adresset" prefWidth="75.0" text="adresse" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idf" layoutX="87.0" layoutY="187.0" />
+   </children>
+</AnchorPane>
