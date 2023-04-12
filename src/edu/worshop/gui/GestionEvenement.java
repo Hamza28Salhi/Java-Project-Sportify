@@ -38,7 +38,7 @@ public class GestionEvenement extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AffichageEvenementBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AjoutReservationFront.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Trippie");

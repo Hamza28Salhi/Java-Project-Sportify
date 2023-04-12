@@ -40,6 +40,7 @@ public class AffichageEvenementBackController implements Initializable {
 static int id;
 static Date date;
 static String type,lieu,description,even_pic,titre;
+static Evenement E = new Evenement();
     /**
      * Initializes the controller class.
      */
@@ -68,7 +69,7 @@ for (int i = 0; i < list2.size(); i++) {
         inter.supprimerEvenement(E.getId());
         list.getItems().remove(selectedIndex);
     } else {
-        System.out.println("Veuillez sélectionner un événement à supprimer.");
+        showAlert("Veuillez sélectionner un événement à supprimer.");
     }
     }  
     
@@ -97,7 +98,9 @@ for (int i = 0; i < list2.size(); i++) {
         EvenementCRUD inter = new Evenement1CRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         
-
+  if (selectedIndex >=0){
+            
+        
         Evenement e = list.getSelectionModel().getSelectedItem();
  
         int id = e.getId();
@@ -107,6 +110,9 @@ for (int i = 0; i < list2.size(); i++) {
         String description = e.getDescription();
         String even_pic = e.getEven_pic();
         String titre = e.getTitre();
+        E=e;
+      
+        
         
         
         try {
@@ -119,8 +125,18 @@ for (int i = 0; i < list2.size(); i++) {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AffichageEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
-
+        
         }
+        }else{showAlert("Veuillez sélectionner un événement à modifier.");
+  }
+    }
+
+    private void showAlert(String message) {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     }
     
