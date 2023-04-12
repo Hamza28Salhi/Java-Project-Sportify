@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.worshop.controllers.AjoutCategorieBackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AjoutCategorieBackController">
    <children>
       <TextField fx:id="NomCategoriefx" layoutX="267.0" layoutY="119.0" />
       <Text layoutX="150.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Categorie" />
-      <Button layoutX="248.0" layoutY="200.0" mnemonicParsing="false" onAction="#AjouterCategorieBack" text="Ajouter" />
+      <Button layoutX="248.0" layoutY="200.0" mnemonicParsing="false" onAction="#AjouterCategorieBack" text="Ajouter Categorie" />
    </children>
 </AnchorPane>

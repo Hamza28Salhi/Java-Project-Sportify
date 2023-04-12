@@ -16,11 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXMLLoader; 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -35,6 +36,7 @@ public class AfficherCategorieBackController implements Initializable {
     private ListView<Categorie> AffichageCategorieBackfx;
 static int id;
 static String nom_categorie;
+static Categorie C = new Categorie();
     /**
      * Initializes the controller class.
      */
@@ -60,7 +62,7 @@ for (int i = 0; i < list2.size(); i++) {
         inter.supprimerCategorie(C.getId());
         list.getItems().remove(selectedIndex);
     } else {
-        System.out.println("Veuillez sélectionner une categorie à supprimer.");
+        showAlert("Veuillez sélectionner une categorie à supprimer.");
     }
     }
 
@@ -71,14 +73,15 @@ for (int i = 0; i < list2.size(); i++) {
         CategorieCRUD inter = new Categorie1CRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         
-
+if (selectedIndex >= 0) {
         Categorie c = list.getSelectionModel().getSelectedItem();
  
         int id = c.getId();
         
         String nom_categorie = c.getNom_categorie();
+        C=c;
        
-        
+      
         
         try {
 
@@ -92,6 +95,11 @@ for (int i = 0; i < list2.size(); i++) {
             Logger.getLogger(AfficherCategorieBackController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+          } else {
+        showAlert("Veuillez sélectionner une categorie à modifier.");
+    }
+    
+
     }    
 
     @FXML
@@ -108,6 +116,13 @@ for (int i = 0; i < list2.size(); i++) {
     }
  
 }
+    private void showAlert(String message) {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     }
         
     

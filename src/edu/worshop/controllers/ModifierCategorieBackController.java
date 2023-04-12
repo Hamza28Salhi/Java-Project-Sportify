@@ -34,6 +34,8 @@ public class ModifierCategorieBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        NomCategorieMfx.setText(String.valueOf(AfficherCategorieBackController.C.getNom_categorie()));
+     
     }  
     
     private void showAlert(String message) {
@@ -51,8 +53,8 @@ public class ModifierCategorieBackController implements Initializable {
         
         String nom_categorie = NomCategorieMfx.getText();
       
-        System.out.println(AfficherCategorieBackController.id);
-        Categorie even = new Categorie(AfficherCategorieBackController.id, nom_categorie );
+        
+        Categorie even = new Categorie(AfficherCategorieBackController.C.getId(), nom_categorie );
                 inter.modifierCategorie(even);
                 
 

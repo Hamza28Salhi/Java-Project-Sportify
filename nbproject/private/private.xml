@@ -5,18 +5,23 @@
         <group>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/workshop/services/Categorie1CRUD.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/interfaces/ProduitCRUD.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/workshop/services/Reservation1CRUD.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/model/Reservation.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/workshop3a4/Workshop3A4.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/gui/AjoutProduitBack.fxml</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/gui/AfficherCategorieBack.fxml</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/controllers/ModifierCategorieBackController.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/workshop/services/Produit1CRUD.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/model/Produit.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/controllers/AjoutProduitBackController.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/controllers/AjoutCategorieBackController.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/workshop/services/Evenement1CRUD.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/model/Produit.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/utils/MyConnection.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/interfaces/CategorieCRUD.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/interfaces/ReservationCRUD.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/gui/GestionCategorie.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/model/Categorie.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/interfaces/EvenementCRUD.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/model/Evenement.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/controllers/AfficherCategorieBackController.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/gui/AfficherProduitBack.fxml</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/gui/AjoutCategorieBack.fxml</file>
+            <file>file:/C:/Users/lenovo/Desktop/java/workshop3A4/src/edu/worshop/controllers/AfficherProduitBackController.java</file>
         </group>
     </open-files>
 </project-private>
