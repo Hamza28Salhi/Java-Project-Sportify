@@ -5,12 +5,14 @@
  */
 package Entities;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name = "users")
@@ -23,7 +25,9 @@ public class User {
     private String address;
     private String password;
     private String full_name;
-    private List<String> roles;
+    private String img_user;
+    private List<String> roles = Arrays.asList("ROLE_USER");
+    private Date date_naissance;
 
     public User() {
     }
@@ -36,32 +40,101 @@ public class User {
         this.email = email;
     }
 
-    public User(int id, String email, String address, String password, String full_name, List<String> roles) {
+    public User(int id, String email, String address, String password, String full_name, String img_user, List<String> roles) {
         this.id = id;
         this.email = email;
         this.address = address;
         this.password = password;
         this.full_name = full_name;
+        this.img_user = img_user;
         this.roles = roles;
     }
 
-    public User(String email, String address, String password, String full_name, List<String> roles) {
+    public User(String email, String address, String password, String full_name,String img_user, List<String> roles) {
         this.email = email;
         this.address = address;
         this.password = password;
         this.full_name = full_name;
+        this.img_user = img_user;
         this.roles = roles;
     }
 
-    public User(String email, String address, String full_name, List<String> roles) {
+    public User(String email, String address, String password, String full_name,String img_user, List<String> roles, Date naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.roles = roles;
+        this.date_naissance = naissance;
+    }
+
+    public User(String email, String address, String full_name,String img_user, List<String> roles) {
         this.email = email;
         this.address = address;
         this.full_name = full_name;
+        this.img_user = img_user;
         this.roles = roles;
     }
 
-    public User(String email, String address, String password, String full_name) {
+    public User(int id, String email, String address, String password, String full_name, String img_user) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(String email, String address, String password, String full_name, String img_user, Date date_naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.date_naissance = date_naissance;
+    }
+     
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int id, String email, String address, String full_name, String img_user) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(String email, String address, String password, String full_name,String img_user) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(String azizmansgmailcom, String address, String password, String mohamed_aziz_mansour, String oko, String image) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getImg_user() {
+        return img_user;
+    }
+
+    public void setImg_user(String img_user) {
+        this.img_user = img_user;
+    }
+
+    public Date getDate_naissance() {
+        return date_naissance;
+    }
+
+    public void setDate_naissance(Date date_naissance) {
+        this.date_naissance = date_naissance;
     }
 
     public int getId() {
@@ -100,7 +173,7 @@ public class User {
         return full_name;
     }
 
-    public void setFull_name(String full_Name) {
+    public void setFull_name(String full_name) {
         this.full_name = full_name;
     }
 
@@ -114,13 +187,13 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", password='" + password + '\'' +
-                ", full_name='" + full_name + '\'' +
-                ", roles=" + roles +
-                '}';
+        return "User{"
+                + "id=" + id
+                + ", email='" + email + '\''
+                + ", address='" + address + '\''
+                + ", password='" + password + '\''
+                + ", full_name='" + full_name + '\''
+                + ", roles=" + roles
+                + '}';
     }
 }

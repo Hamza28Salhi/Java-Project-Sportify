@@ -5,6 +5,7 @@
  */
 package Services;
 
+
 import Entities.User;
 import Utils.Sportify;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import Utils.Sportify;
+import java.util.Arrays;
 
 /**
  *
@@ -35,8 +37,8 @@ public class ServiceUser implements IService {
         try {
             if (p instanceof User) { // Vérifie si p est un objet de type User
                 //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')"; 
-                String qry = "INSERT INTO user(email , password, address, full_name ) VALUES ('" +  ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')"; 
-                 //String qry = "INSERT INTO user(email, password, address, full_name) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
+                String qry = "INSERT INTO user(email, password, address, full_name, roles, date_naiss, user_pic) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','" + ((User) p).getDate_naissance() +"','" + ((User) p).getImg_user() + "')";
+                //String qry = "INSERT INTO user(email, password, address, full_name) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
                 stm = cnx.createStatement();
                 stm.executeUpdate(qry);
             } else {
@@ -53,7 +55,7 @@ public class ServiceUser implements IService {
 
         try {
             //  String qry = "SELECT id, email, address, password, full_name  FROM user";
-            String qry = "SELECT id, full_name, email,address  FROM user";
+            String qry = "SELECT id, full_name, email,address, date_naiss  FROM user";
             stm = cnx.createStatement();
             PreparedStatement ps = cnx.prepareCall(qry);
             ResultSet rs = ps.executeQuery();
@@ -64,9 +66,10 @@ public class ServiceUser implements IService {
                 // c.setId(rs.getInt(1));
                 c.setFull_name(rs.getString(2));
                 c.setEmail(rs.getString(3));
-               // c.getPassword(rs.getString(3));
+                // c.getPassword(rs.getString(3));
                 c.setAddress(rs.getString(4));
-                
+                c.setDate_naissance(rs.getDate(5));
+
                 User.add(c);
             }
             return User;
@@ -75,6 +78,30 @@ public class ServiceUser implements IService {
             System.out.println(ex.getMessage());
         }
         return User;
+    }
+
+    public User getUserById(int userId) {
+        try {
+            String qry = "SELECT id, full_name, email, address, date_naiss, user_pic FROM user WHERE id = ?";
+            PreparedStatement ps = cnx.prepareCall(qry);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(1));
+                user.setFull_name(rs.getString(2));
+                user.setEmail(rs.getString(3));
+                user.setAddress(rs.getString(4));
+                user.setDate_naissance(rs.getDate(5));
+                user.setImg_user(rs.getString(6));
+                return user;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
 
     @Override
@@ -96,9 +123,9 @@ public class ServiceUser implements IService {
     public boolean modifier(Object E) {
         try {
             String qry = "UPDATE user SET email = '" + ((User) E).getEmail() + "', password = '" + ((User) E).getPassword() + "', address = '" + ((User) E).getAddress() + "', full_name = '" + ((User) E).getFull_name() + "' WHERE id = " + ((User) E).getId();
-           //String qry = "UPDATE user SET  address = '" + ((User) E).getAddress() + "', full_name = '" + ((User) E).getFull_name() + "' WHERE email = '" + ((User) E).getEmail() + "'";
+            //String qry = "UPDATE user SET  address = '" + ((User) E).getAddress() + "', full_name = '" + ((User) E).getFull_name() + "' WHERE email = '" + ((User) E).getEmail() + "'";
 
-           stm = cnx.createStatement();
+            stm = cnx.createStatement();
             stm.executeUpdate(qry);
             return true;
         } catch (SQLException ex) {
@@ -106,46 +133,78 @@ public class ServiceUser implements IService {
             return false;
         }
     }
-        @Override
+
+    @Override
     public void update(User user) {
-    try {
-        String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "' WHERE id = " + user.getId();
-        Statement st = cnx.createStatement();
-        st.executeUpdate(qry);
-        System.out.println("User updated !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        try {
+            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "' WHERE id = " + user.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(qry);
+            System.out.println("User updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-}
-    
+
     @Override
     public User authenticate(String email, String password) {
-    try {
-        String qry = "SELECT * FROM user WHERE email = ? AND password = ?";
-        PreparedStatement ps = cnx.prepareStatement(qry);
-        ps.setString(1, email);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
+        try {
+            String qry = "SELECT id, email, password, full_name, address, roles FROM user WHERE email = ? AND password = ?";
+            PreparedStatement ps = cnx.prepareStatement(qry);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setEmail(rs.getString("email"));
-            user.setPassword(rs.getString("password"));
-            user.setAddress(rs.getString("address"));
-            user.setFull_name(rs.getString("full_name"));
-            return user;
-        } else {
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setAddress(rs.getString("address"));
+                user.setFull_name(rs.getString("full_name"));
+
+                // fetch roles from the database based on user's roles column
+                List<String> roles = Arrays.asList(rs.getString("roles").split(","));
+                user.setRoles(roles);
+
+                /*SessionManager M = new SessionManager();
+                M.setIdM(rs.getInt("id"));
+                M.setEmailM(rs.getString("email"));
+                M.setPasswordM(rs.getString("password"));
+                M.setAddressM(rs.getString("address"));
+                M.setFull_nameM(rs.getString("full_name"));
+                
+                // fetch roles from the database based on user's roles column
+                List<String> rolesM = Arrays.asList(rs.getString("roles").split(","));
+                M.setRolesM(roles);*/
+                Sportify.setUserId(user.getId());
+
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return null;
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-        return null;
     }
+
+    public boolean emailExist(String email) {
+        try {
+            String qry = "SELECT email FROM user WHERE email = ?";
+            PreparedStatement ps = cnx.prepareStatement(qry);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true; // Email already exists
+            } else {
+                return false; // Email does not exist
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
 }
-    
-    }
-
-    
-    
-

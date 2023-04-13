@@ -24,12 +24,21 @@ public class GestionUser {
         User p = new User();
         ServiceUser sp = new ServiceUser();
         //User s = new User("yacine2.khouini@gmail.com", "adress", "pass", "yacine khouini");
-       //User s = new User("aziz.mansour@gmail.com","address","password", "mohamed aziz mansour");
-       //sp.add(s);
+       User s = new User("aziz.mans@gmail.com","address","password", "mohamed aziz mansour","image");
+       sp.add(s);
+       sp.afficher();
+      /* ServiceUser userService = new ServiceUser();
+            
+            // Test the authenticate method
+            User user = userService.authenticate("ahmed@gmail.com", "aaaaaaaa");
+            if (user != null) {
+                System.out.println("User authenticated successfully: " + user.getEmail() + user.getAddress() + user.getFull_name() + user.getRoles());
+            } else {
+                System.out.println("Invalid email or password.");
+            }  */
        
-       
-        sp.modifier(new User( "aziz.mansour@gmail.com", "adress", "pass", "yacine khouini"));
-        //sp.supprimer(new User("yacine.khouini@gmail.com"));
+        //sp.modifier(new User( "aziz.mansour@gmail.com", "adress", "pass", "yacine khouini"));
+        //sp.supprimer(new User("yacine.@gmail.com"));
     }
 
 }
