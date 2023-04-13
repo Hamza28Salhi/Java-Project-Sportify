@@ -18,5 +18,7 @@ public interface CommentaireCRUD {
     public void supprimerCommentaire(int id);
     public void modifierCommentaire(Commentaire R);
     public List<Commentaire> afficherCommentaireParPostId(int idPost);
+    //public void SupprimerCommentaireBack;
+    
     
 }

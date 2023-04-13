@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 
 /**
@@ -37,7 +38,7 @@ static Commentaire C = new Commentaire();
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
         // TODO
 
                 ListView<Commentaire> list1 = (ListView<Commentaire>) affichageCommentaireBackfx; //ListView<Post> list1 = affichagePostBackfx;
@@ -49,5 +50,29 @@ for (int i = 0; i < list2.size(); i++) {
 }
 
     }    
+        private void showAlert(String message) {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void SupprimerCommentaireBack(){
+        
+    ListView<Commentaire> list = (ListView<Commentaire>) affichageCommentaireBackfx;
+    CommentaireCRUD inter = new Commentaire1CRUD();
+
+    int selectedIndex = list.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {      
+        Commentaire C = list.getSelectionModel().getSelectedItem();
+        inter.supprimerCommentaire(C.getId());
+        list.getItems().remove(selectedIndex);
+    } else {
+        showAlert("Veuillez sélectionner un commentaire à supprimer.");
+    }
+}
+    public void AjoutCommentaireBack(){
     
+}
+    public void ModifierCommentaireBack(){}
 }
