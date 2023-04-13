@@ -39,9 +39,22 @@ public class Post {
     public Post() {
          this.Likes = 0;
          this.Dislike = 0;
-     }
+     } 
     
-
+/* id 
+    titrePost
+    contenuPost 
+    imagePost
+    auteurPost
+    */
+    
+    /*      
+    id
+    titre_Post
+    contenu_Post
+    image_Post
+    auteur_Post
+    */
     public Post(int id,String titre_Post,String contenu_Post,String image_Post,String auteur_Post  ) {
         this.id = id;
         this.auteur_Post = auteur_Post;

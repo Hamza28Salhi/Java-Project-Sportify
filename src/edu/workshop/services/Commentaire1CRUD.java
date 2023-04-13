@@ -11,6 +11,7 @@ import edu.worshop.model.Commentaire;
 
 import edu.worshop.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,6 +61,30 @@ public class Commentaire1CRUD implements CommentaireCRUD{
 
         return list;
     }
+    
+    
+public List<Commentaire> afficherCommentaireParPostId(int postId) {
+   List<Commentaire> list = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM commentaire WHERE post_id = ?";
+        PreparedStatement ps = conn.prepareStatement(req);
+        ps.setInt(1, postId);
+       
+        ResultSet RS= ps.executeQuery();
+        while(RS.next()){
+         Commentaire C = new Commentaire();
+         C.setId(RS.getInt(1));
+         C.setPost_id(RS.getInt(2));
+         C.setContenuCommentaire(RS.getString(3));
+         C.setAuteurCommentaire(RS.getString(4));
+         list.add(C);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    return list;
+}
     
     @Override
     public void supprimerCommentaire(int id) {
