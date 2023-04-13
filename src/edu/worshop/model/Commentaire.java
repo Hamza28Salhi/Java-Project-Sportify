@@ -13,24 +13,31 @@ import java.sql.Date;
 public class Commentaire { 
     private int id, post_id;
     private String contenu_Commentaire,auteur_Commentaire;
-    private Date dateCreation_Commentaire;
+    //private Date dateCreation_Commentaire;
 
-    public Commentaire(int post_id, String contenu_Commentaire, String auteur_Commentaire, Date dateCreation_Commentaire) {
+    public Commentaire(int post_id, String contenu_Commentaire, String auteur_Commentaire) {
         this.post_id = post_id;
         this.contenu_Commentaire = contenu_Commentaire;
         this.auteur_Commentaire = auteur_Commentaire;
-        this.dateCreation_Commentaire = dateCreation_Commentaire;
+        //this.dateCreation_Commentaire = dateCreation_Commentaire;
+        
+    }
+    public Commentaire(int id, int post_id, String contenu_Commentaire, String auteur_Commentaire) {
+        this.post_id = post_id;
+        this.contenu_Commentaire = contenu_Commentaire;
+        this.auteur_Commentaire = auteur_Commentaire;
+        //this.dateCreation_Commentaire = dateCreation_Commentaire;
         
     }
 
-    public Commentaire(int id, int post_id, String contenu_Commentaire, String auteur_Commentaire, Date dateCreation_Commentaire) {
+    /*public Commentaire(int id, int post_id, String contenu_Commentaire, String auteur_Commentaire, Date dateCreation_Commentaire) {
         this.id = id;
         this.post_id = post_id;
         this.contenu_Commentaire = contenu_Commentaire;
         this.auteur_Commentaire = auteur_Commentaire;
         this.dateCreation_Commentaire = dateCreation_Commentaire;
        
-    }
+    }*/
 
     
 
@@ -80,17 +87,17 @@ public String getContenuCommentaire() {
 
   
 
-    public Date getDateCreationCommentaire() {
+    /*public Date getDateCreationCommentaire() {
         return dateCreation_Commentaire;
     }
 
     public void setDateCreationCommentaire(Date dateCreation_Commentaire) {
         this.dateCreation_Commentaire = dateCreation_Commentaire;
     }
-
+*/
     @Override
     public String toString() {
-        return "Commentaire{" + "id=" + id + ", post_id=" + post_id + ", contenu_Commentaire=" + contenu_Commentaire + ", auteur_Commentaire=" + auteur_Commentaire + ", dateCreation_Commentaire=" + dateCreation_Commentaire +  '}';
+        return "Commentaire{" + "id=" + id + ", post_id=" + post_id + ", contenu_Commentaire=" + contenu_Commentaire + ", auteur_Commentaire=" + auteur_Commentaire;
     }
 
     
