@@ -73,24 +73,31 @@ public class AjoutProduitBackController implements Initializable {
     @FXML
     private void AjouterProduitBack(ActionEvent event) {
       
+        if (NomProduitfx.getText().isEmpty() || MarqueProduitfx.getText().isEmpty() || Imagefx.getText().isEmpty() ) {
+        showAlert("Please fill in all fields.");
+        return;
+    }
+        
         
         String nom_produit = NomProduitfx.getText();
         double prix_produit = Double.parseDouble(PrixProduitfx.getText());
         String marque_produit = MarqueProduitfx.getText();
         String image = Imagefx.getText();
-        int quantite = Integer.parseInt(Quantitefx.getText());
+        //int quantite = Integer.parseInt(Quantitefx.getText());
      
               int minLength = 6;
                int minLength1 = 4;
  
                
-               
-                           try {
-        quantite = Integer.parseInt(Quantitefx.getText());
-    } catch (NumberFormatException e) {
-        showAlert("Please enter a valid value for Quantite, containing only digits.");
-        return;
-    }
+               int quantite;
+try {
+    quantite = Integer.parseInt(Quantitefx.getText());
+} catch (NumberFormatException e) {
+    showAlert("Quantite  should be a number.");
+    return;
+}
+
+                     
                
                if (nom_produit.isEmpty()) {
             showAlert("le nom produit est vide ");

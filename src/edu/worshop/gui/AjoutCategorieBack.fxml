@@ -27,7 +27,7 @@
                <children>
                   <ImageView fitHeight="98.0" fitWidth="80.0" layoutX="28.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/325588065_655585743034943_35706514444663711_n.png" />
+                        <Image url="@image/logos.png" />
                      </image>
                   </ImageView>
                </children></Pane>
