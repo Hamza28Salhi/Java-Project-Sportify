@@ -3,21 +3,55 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.worshop.controllers.AjoutProduitBackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AjoutProduitBackController">
    <children>
-      <TextField fx:id="NomProduitfx" layoutX="287.0" layoutY="72.0" />
-      <TextField fx:id="PrixProduitfx" layoutX="288.0" layoutY="121.0" />
-      <TextField fx:id="MarqueProduitfx" layoutX="289.0" layoutY="175.0" />
-      <TextField fx:id="Imagefx" layoutX="290.0" layoutY="229.0" />
-      <TextField fx:id="Quantitefx" layoutX="300.0" layoutY="280.0" />
-      <Text layoutX="131.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Produit" />
-      <Text layoutX="131.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix Produit" />
-      <Text layoutX="142.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" />
-      <Text layoutX="142.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
-      <Text layoutX="153.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite" />
-      <Button layoutX="241.0" layoutY="322.0" mnemonicParsing="false" onAction="#AjouterProduitBack" text="Ajouter Produit" />
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="NomProduitfx" layoutX="333.0" layoutY="71.0" />
+            <TextField fx:id="PrixProduitfx" layoutX="333.0" layoutY="112.0" />
+            <TextField fx:id="MarqueProduitfx" layoutX="333.0" layoutY="154.0" />
+            <TextField fx:id="Imagefx" layoutX="333.0" layoutY="190.0" />
+            <TextField fx:id="Quantitefx" layoutX="333.0" layoutY="228.0" />
+            <Text fill="#b15014" layoutX="221.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Produit">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font></Text>
+            <Text fill="#b15014" layoutX="223.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix Produit">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font></Text>
+            <Text fill="#b15014" layoutX="223.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Text>
+            <Text fill="#b15014" layoutX="228.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font></Text>
+            <Text fill="#b15014" layoutX="220.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font></Text>
+            <Pane layoutX="-9.0" layoutY="-5.0" prefHeight="410.0" prefWidth="134.0" style="-fx-background-color: #5D339D;" />
+            <Pane layoutX="122.0" layoutY="306.0" prefHeight="98.0" prefWidth="478.0" style="-fx-background-color: #533285;">
+               <children>
+                  <Button layoutX="190.0" layoutY="33.0" mnemonicParsing="false" onAction="#AjouterProduitBack" text="Ajouter Produit" textFill="#4b0e89">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Text fill="#202a71" layoutX="224.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Produit" textAlignment="CENTER">
+               <font>
+                  <Font name="Berlin Sans FB" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

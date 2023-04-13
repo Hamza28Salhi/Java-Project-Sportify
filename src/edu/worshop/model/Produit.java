@@ -16,6 +16,8 @@ public class Produit {
         private double prix_produit;
         private String marque_produit, image;
         private int quantite;
+        
+        
 
     public Produit(int categorie_id, String nom_produit, double prix_produit, String marque_produit, String image, int quantite) {
         this.categorie_id = categorie_id;

@@ -5,10 +5,10 @@
  */
 package workshop3a4;
 
-import edu.workshop.services.Categorie1CRUD;
-import edu.workshop.services.Produit1CRUD;
-import edu.worshop.model.Categorie;
-import edu.worshop.model.Produit;
+import edu.workshop.services.Evenement1CRUD;
+import edu.workshop.services.Reservation1CRUD;
+import edu.worshop.model.Evenement;
+import edu.worshop.model.Reservation;
 import java.sql.Date;
 
 /**
@@ -24,40 +24,22 @@ public class Workshop3A4 {
         // TODO code application logic here
         
        /// MyConnection conn = MyConnection.getInstance();
-       
-       
-       //Categorie C1 = new Categorie( "vetements" );
-      // Produit P1 = new Produit(5, "crampon", 555, "nike", "aa", 123 );
-       
-       
-       
-      
-      // Categorie1CRUD cat = new Categorie1CRUD();
-        Produit1CRUD pro = new Produit1CRUD();
+        //Evenement E1 = new Evenement(Date.valueOf("2023-1-1"), "ababababababa", "zzzzzzzz", "aaaaaaa", " ", "sportify" );
+         //Reservation R1 = new Reservation(21, "par virement", "houyem", "kaaniche", "houyem@gmail.com", "12345678" );
+       //Evenement1CRUD event = new Evenement1CRUD();
+        Reservation1CRUD res = new Reservation1CRUD();
         
+        //event.ajouterEvenement(E1);
+        //res.ajouterReservation(R1);
         
-      
-       // cat.ajouterCategorie(C1);
-      // pro.ajouterProduit(P1);
-       
-       
+        //System.out.println( event.afficherEvenement());
+        //System.out.println( res.afficherReservation());
         
+        //event.supprimerEvenement(19);
+       // res.supprimerReservation(26);
        
-       // System.out.println( cat.afficherCategorie());
-         //System.out.println( pro.afficherProduit());
-      
-         
-         
-        // cat.supprimerCategorie(11);
-         // pro.supprimerProduit(58);
-      
-       
-       
-      //  cat.modifierCategorie(new Categorie(11,"materielle" ));
-      // pro.modifierProduit(new Produit(57,6, "crampon", 555555, "nike", "aaa", 1233 ));
-      
-      
-       // res.modifierReservation(new Reservation(30,16, "crampon", 555, "nike", "aa", 123  ));
+        //event.modifierEvenement(new Evenement(32,Date.valueOf("2023-04-13"), "houyem", "houyem", "aaabbbbbaaaa", " ", "sportify" ));
+        //res.modifierReservation(new Reservation(30,16, "par espèces", "houyemaaaaaaaaaa", "kaaniche", "houyem@gmail.com", "12345678" ));
           
        
         

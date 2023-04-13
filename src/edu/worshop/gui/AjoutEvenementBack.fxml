@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AjoutEvenementBackController">
+   <children>
+      <DatePicker fx:id="DateEvenementfx" layoutX="70.0" layoutY="83.0" />
+      <TextField fx:id="TypeEvenementfx" layoutX="72.0" layoutY="126.0" />
+      <TextField fx:id="LieuEvenementfx" layoutX="72.0" layoutY="170.0" />
+      <TextArea fx:id="DescriptionEvenementfx" layoutX="324.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="Even_picEvenementfx" layoutX="71.0" layoutY="220.0" />
+      <TextField fx:id="TitreEvenementfx" layoutX="70.0" layoutY="270.0" />
+      <Button layoutX="307.0" layoutY="306.0" mnemonicParsing="false" onAction="#AjouterEvenementBack" text="Ajouter" />
+      <Text fill="#0720ff" layoutX="133.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter des événements" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Unicode MS" size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="17.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <Text layoutX="15.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+      <Text layoutX="16.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" />
+      <Text layoutX="17.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Even_pic" />
+      <Text layoutX="16.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="38.0" />
+      <Text layoutX="324.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+   </children>
+</AnchorPane>

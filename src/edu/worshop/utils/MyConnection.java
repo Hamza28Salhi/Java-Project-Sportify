@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author lenovo
+ * @author belkn
  */
 public class MyConnection {
     

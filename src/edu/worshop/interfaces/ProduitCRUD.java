@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.worshop.interfaces;
+
 import edu.worshop.model.Produit;
 import java.util.List;
 /**
