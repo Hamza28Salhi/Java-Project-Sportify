@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -21,7 +23,14 @@
                   <Font name="Berlin Sans FB" size="36.0" />
                </font>
             </Text>
-            <Pane layoutX="-5.0" layoutY="-7.0" prefHeight="419.0" prefWidth="136.0" style="-fx-background-color: #5D339D;" />
+            <Pane layoutX="-5.0" layoutY="-7.0" prefHeight="419.0" prefWidth="136.0" style="-fx-background-color: #5D339D;">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="80.0" layoutX="28.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/325588065_655585743034943_35706514444663711_n.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
             <Pane layoutX="131.0" layoutY="314.0" prefHeight="97.0" prefWidth="470.0" style="-fx-background-color: #533285;">
                <children>
                   <Button layoutX="174.0" layoutY="26.0" mnemonicParsing="false" onAction="#AjouterCategorieBack" text="Ajouter Categorie" textFill="#4c22a1">

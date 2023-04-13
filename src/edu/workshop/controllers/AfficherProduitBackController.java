@@ -127,4 +127,23 @@ for (int i = 0; i < list2.size(); i++) {
         showAlert("Veuillez sélectionner une réservation à supprimer.");
     }
     }
+
+    @FXML
+    private void ListeCategorieBack(ActionEvent event) {
+       
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AfficherCategorieBack.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherCategorieBackController.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+        }
     }
+    }
+
+    

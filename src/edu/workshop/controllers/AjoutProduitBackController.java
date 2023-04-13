@@ -85,6 +85,12 @@ public class AjoutProduitBackController implements Initializable {
  
                
                
+                           try {
+        quantite = Integer.parseInt(Quantitefx.getText());
+    } catch (NumberFormatException e) {
+        showAlert("Please enter a valid value for Quantite, containing only digits.");
+        return;
+    }
                
                if (nom_produit.isEmpty()) {
             showAlert("le nom produit est vide ");
@@ -95,6 +101,12 @@ public class AjoutProduitBackController implements Initializable {
              }else if (nom_produit.length() < minLength1) {
             showAlert("Le type doit contenir au moins " + minLength1 + " caractères");
              }
+             
+              if (prix_produit < 0) {
+        showAlert("Prix cannot be negative.");
+        return;
+    }
+             
                else if (marque_produit.isEmpty()) {
             showAlert("la marque produit est vide ");
          }else if (!marque_produit.matches(".*([a-zA-Z])+")) {
@@ -105,7 +117,14 @@ public class AjoutProduitBackController implements Initializable {
             showAlert("Le type doit contenir au moins " + minLength1 + " caractères");
              }
              
-                
+                else if (image.isEmpty()) {
+            showAlert("L'image est vide ");
+        
+    }
+            else if (quantite < 0) {
+        showAlert("Quantite cannot be negative.");
+        return;
+    }
          
              else{
    
@@ -129,6 +148,17 @@ Optional<ButtonType> result = alert.showAndWait();
                     
                     
     }
+                        try {
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AfficherProduitBack.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(AjoutProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
+        //showAlert("Error loading");
+    }
+                     
     }
 
 
