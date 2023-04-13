@@ -24,9 +24,9 @@ public class GestionUser {
         User p = new User();
         ServiceUser sp = new ServiceUser();
         //User s = new User("yacine2.khouini@gmail.com", "adress", "pass", "yacine khouini");
-       User s = new User("aziz.mans@gmail.com","address","password", "mohamed aziz mansour","image");
-       sp.add(s);
-       sp.afficher();
+       //User s = new User("aziz.mans@gmail.com","address","password", "mohamed aziz mansour","image");
+       //sp.add(s);
+       //sp.afficher();
       /* ServiceUser userService = new ServiceUser();
             
             // Test the authenticate method

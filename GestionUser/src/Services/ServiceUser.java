@@ -48,6 +48,22 @@ public class ServiceUser implements IService {
             System.out.println(ex.getMessage());
         }
     }
+    @Override
+    public void register(Object p) {
+        try {
+            if (p instanceof User) { // Vérifie si p est un objet de type User
+                //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')"; 
+                String qry = "INSERT INTO user(email, password, address, full_name, roles, date_naiss) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','" + ((User) p).getDate_naissance() + "')";
+                //String qry = "INSERT INTO user(email, password, address, full_name) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
+                stm = cnx.createStatement();
+                stm.executeUpdate(qry);
+            } else {
+                System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     @Override
     public List<User> afficher() {

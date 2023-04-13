@@ -2,21 +2,23 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.UserController">
    <children>
-      <Button layoutX="43.0" layoutY="419.0" mnemonicParsing="false" onAction="#ajouterclient" style="-fx-background-color: #FF7A48;" text="add" textFill="WHITE" />
-      <Button layoutX="157.0" layoutY="419.0" mnemonicParsing="false" onAction="#supprimerclient" style="-fx-background-color: #FF7A48;" text="delete" textFill="WHITE" />
-      <TextField fx:id="fullnameF" layoutX="55.0" layoutY="111.0" promptText="Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
-      <Button layoutX="100.0" layoutY="419.0" mnemonicParsing="false" onAction="#modifierclient" style="-fx-background-color: #FF7A48;" text="edit" textFill="WHITE" />
-      <TextField fx:id="emailF" layoutX="55.0" layoutY="161.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
-      <TextField fx:id="passwordF" layoutX="55.0" layoutY="211.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
-      <TextField fx:id="adreeseF" layoutX="55.0" layoutY="262.0" promptText="Address" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
+      <Button layoutX="289.0" layoutY="413.0" mnemonicParsing="false" onAction="#ajouterclient" style="-fx-background-color: #FF7A48;" text="add" textFill="WHITE" />
+      <Button layoutX="403.0" layoutY="413.0" mnemonicParsing="false" onAction="#supprimerclient" style="-fx-background-color: #FF7A48;" text="delete" textFill="WHITE" />
+      <TextField fx:id="fullnameF" layoutX="59.0" layoutY="200.0" promptText="Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
+      <Button layoutX="346.0" layoutY="413.0" mnemonicParsing="false" onAction="#modifierclient" style="-fx-background-color: #FF7A48;" text="edit" textFill="WHITE" />
+      <TextField fx:id="emailF" layoutX="59.0" layoutY="250.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
+      <TextField fx:id="passwordF" layoutX="59.0" layoutY="300.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
+      <TextField fx:id="adreeseF" layoutX="59.0" layoutY="351.0" promptText="Address" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #FF7A48;" />
       <TextField fx:id="idf" layoutX="502.0" layoutY="323.0" prefHeight="26.0" prefWidth="0.0" />
       <TableView fx:id="usertable" layoutX="269.0" layoutY="145.0" onMouseClicked="#clique" prefHeight="228.0" prefWidth="406.0">
         <columns>
@@ -27,8 +29,14 @@
             <TableColumn fx:id="datet" prefWidth="99.199951171875" text="date" />
         </columns>
       </TableView>
-      <DatePicker fx:id="dateNaissanceField" layoutX="43.0" layoutY="352.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="importer" layoutX="156.0" layoutY="310.0" mnemonicParsing="false" onAction="#o" style="-fx-background-color: #FF7A48;" text="import" textFill="WHITE" />
-      <Text fx:id="urlTF" layoutX="61.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="77.33673858642578" />
+      <DatePicker fx:id="dateNaissanceField" layoutX="46.0" layoutY="407.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button layoutX="169.0" layoutY="153.0" mnemonicParsing="false" onAction="#chooseImage" onMouseClicked="#chooseImage" style="-fx-background-color: #FF7A48;" text="import" textFill="WHITE" />
+      <ImageView fx:id="imageView" fitHeight="76.0" fitWidth="78.0" layoutX="56.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView1" fitHeight="76.0" fitWidth="78.0" layoutX="66.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="225.0" layoutY="32.0" prefHeight="51.0" prefWidth="242.0" text="Gestion Users" textFill="#ff6200">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

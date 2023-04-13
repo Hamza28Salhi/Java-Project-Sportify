@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
+import javax.persistence.metamodel.SingularAttribute;
 
 @Entity
 @Table(name = "users")
@@ -86,7 +87,7 @@ public class User {
         this.img_user = img_user;
     }
 
-    public User(String email, String address, String password, String full_name, String img_user, Date date_naissance) {
+    public User(String email, String address, String password, String full_name,  Date date_naissance, String img_user) {
         this.email = email;
         this.address = address;
         this.password = password;
@@ -109,6 +110,14 @@ public class User {
         this.img_user = img_user;
     }
 
+    public User(String email, String address, String password, String full_name, Date date_naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.date_naissance = date_naissance;
+    }
+
     public User(String email, String address, String password, String full_name,String img_user) {
         this.email = email;
         this.address = address;
@@ -118,6 +127,10 @@ public class User {
     }
 
     public User(String azizmansgmailcom, String address, String password, String mohamed_aziz_mansour, String oko, String image) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public User(SingularAttribute<User, String> email, SingularAttribute<User, String> address, SingularAttribute<User, String> password, SingularAttribute<User, String> full_name, SingularAttribute<User, Date> date_naissance, String imageName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

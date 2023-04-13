@@ -75,6 +75,8 @@ public class FrontLoginController implements Initializable {
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
             Parent root = loader.load();
+            
+          /*  emaillogin.getScene().setRoot(root);*/
 
             // Create a new scene with the loaded FXML file
             Scene scene = new Scene(root);

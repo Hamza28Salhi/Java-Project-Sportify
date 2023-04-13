@@ -29,7 +29,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -67,11 +70,11 @@ public class UserController implements Initializable {
     private DatePicker dateNaissanceField;
     @FXML
     private TableColumn<User, Date> datet;
-    private File file;
     @FXML
-    private Button importer;
-    @FXML
-    private Text urlTF;
+    private ImageView imageView;
+    
+    
+    
 
     /**
      * Initializes the controller class.
@@ -135,7 +138,9 @@ public class UserController implements Initializable {
         }
 
         // If all checks pass, create the user object and add it to the database
-        User s = new User(email, address, password, full_name, dateNaissance);
+        //String img_user = imageView.getImage() != null ? imageView.getImage().getUrl() : null;
+        String img_user = imageView.getImage() != null ? imageView.getImage().toString() : null;
+        User s = new User(email, address, password, full_name, dateNaissance, img_user);
         su.add(s);
         show();
 
@@ -210,24 +215,29 @@ user.setDate_naissance(date);
         }
     }
     
-	private void importer(ActionEvent event) {
-	  
-        
+    @FXML
+    private void chooseImage(ActionEvent event) {
     FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Sélectionnez un fichier PNG");
+    fileChooser.setTitle("Select an image file");
     fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
-        Window stage;
-    File fichierSelectionne = fileChooser.showOpenDialog(stage);
-
-    if (fichierSelectionne != null) {
-        urlTF.setText(fichierSelectionne.getName());
-        file = fichierSelectionne;
-       
+        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+    );
+    Window window = ((Node) event.getTarget()).getScene().getWindow();
+    File selectedFile = fileChooser.showOpenDialog(window);
+    if (selectedFile != null) {
+        // TODO: Load and display the selected image
+        String imagePath = selectedFile.getAbsolutePath(); // get the absolute path of the selected file
+File imageFile = new File(imagePath); // create a File object with the imagePath
+Image image = new Image(imageFile.toURI().toString()); // create an Image object with the File
+imageView.setImage(image); // set the image to the ImageView
     }
-	}
+}
+
 
     @FXML
-    private void o(ActionEvent event) {
+    private void chooseImage(MouseEvent event) {
     }
+
+    
+
 }

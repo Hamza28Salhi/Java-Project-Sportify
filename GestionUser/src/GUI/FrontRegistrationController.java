@@ -81,6 +81,13 @@ public class FrontRegistrationController implements Initializable {
         return;
     }*/
         // Check if address is not empty
+        // Check if any field is null
+    if (email.isEmpty() || password.isEmpty() || address.isEmpty() || full_name.isEmpty() || dateNaissance == null) {
+        // Show an error message and return
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in all fields", ButtonType.OK);
+        alert.showAndWait();
+        
+    }
         if (address.isEmpty()) {
             // Show an error message and return
             Alert alert = new Alert(Alert.AlertType.ERROR, "Address cannot be empty", ButtonType.OK);
@@ -112,7 +119,7 @@ public class FrontRegistrationController implements Initializable {
 
         // If all checks pass, create the user object and add it to the database
         User s = new User(email, address, password, full_name, dateNaissance);
-        su.add(s);
+        su.register(s);
         
         
          // Show a success message

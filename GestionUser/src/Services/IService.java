@@ -16,6 +16,7 @@ import Entities.User;
 public interface IService<T> {
      
     public void add(T p);
+    public void register(T p);
     public List<T> afficher();
     public void supprimer(T p);
     public boolean modifier(T p);
