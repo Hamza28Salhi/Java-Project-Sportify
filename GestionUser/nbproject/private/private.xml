@@ -3,19 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/Services/ServiceUser.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/gestionuser/Profil.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/Services/IService.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/gestionuser/Login.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/gestionuser/Userfx.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/GUI/FrontRegistrationController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/Utils/Sportify.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/gestionuser/Register.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/GUI/UserController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/GUI/FrontLoginController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/Entities/User.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/GUI/FrontProfileController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/GestionUser/src/gestionuser/GestionUser.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_login.css</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_registration.css</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/User.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/GestionUser.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_RegistrationController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_ListController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/User_List.fxml</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_list.css</file>
         </group>
     </open-files>
 </project-private>

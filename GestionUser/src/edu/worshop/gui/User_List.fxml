@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="700.0" minWidth="900.0" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.worshop.controllers.User_ListController">
+    <stylesheets>
+        <URL value="@/edu/worshop/controllers/user_list.css" />
+    </stylesheets>
+   <children>
+      <ListView fx:id="User_Listfx" layoutX="61.0" layoutY="62.0" prefHeight="492.0" prefWidth="542.0" />
+      <Button layoutX="579.0" layoutY="609.0" mnemonicParsing="false" onAction="#ajouterclient" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #FF7A48;" text="add" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="767.0" layoutY="609.0" mnemonicParsing="false" onAction="#supprimerclient" prefHeight="38.0" prefWidth="65.0" style="-fx-background-color: #FF7A48;" text="delete" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="674.0" layoutY="609.0" mnemonicParsing="false" onAction="#modifierclient" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #FF7A48;" text="edit" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
