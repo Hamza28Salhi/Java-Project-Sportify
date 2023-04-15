@@ -49,6 +49,8 @@ public class GestionUser extends Application {
         }
 
     }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -56,6 +58,8 @@ public class GestionUser extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
     
 }
 

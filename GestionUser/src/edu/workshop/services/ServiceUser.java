@@ -92,6 +92,32 @@ public class ServiceUser implements IService {
         }
         return User;
     }
+    
+    public List<User> ListUsers() {
+    List<User> list = new ArrayList<>();
+    try {
+        String qry = "SELECT id, full_name, email,password, address, date_naiss, roles FROM user";
+        Statement st = conn.createStatement();
+        ResultSet RS = st.executeQuery(qry);
+        while (RS.next()) {
+            List<String> roles = Arrays.asList(RS.getString("roles").split(","));
+            User R = new User(
+                RS.getInt("id"),
+                RS.getString("full_name"),
+                RS.getString("email"),
+                RS.getString("password"),
+                RS.getString("address"),
+                RS.getDate("date_naiss"),
+                roles
+            );
+            list.add(R);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return list;
+}
+    
 
     public User getUserById(int userId) {
         try {
@@ -150,8 +176,8 @@ public class ServiceUser implements IService {
     @Override
     public void update(User user) {
         try {
-            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "' WHERE id = " + user.getId();
-            Statement st = conn.createStatement();
+            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "', date_naiss = '" + user.getDate_naissance() + "' WHERE id = " + user.getId();
+Statement st = conn.createStatement();
             st.executeUpdate(qry);
             System.out.println("User updated !");
         } catch (SQLException ex) {

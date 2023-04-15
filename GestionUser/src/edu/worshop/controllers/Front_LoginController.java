@@ -72,7 +72,7 @@ public class Front_LoginController implements Initializable {
     private void redirectToDashboard() {
         try { 
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("user.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("User_List.fxml"));
             Parent root = loader.load();
             
           /*  emaillogin.getScene().setRoot(root);*/
@@ -95,7 +95,7 @@ public class Front_LoginController implements Initializable {
     private void redirectToProfile() {
         try {
             // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontProfile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Front_Profile.fxml"));
             Parent root = loader.load();
 
             // Create a new scene with the loaded FXML file

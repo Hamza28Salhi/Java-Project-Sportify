@@ -80,6 +80,16 @@ public class User {
         this.img_user = img_user;
     }
 
+    public User(int id,String full_name, String email,String password, String address,  Date date_naissance, List<String> roles) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.date_naissance = date_naissance;
+        this.roles = roles;
+    }
+
     public User(String email, String address, String password, String full_name,  Date date_naissance, String img_user) {
         this.email = email;
         this.address = address;

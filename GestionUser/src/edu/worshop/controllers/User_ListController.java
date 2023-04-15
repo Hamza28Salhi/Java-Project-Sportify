@@ -26,6 +26,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -48,30 +50,95 @@ public class User_ListController implements Initializable {
      * Initializes the controller class.
      */
     public void initialize(URL url, ResourceBundle rb) {
-        ListView<User> list1 = User_Listfx;
-        ServiceUser inter = new ServiceUser();
-        List<User> list2 = inter.afficher();
-        for (int i = 0; i < list2.size(); i++) {
-            User E = list2.get(i);
-            list1.getItems().add(E); // add Matches to ListView
+    ListView<User> list1 = User_Listfx;
+    ServiceUser inter = new ServiceUser();
+    List<User> list2 = inter.ListUsers();
+    list1.setCellFactory(param -> new ListCell<User>() {
+        
+        
+        @Override
+        protected void updateItem(User item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setText(null);
+            } else {
+                setText(item.getId()+ "   |   " +item.getFull_name()+ "   |   " + item.getEmail() + "   |   " + item.getAddress() + "   |   " + item.getRoles() + "   |   " + " (" + item.getDate_naissance() + ")");
+            }
         }
-
-    }
+    });
+    list1.getItems().addAll(list2);
+    
+    
+    
+}
     
     @FXML
-    private void SupprimerMatchesBack(ActionEvent event) {
+    private void deleteUser(ActionEvent event) {
     ListView<User> list = (ListView<User>) User_Listfx;
     ServiceUser inter = new ServiceUser();
 
     int selectedIndex = list.getSelectionModel().getSelectedIndex();
     if (selectedIndex >= 0) {
         User E = list.getSelectionModel().getSelectedItem();
-        inter.supprimer(E.getId());
+        inter.supprimer(E);
         list.getItems().remove(selectedIndex);
     } else {
-        showAlert("Veuillez sélectionner une Matches à supprimer.");
+         Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz select a user to delete", ButtonType.OK);
+        alert.showAndWait(); 
     }
-    }  
+    }
+    
+    @FXML
+    private void updateUser(ActionEvent event) {
+        
+        ListView<User> list = (ListView<User>) User_Listfx;
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        
+
+        User e = list.getSelectionModel().getSelectedItem();
+ 
+        int id = e.getId();
+        String name = e.getFull_name();
+        String email = e.getEmail();
+        String address = e.getAddress();
+        String password = e.getPassword();
+        String img_user = e.getImg_user();
+        Date date = e.getDate_naissance();
+     
+        U=e;
+        
+        
+        
+        try {
+
+            Parent page1
+                    = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_Update.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_UpdateController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        
+        
+    }
+    
+    @FXML
+    private void addUser(ActionEvent event) {
+           try {
+        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_Add.fxml"));
+        Scene scene = new Scene(page1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+        //showAlert("Error loading");
+    }
+ 
+    }
 
     
 
