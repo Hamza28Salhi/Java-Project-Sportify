@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -27,5 +28,6 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <TextField fx:id="searchField" layoutX="223.0" layoutY="44.0" />
    </children>
 </AnchorPane>
