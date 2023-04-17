@@ -29,5 +29,10 @@
          </font>
       </Button>
       <TextField fx:id="searchField" layoutX="223.0" layoutY="44.0" />
+      <Button layoutX="358.0" layoutY="506.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #FF7A48;" text="print" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
