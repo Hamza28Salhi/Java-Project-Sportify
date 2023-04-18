@@ -100,8 +100,9 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", date=" + date + ", type=" + type + ", lieu=" + lieu + ", description=" + description + ", titre=" + titre + ", even_pic=" + even_pic + '}';
+        return "Evenement{" + "date=" + date + ", type=" + type + ", lieu=" + lieu + ", description=" + description + ", titre=" + titre + ", even_pic=" + even_pic + '}';
     }
+
     
     
     

@@ -11,6 +11,7 @@ import edu.worshop.model.Evenement;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import static java.util.Collections.list;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -56,7 +57,7 @@ for (int i = 0; i < list2.size(); i++) {
 
 
         }
-        // TODO
+        
 
     @FXML
     private void SupprimerEvenementBack(ActionEvent event) {
@@ -137,6 +138,27 @@ for (int i = 0; i < list2.size(); i++) {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void AjoutReservationBack(ActionEvent event) {
+            ListView<Evenement> list = affichageEvenementBackfx;
+        EvenementCRUD inter = new Evenement1CRUD();
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+         Evenement e = list.getSelectionModel().getSelectedItem();
+        E=e;
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AjoutReservationFront.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AffichageEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+        }
     }
     }
     

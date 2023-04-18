@@ -13,10 +13,10 @@
       <DatePicker fx:id="DateEvenementfx" layoutX="70.0" layoutY="83.0" />
       <TextField fx:id="TypeEvenementfx" layoutX="72.0" layoutY="126.0" />
       <TextField fx:id="LieuEvenementfx" layoutX="72.0" layoutY="170.0" />
-      <TextArea fx:id="DescriptionEvenementfx" layoutX="324.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="DescriptionEvenementfx" layoutX="324.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="Even_picEvenementfx" layoutX="71.0" layoutY="220.0" />
       <TextField fx:id="TitreEvenementfx" layoutX="70.0" layoutY="270.0" />
-      <Button layoutX="307.0" layoutY="306.0" mnemonicParsing="false" onAction="#AjouterEvenementBack" text="Ajouter" />
+      <Button defaultButton="true" layoutX="251.0" layoutY="310.0" mnemonicParsing="false" onAction="#AjouterEvenementBack" text="Ajouter" textFill="#222897" />
       <Text fill="#0720ff" layoutX="133.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter des événements" textAlignment="CENTER">
          <font>
             <Font name="Arial Unicode MS" size="27.0" />
@@ -27,6 +27,6 @@
       <Text layoutX="16.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" />
       <Text layoutX="17.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Even_pic" />
       <Text layoutX="16.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="38.0" />
-      <Text layoutX="324.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="324.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
    </children>
 </AnchorPane>

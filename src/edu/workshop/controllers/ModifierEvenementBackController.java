@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import static java.util.Collections.list;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -74,13 +77,7 @@ public class ModifierEvenementBackController implements Initializable {
         
     } 
     
-     private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    
 
     @FXML
     private void ModifierEvenementBack(ActionEvent event) {
@@ -93,8 +90,71 @@ public class ModifierEvenementBackController implements Initializable {
         String description = DescriptionMfx.getText();
         String even_pic = Even_picMfx.getText();
         String titre = TitreMfx.getText();
+        
+        
+                int minLength = 6;
+               int minLength1 = 4;
+         LocalDate currentDate = LocalDate.now(); // Gets the current date
+        String dateStringlocal = currentDate.toString();
+        String datee = date.toString();
+        int comparaison = datee.compareTo(dateStringlocal);
+        if (comparaison < 0) {
+            showAlert("il faut que la date est supérieure à la date système");
+        }      
+         
+        else if (type.isEmpty()) {
+            showAlert("le type est vide ");
+         }else if (!type.matches(".*([a-zA-Z])+")) {
+            showAlert("le type doit être alphabétique ");
+         }else if (type.matches(".*([a-zA-Z])\\1{2,}.*")) {
+            showAlert("La saisie ne doit pas contenir des caractères alphabétiques répétés plus de deux fois consécutivement.");
+             }else if (type.length() < minLength1) {
+            showAlert("Le type doit contenir au moins " + minLength1 + " caractères");    
+         
+             } else if (lieu.isEmpty()) {
+            showAlert("Le lieu est vide ");
+         } else if (!lieu.matches("[a-zA-Z]+")) {
+            showAlert("le lieu doit être alphabétique ");
+            }else if (lieu.matches(".*([a-zA-Z])\\1{2,}.*")) {
+            showAlert("La saisie ne doit pas contenir des caractères alphabétiques répétés plus de deux fois consécutivement.");
+            }else if (lieu.length() < minLength1) {
+            showAlert("Le lieu doit contenir au moins " + minLength1 + " caractères");
+        
+            }else if (description.isEmpty()) {
+            showAlert("La description est vide ");
+         }else if (!description.matches("[a-zA-Z]+")) {
+            showAlert("la descripiton doit être alphabétique ");
+         }else if (description.matches(".*([a-zA-Z])\\1{2,}.*")) {
+            showAlert("La saisie ne doit pas contenir des caractères alphabétiques répétés plus de deux fois consécutivement.");
+         }else if (description.length() < minLength) {
+            showAlert("La description doit contenir au moins " + minLength + " caractères");
+         }
+   
+         else if (even_pic.isEmpty()) {
+            showAlert("L'image est vide ");
+        
+    }else if (titre.isEmpty()) {
+            showAlert("Le titre est vide ");
+            }else if (titre.length() < minLength1) {
+            showAlert("Le titre doit contenir au moins " + minLength1 + " caractères");
+         }else if (!titre.matches("[a-zA-Z]+")) {
+            showAlert("le titre doit être alphabétique ");
+         }else if(titre.matches(".*([a-zA-Z])\\1{2,}.*")) {
+            showAlert("La saisie ne doit pas contenir des caractères alphabétiques répétés plus de deux fois consécutivement.");
+         }else{
+            
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Confirmation");
+                alert.setHeaderText(null);
+                alert.setContentText("are you sure to add this event ?");
+Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
            Evenement even = new Evenement(AffichageEvenementBackController.E.getId(), date, type, lieu, description, even_pic, titre );
                 inter.modifierEvenement(even);
+                
+                 showAlert("l'évenement a été modifié avec succès ");}
+                
+        
            
                  try {
         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AffichageEvenementBack.fxml"));
@@ -113,4 +173,15 @@ public class ModifierEvenementBackController implements Initializable {
     }
     
     
+}
+
+ private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
 }

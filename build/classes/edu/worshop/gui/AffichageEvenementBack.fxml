@@ -12,10 +12,11 @@
       <Button defaultButton="true" layoutX="405.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerEvenementBack" text="Supprimer" textFill="RED" />
       <Button defaultButton="true" layoutX="338.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutEvenementBack" text="Ajouter" textFill="#222897" />
       <Button defaultButton="true" layoutX="489.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierEvenementBack" text="Modifier" textFill="#222897" />
-      <Text fill="#0720ff" layoutX="110.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des événements" textAlignment="CENTER">
+      <Text fill="#0825ff" layoutX="110.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des événements" textAlignment="CENTER">
          <font>
             <Font name="Arial Unicode MS" size="27.0" />
          </font>
       </Text>
+      <Button defaultButton="true" layoutX="262.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutReservationBack" text="Reserver" textFill="#222897" />
    </children>
 </AnchorPane>
