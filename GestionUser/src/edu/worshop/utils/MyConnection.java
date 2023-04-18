@@ -24,6 +24,7 @@ String user = "root";
 String pwd = "";
 
 private static int userId;
+private static String image_Name;
 
 public static int getUserId() {
         return userId;
@@ -32,6 +33,16 @@ public static void setUserId(int userId) {
         MyConnection.userId = userId;
         
     }
+
+    public static String getImage_Name() {
+        return image_Name;
+    }
+
+    public static void setImage_Name(String image_Name) {
+        MyConnection.image_Name = image_Name;
+    }
+
+
 
 private static MyConnection instance;
     private MyConnection() {

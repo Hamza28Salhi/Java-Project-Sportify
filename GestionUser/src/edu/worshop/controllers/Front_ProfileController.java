@@ -16,8 +16,11 @@ import edu.workshop.services.ServiceUser;
  * @author azizo
  */
 import edu.worshop.model.User;
+import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -37,6 +40,9 @@ public class Front_ProfileController implements Initializable {
     private TextField addresst;
     ServiceUser su = new ServiceUser();
 
+    @FXML
+    private ImageView ProfileImage;
+
     /**
      * Initializes the controller class.
      */
@@ -46,16 +52,20 @@ public class Front_ProfileController implements Initializable {
         int userId = MyConnection.getUserId();
         User user = new ServiceUser().getUserById(userId);
         if (user != null) {
-        full_namet.setText(user.getFull_name());
-        emailt.setText(user.getEmail());
-        addresst.setText(user.getAddress());
-        date_naisst.setText(user.getDate_naissance().toString());
-    }
+            full_namet.setText(user.getFull_name());
+            emailt.setText(user.getEmail());
+            addresst.setText(user.getAddress());
+            date_naisst.setText(user.getDate_naissance().toString());
+
+            File file = new File("upload/" + user.getImg_user());
+            Image image = new Image(file.toURI().toString());
+            ProfileImage.setImage(image);
+        }
     }
 
     @FXML
     private void EditUser(MouseEvent event) {
-        
+
         int userId = MyConnection.getUserId();
         User user = new User();
         user.setId(userId);
@@ -65,5 +75,5 @@ public class Front_ProfileController implements Initializable {
         user.setFull_name(full_namet.getText());
         su.update(user);
     }
-    
+
 }

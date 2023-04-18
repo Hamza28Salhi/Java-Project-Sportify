@@ -40,7 +40,9 @@ public class Workshop3A4 {
                 System.out.println("Invalid email or password.");
             }  */
       
-      // create a new User object
+      // create a new User objec
+      
+    //  System.out.println(System.getProperty("user.dir"));
    
        
         //sp.modifier(new User( "aziz.mansour@gmail.com", "adress", "pass", "yacine khouini"));

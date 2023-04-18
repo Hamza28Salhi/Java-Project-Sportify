@@ -11,9 +11,12 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.ServiceUser;
 import edu.worshop.interfaces.IService;
 import edu.worshop.model.User;
+import edu.worshop.utils.MyConnection;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
@@ -130,14 +133,16 @@ public class User_AddController implements Initializable {
    // Date date = Date.valueOf(dateNaissanceField.getValue());
     
     
-    String img_user = imageView.getImage() != null ? imageView.getImage().toString() : null;
-        // Update the User object with the new values
+    // Get the filename of the image from the path
+    String img_user = MyConnection.getImage_Name();
+   // Update the User object with the new values
     User updatedUser = new User();
     updatedUser.setFull_name(full_name);
     updatedUser.setEmail(email);
     updatedUser.setPassword(password);
     updatedUser.setAddress(address);
     updatedUser.setDate_naissance(date);
+    updatedUser.setImg_user(img_user);
     
     su.add(updatedUser);
 
@@ -157,7 +162,7 @@ public class User_AddController implements Initializable {
 }
     
     @FXML
-    private void chooseImage(ActionEvent event) {
+private void chooseImage(ActionEvent event) {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Select an image file");
     fileChooser.getExtensionFilters().addAll(
@@ -166,13 +171,29 @@ public class User_AddController implements Initializable {
     Window window = ((Node) event.getTarget()).getScene().getWindow();
     File selectedFile = fileChooser.showOpenDialog(window);
     if (selectedFile != null) {
-        // TODO: Load and display the selected image
-        String imagePath = selectedFile.getAbsolutePath(); // get the absolute path of the selected file
-File imageFile = new File(imagePath); // create a File object with the imagePath
-Image image = new Image(imageFile.toURI().toString()); // create an Image object with the File
-imageView.setImage(image); // set the image to the ImageView
+        try {
+            // Create a directory called "upload" if it doesn't exist
+            File uploadDir = new File("upload");
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            
+            // Copy the selected file to the "upload" directory
+            String fileName = selectedFile.getName();
+            File destFile = new File("upload/" + fileName);
+            Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            // Set the ImageView's image to the selected image
+            Image image = new Image(destFile.toURI().toString());
+            imageView.setImage(image);
+            //Save the image name in img_Saver
+            MyConnection.setImage_Name(fileName);
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
-    
+
 }
+    
+
     

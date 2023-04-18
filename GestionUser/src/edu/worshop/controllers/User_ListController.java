@@ -14,10 +14,13 @@ import edu.worshop.model.User;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -42,6 +45,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.swing.filechooser.FileSystemView;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -153,8 +160,7 @@ public class User_ListController implements Initializable {
 
         try {
 
-            Parent page1
-                    = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_Update.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_Update.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -180,58 +186,64 @@ public class User_ListController implements Initializable {
         }
 
     }
-/*
+
+    
+    /*
     @FXML
     private void printUser(MouseEvent event) {
-        User selectedObject = User_Listfx.getSelectionModel().getSelectedItem();
+        try {
+            // create new workbook
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("User Data");
 
-        if (selectedObject != null) {
-            int idCommande = selectedObject.getId();
-            String name = selectedObject.getFull_name();
-            String email = selectedObject.getEmail();
-            Date date = selectedObject.getDate_naissance();
-            String address = selectedObject.getAddress();
-            List<String> roles = selectedObject.getRoles();
+            // create header row
+            XSSFRow header = sheet.createRow(0);
+            header.createCell(0).setCellValue("ID");
+            header.createCell(1).setCellValue("Full Name");
+            header.createCell(2).setCellValue("Email");
+            header.createCell(3).setCellValue("Date of Birth");
+            header.createCell(4).setCellValue("Address");
+            header.createCell(5).setCellValue("Roles");
 
-            try {
-                // Chemin du fichier sur le bureau
-                String desktopPath = System.getProperty("user.home") + "/Desktop/";
-                String fileName = "donnees.txt";
+            // populate data rows
+            ObservableList<User> users = User_Listfx.getItems();
+            int rowIndex = 1;
+            for (User user : users) {
+                XSSFRow row = sheet.createRow(rowIndex++);
+                row.createCell(0).setCellValue(user.getId());
+                row.createCell(1).setCellValue(user.getFull_name());
+                row.createCell(2).setCellValue(user.getEmail());
+                // create a date formatter
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
-                // Création du fichier sur le bureau
-                File file = new File(desktopPath + fileName);
-                PrintWriter writer = new PrintWriter(file);
-
-                // Écriture des données dans le fichier
-                writer.println("Id: " + idCommande);
-                writer.println("Full Name: " + name);
-                writer.println("Email: " + email);
-                writer.println("Date de naissance: " + date);
-                writer.println("Adresse: " + address);
-                writer.println("Rôles: " + String.join(",", roles));
-
-                // Fermeture du fichier
-                writer.close();
-
-                System.out.println("Données imprimées dans le fichier " + desktopPath + fileName + ".");
-
-                // Ouverture de la boîte de dialogue d'impression
-                PrinterJob job = PrinterJob.getPrinterJob();
-                boolean ok = job.printDialog();
-                if (ok) {
-                    try {
-                        job.print();
-                    } catch (PrinterException ex) {
-                        System.err.println("Erreur lors de l'impression des données.");
-                        ex.printStackTrace();
-                    }
-                }
-
-            } catch (IOException e) {
-                System.err.println("Erreur lors de l'impression des données sur le fichier.");
-                e.printStackTrace();
+// format the date of birth
+                String formattedDate = dateFormatter.format(user.getDate_naissance());
+                row.createCell(3).setCellValue(formattedDate);
+                row.createCell(4).setCellValue(user.getAddress());
+                row.createCell(5).setCellValue(String.join(",", user.getRoles()));
             }
-        }
-    }*/
 
+            // save workbook to desktop
+            Path desktop = FileSystemView.getFileSystemView().getHomeDirectory().toPath().resolve("Desktop");
+            Path filePath = desktop.resolve("user_data.xlsx");
+            try (FileOutputStream outputStream = new FileOutputStream(filePath.toFile())) {
+                workbook.write(outputStream);
+            }
+
+            // show success message
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Export Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("User data has been exported to:\n" + filePath.toString());
+            alert.showAndWait();
+
+        } catch (IOException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Export Failed");
+            alert.setHeaderText(null);
+            alert.setContentText("An error occurred while exporting user data:\n" + ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+*/
 }

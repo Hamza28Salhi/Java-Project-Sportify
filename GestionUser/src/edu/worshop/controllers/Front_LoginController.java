@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -58,7 +59,16 @@ public class Front_LoginController implements Initializable {
             if (roles.contains("[ROLE_ADMIN]")) {
                 redirectToDashboard();
             } else if (roles.contains("[ROLE_USER]")){
-                redirectToProfile();
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Profile.fxml"));
+    Parent root = loader.load();
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
             }
         } else {
             displayErrorMessage();
@@ -92,25 +102,18 @@ public class Front_LoginController implements Initializable {
 
     }
 
-    private void redirectToProfile() {
+    /*private void redirectToProfile() {
         try {
-            // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Front_Profile.fxml"));
-            Parent root = loader.load();
-
-            // Create a new scene with the loaded FXML file
-            Scene scene = new Scene(root);
-
-            // Get the current stage
-            Stage stage = (Stage) emaillogin.getScene().getWindow();
-
-            // Set the new scene to the current stage
-            stage.setScene(scene);
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/workshop/gui/Front_Profile.fxml"));
+    Parent root = loader.load();
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     private void displayErrorMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz verify input", ButtonType.OK);
