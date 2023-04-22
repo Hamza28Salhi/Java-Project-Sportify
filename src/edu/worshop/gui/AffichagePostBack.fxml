@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -12,12 +14,17 @@
       <Button defaultButton="true" layoutX="405.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerPostBack" text="Supprimer" textFill="RED" />
       <Button defaultButton="true" layoutX="338.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutPostBack" text="Ajouter" textFill="#222897" />
       <Button defaultButton="true" layoutX="489.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierPostBack" text="Modifier" textFill="#222897" />
-      <Text fill="#0720ff" layoutX="105.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des posts" textAlignment="CENTER" wrappingWidth="386.67431640625">
+      <Text fill="#0720ff" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des posts" textAlignment="CENTER" wrappingWidth="386.67431640625">
          <font>
             <Font name="Arial Unicode MS" size="27.0" />
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutCommentaireBack" text="Ajouter un commentaire " />
       <Button layoutX="181.0" layoutY="361.0" mnemonicParsing="false" onAction="#AffichageCommentaireBack" text="Voir les commentaires" />
+      <ComboBox fx:id="comb" layoutX="445.0" layoutY="25.0" onAction="#TriPostBack" prefHeight="25.0" prefWidth="150.0" promptText="Trier Par" AnchorPane.topAnchor="25.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ComboBox>
    </children>
 </AnchorPane>

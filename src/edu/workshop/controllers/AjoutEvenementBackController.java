@@ -8,11 +8,14 @@ package edu.workshop.controllers;
 import edu.workshop.services.Post1CRUD;
 import edu.worshop.interfaces.PostCRUD;
 import edu.worshop.model.Post;
+import edu.worshop.utils.MyConnection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,7 +38,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import static jdk.nashorn.internal.objects.NativeJava.type;
 /**
  * FXML Controller class
@@ -52,6 +59,8 @@ public class AjoutEvenementBackController implements Initializable {
     private TextArea ContenuPostfx;
     @FXML
     private TextField ImagePostfx;
+    @FXML
+    private ImageView imageView;
 
     /**
      * Initializes the controller class.
@@ -68,7 +77,7 @@ public class AjoutEvenementBackController implements Initializable {
         
         String auteur = AuteurPostfx.getText();
         String contenu = ContenuPostfx.getText();
-        String imagePost = ImagePostfx.getText();
+        //String imagePost = ImagePostfx.getText();
         String titre = TitrePostfx.getText();
         
                int minLength = 6;
@@ -94,12 +103,7 @@ public class AjoutEvenementBackController implements Initializable {
         }else if (
        contenu.length() < 50) {
             showAlert("Le contenu doit contenir au moins " + 50 + " caractères");
-         }
-   
-         else if (imagePost.isEmpty()) {
-            showAlert("L'image est vide ");
-        
-    }else if (titre.isEmpty()) {
+         }else if (titre.isEmpty()) {
             showAlert("Le titre est vide ");
             }else if (
        titre.length() < minLength1) {
@@ -118,7 +122,7 @@ alert.setTitle("Confirmation");
 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
 
-
+                String imagePost = MyConnection.getImage_Name();
               Post P = new Post(titre,contenu,imagePost,auteur);
                     Post1CRUD event1 = new Post1CRUD();
                     event1.ajouterPost(P);
@@ -145,7 +149,47 @@ Optional<ButtonType> result = alert.showAndWait();
         alert.setContentText(message);
         alert.showAndWait();
     }
-    
+
+    @FXML
+    private void RetourPostBack(ActionEvent event) throws IOException {
+    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AffichagePostBack.fxml"));
+    Scene scene = new Scene(page1);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+}
+
+     @FXML
+private void chooseImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Select an image file");
+    fileChooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+    );
+    Window window = ((Node) event.getTarget()).getScene().getWindow();
+    File selectedFile = fileChooser.showOpenDialog(window);
+    if (selectedFile != null) {
+        try {
+            // Create a directory called "upload" if it doesn't exist
+            File uploadDir = new File("upload");
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            
+            // Copy the selected file to the "upload" directory
+            String fileName = selectedFile.getName();
+            File destFile = new File("upload/" + fileName);
+            Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            // Set the ImageView's image to the selected image
+            Image image = new Image(destFile.toURI().toString());
+            imageView.setImage(image);
+            //Save the image name in img_Saver
+            MyConnection.setImage_Name(fileName);
+        } catch (IOException ex) {
+            Logger.getLogger(AjoutEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
     
     
     

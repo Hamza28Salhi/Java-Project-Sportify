@@ -15,6 +15,7 @@
             <TextField fx:id="AuteurCfx" layoutX="134.0" layoutY="303.0" />
             <Button layoutX="372.0" layoutY="303.0" mnemonicParsing="false" onAction="#AjoutCommentaireBack" prefHeight="25.0" prefWidth="158.0" text="Ajouter le commentaire" />
             <TextArea fx:id="ContenuCfx" layoutX="24.0" layoutY="71.0" prefHeight="200.0" prefWidth="518.0" />
+            <Button layoutX="236.0" layoutY="353.0" mnemonicParsing="false" onAction="#RetourPostBack" prefHeight="25.0" prefWidth="95.0" text="Retour" />
          </children>
       </AnchorPane>
    </children>

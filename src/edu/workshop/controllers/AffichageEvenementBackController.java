@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -35,16 +38,25 @@ import javafx.stage.Stage;
 public class AffichageEvenementBackController implements Initializable {
 
     @FXML
+    //private ComboBox comb;
     private ListView<?> affichagePostBackfx;
     //static Post P ;
 static int id;
 static String titre_Post,contenu_Post,image_Post,auteur_Post;
 static Post P = new Post();
+    @FXML
+    private ComboBox<String> comb;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        ObservableList<String> listt = FXCollections.observableArrayList("Ordre alphabetique","date de creation");
+        comb.setItems(listt);
+        
+        
         ListView<Post> list1 = (ListView<Post>) affichagePostBackfx; //ListView<Post> list1 = affichagePostBackfx;
 PostCRUD inter = new Post1CRUD();
 List<Post> list2 = inter.afficherPost();
@@ -177,6 +189,11 @@ for (int i = 0; i < list2.size(); i++) {
         }
     
 }
+
+    @FXML
+    private void TriPostBack(ActionEvent event) {
+        
+    }
     
     
     

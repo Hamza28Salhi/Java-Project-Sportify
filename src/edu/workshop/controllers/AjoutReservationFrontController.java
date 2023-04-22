@@ -101,6 +101,15 @@ Optional<ButtonType> result = alert.showAndWait();
         //showAlert("Error loading");
     }*/
     }
+
+    @FXML
+    private void RetourPostBack(ActionEvent event) throws IOException {
+    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AffichagePostBack.fxml"));
+    Scene scene = new Scene(page1);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+}
     
     
     

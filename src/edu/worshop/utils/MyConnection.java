@@ -23,6 +23,16 @@ String url = "jdbc:mysql://localhost:3306/sportify?zeroDateTimeBehavior=convertT
 String user = "root";
 String pwd = "";
 private static MyConnection instance;
+
+private static String image_Name;
+public static String getImage_Name() {
+        return image_Name;
+    }
+
+    public static void setImage_Name(String image_Name) {
+        MyConnection.image_Name = image_Name;
+    }
+    
     private MyConnection() {
         try {
             conn=DriverManager.getConnection(url, user, pwd);

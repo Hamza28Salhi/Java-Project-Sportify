@@ -9,13 +9,14 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AffichageCommentaireBackController">
    <children>
       <ListView fx:id="affichageCommentaireBackfx" layoutX="-2.0" layoutY="55.0" prefHeight="304.0" prefWidth="600.0" />
-      <Button defaultButton="true" layoutX="264.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerCommentaireBack" text="Supprimer" textFill="RED" />
-      <Button defaultButton="true" layoutX="101.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutCommentaireBack" text="Ajouter" textFill="#222897" />
-      <Button defaultButton="true" layoutX="434.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierCommentaireBack" text="Modifier" textFill="#222897" />
+      <Button defaultButton="true" layoutX="494.0" layoutY="367.0" mnemonicParsing="false" onAction="#SupprimerCommentaireBack" text="Supprimer" textFill="RED" />
+      <Button defaultButton="true" layoutX="191.0" layoutY="367.0" mnemonicParsing="false" onAction="#AjoutCommentaireBack" prefHeight="25.0" prefWidth="72.0" text="Ajouter" textFill="#222897" />
+      <Button defaultButton="true" layoutX="337.0" layoutY="367.0" mnemonicParsing="false" onAction="#ModifierCommentaireBack" prefHeight="25.0" prefWidth="72.0" text="Modifier" textFill="#222897" />
       <Text fill="#0720ff" layoutX="71.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des commentaires" textAlignment="CENTER" wrappingWidth="458.67431640625">
          <font>
             <Font name="Arial Unicode MS" size="27.0" />
          </font>
       </Text>
+      <Button defaultButton="true" layoutX="56.0" layoutY="367.0" mnemonicParsing="false" onAction="#RetourPostBack" prefHeight="25.0" prefWidth="72.0" text="Retour" textFill="#222897" />
    </children>
 </AnchorPane>

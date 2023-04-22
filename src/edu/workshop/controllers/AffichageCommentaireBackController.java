@@ -11,13 +11,20 @@ import edu.worshop.interfaces.CommentaireCRUD;
 import edu.worshop.interfaces.PostCRUD;
 import edu.worshop.model.Commentaire;
 import edu.worshop.model.Post;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,6 +64,7 @@ for (int i = 0; i < list2.size(); i++) {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    @FXML
     public void SupprimerCommentaireBack(){
         
     ListView<Commentaire> list = (ListView<Commentaire>) affichageCommentaireBackfx;
@@ -71,8 +79,20 @@ for (int i = 0; i < list2.size(); i++) {
         showAlert("Veuillez sélectionner un commentaire à supprimer.");
     }
 }
+    @FXML
     public void AjoutCommentaireBack(){
     
 }
+    @FXML
     public void ModifierCommentaireBack(){}
+
+    @FXML
+    private void RetourPostBack(ActionEvent event) throws IOException {
+    Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AffichagePostBack.fxml"));
+    Scene scene = new Scene(page1);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+}
+    
 }

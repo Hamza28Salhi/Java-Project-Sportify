@@ -31,13 +31,13 @@ public class Workshop3A4 {
         Post1CRUD pst = new Post1CRUD();
         
         System.out.println(P1);
-        pst.ajouterPost(P1);
+        /*pst.ajouterPost(P1);
         
         Commentaire C1 = new Commentaire(17,"comm","ouio");
         Commentaire1CRUD cmt = new Commentaire1CRUD();
                System.out.println(C1);
 
-        cmt.ajouterCommentaire(C1);
+        cmt.ajouterCommentaire(C1);*/
         
         //event.ajouterEvenement(E1);
         //res.ajouterReservation(R1);

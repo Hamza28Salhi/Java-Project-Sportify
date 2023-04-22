@@ -12,10 +12,11 @@
       <TextArea fx:id="ContenuMfx" layoutX="319.0" layoutY="87.0" prefHeight="200.0" prefWidth="246.0" />
       <TextField fx:id="ImagePostMfx" layoutX="119.0" layoutY="184.0" />
       <TextField fx:id="AuteurMfx" layoutX="113.0" layoutY="262.0" />
-      <Button layoutX="413.0" layoutY="333.0" mnemonicParsing="false" onAction="#ModifierPostBack" text="Modifier" />
+      <Button layoutX="397.0" layoutY="333.0" mnemonicParsing="false" onAction="#ModifierPostBack" prefHeight="25.0" prefWidth="77.0" text="Modifier" />
       <Label layoutX="41.0" layoutY="102.0" text="Titre" />
       <Label layoutX="37.0" layoutY="179.0" text="image" />
       <Label layoutX="39.0" layoutY="266.0" text="Auteur" />
       <Label layoutX="397.0" layoutY="46.0" prefHeight="17.0" prefWidth="93.0" text="Contenu du Post" />
+      <Button layoutX="133.0" layoutY="333.0" mnemonicParsing="false" onAction="#RetourPostBack" prefHeight="25.0" prefWidth="77.0" text="Retour" />
    </children>
 </AnchorPane>

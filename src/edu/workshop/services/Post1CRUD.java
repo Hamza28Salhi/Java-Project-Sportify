@@ -45,10 +45,33 @@ ste = conn.createStatement();
         }
     }
     
-    
+    //**************************************************************************************************************
+    public List<Post> afficherrPost() {
+       List<Post> list = new ArrayList<>();
+        try {
+        String req = "SELECT `id`, `titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `likes`, `dislike` FROM `post`";
+            Statement st = conn.createStatement();
+           
+            ResultSet RS= st.executeQuery(req);
+            while(RS.next()){
+             Post P = new Post();
+             P.setId(RS.getInt(1));
+             P.setTitrePost(RS.getString(2));
+             P.setContenuPost(RS.getString(3)); 
+             P.setImagePost(RS.getString(4));    
+             P.setAuteurPost(RS.getString(5));       
+             //P.setDateCreationPost(RS.getDate(6)); //getDate
+             P.setLikes(RS.getInt(6));
+             P.setDislike(RS.getInt(7));
+             list.add(P);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
-    
-    
+        return list;
+    }
+    //***************************************************************************************************************
     @Override
     public List<Post> afficherPost() {
        List<Post> list = new ArrayList<>();
