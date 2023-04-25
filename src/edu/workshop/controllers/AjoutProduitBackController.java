@@ -5,10 +5,13 @@
  */
 package edu.workshop.controllers;
 
+//import static edu.workshop.controllers.AfficherProduitBackController.image;
 import edu.workshop.services.Produit1CRUD;
 import edu.worshop.model.Produit;
 import edu.workshop.services.Categorie1CRUD;
 import edu.worshop.model.Categorie;
+import edu.worshop.utils.MyConnection;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +20,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import java.util.Optional;
 
@@ -31,9 +36,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
-
+import java.awt.Image;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * FXML Controller class
@@ -61,6 +69,8 @@ public class AjoutProduitBackController implements Initializable {
     
      Categorie C;
     static int categorie_id;
+    @FXML
+    private ImageView imageView;
     /**
      * Initializes the controller class.
      */
@@ -73,7 +83,7 @@ public class AjoutProduitBackController implements Initializable {
     @FXML
     private void AjouterProduitBack(ActionEvent event) {
       
-        if (NomProduitfx.getText().isEmpty() || MarqueProduitfx.getText().isEmpty() || Imagefx.getText().isEmpty() ) {
+        if (NomProduitfx.getText().isEmpty() || MarqueProduitfx.getText().isEmpty() /*|| Imagefx.getText().isEmpty()*/ ) {
         showAlert("Please fill in all fields.");
         return;
     }
@@ -82,7 +92,7 @@ public class AjoutProduitBackController implements Initializable {
         String nom_produit = NomProduitfx.getText();
         double prix_produit = Double.parseDouble(PrixProduitfx.getText());
         String marque_produit = MarqueProduitfx.getText();
-        String image = Imagefx.getText();
+        //String image = Imagefx.getText();
         //int quantite = Integer.parseInt(Quantitefx.getText());
      
               int minLength = 6;
@@ -124,10 +134,10 @@ try {
             showAlert("Le type doit contenir au moins " + minLength1 + " caractères");
              }
              
-                else if (image.isEmpty()) {
-            showAlert("L'image est vide ");
+               // else if (image.isEmpty()) {
+            //showAlert("L'image est vide ");
         
-    }
+  //  }
             else if (quantite < 0) {
         showAlert("Quantite cannot be negative.");
         return;
@@ -145,7 +155,8 @@ Optional<ButtonType> result = alert.showAndWait();
 
                      
                     
-                    
+                  String image = MyConnection.getImage_Name();
+  
                     
             Produit P = new Produit(AfficherCategorieBackController.C.getId(),nom_produit, prix_produit, marque_produit, image, quantite);
                     Produit1CRUD event1 = new Produit1CRUD();
@@ -162,7 +173,7 @@ Optional<ButtonType> result = alert.showAndWait();
         stage.setScene(scene);
         stage.show();
     } catch (IOException ex) {
-        Logger.getLogger(AjoutProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AfficherProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
         //showAlert("Error loading");
     }
                      
@@ -179,6 +190,38 @@ Optional<ButtonType> result = alert.showAndWait();
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.gif")
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("upload");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("upload/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+               javafx.scene.image.Image image = new javafx.scene.image.Image(destFile.toURI().toString());
+                imageView.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(AjoutProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
 }

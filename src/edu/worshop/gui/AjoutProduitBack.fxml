@@ -60,6 +60,8 @@
                   <Font name="Berlin Sans FB" size="36.0" />
                </font>
             </Text>
+            <Button layoutX="504.0" layoutY="195.0" mnemonicParsing="false" onAction="#chooseImage" text="Importer" />
+            <ImageView fx:id="imageView" fitHeight="93.0" fitWidth="96.0" layoutX="491.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

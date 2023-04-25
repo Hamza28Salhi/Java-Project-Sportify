@@ -29,6 +29,9 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
 
 
 
@@ -47,6 +50,8 @@ static int prix_produit;
 static String marque_produit, image;
 static int quantite;
 static Produit P = new Produit();
+    @FXML
+    private Button stat;
 
     
     
@@ -142,6 +147,23 @@ for (int i = 0; i < list2.size(); i++) {
             Logger.getLogger(AfficherCategorieBackController.class.getName()).log(Level.SEVERE, null, ex);
             
 
+        }
+    }
+
+    @FXML
+    private void OnClickedStatistique(ActionEvent event) {
+          try {
+                   
+            Parent parent = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/StatProduit.fxml"));
+            Scene scene = new Scene(parent);
+            
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/edu/worshop/image/logos.png"));
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherProduitBackController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     }
