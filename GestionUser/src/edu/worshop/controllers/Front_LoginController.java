@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
@@ -36,6 +39,10 @@ public class Front_LoginController implements Initializable {
     private TextField emaillogin;
     @FXML
     private TextField passwordlogin;
+    @FXML
+    private Label LoginLabel;
+    @FXML
+private Hyperlink forgetPasswordLink;
     
 
     /**
@@ -45,7 +52,7 @@ public class Front_LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ServiceUser ServiceUser = new ServiceUser();
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 18);
+        //Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 18);
 
     }
 
@@ -80,9 +87,6 @@ public class Front_LoginController implements Initializable {
         }
     }
 
-    @FXML
-    private void mdpF(ActionEvent event) {
-    }
 
     private void redirectToDashboard() {
         try {
@@ -121,6 +125,21 @@ public class Front_LoginController implements Initializable {
     private void displayErrorMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz verify input", ButtonType.OK);
         alert.showAndWait();
+    }
+    
+    @FXML
+    private void Forget_Password(ActionEvent event) {
+         try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Forget_Password.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
+    
     }
 
 }

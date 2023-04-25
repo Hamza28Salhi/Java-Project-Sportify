@@ -246,5 +246,37 @@ Statement st = conn.createStatement();
             return false;
         }
     }
+    
+    public int ChercherMail(String email) {
+        String req = "SELECT * from `user` WHERE `user`.`email` ='" + email + "'  ";
+        try {
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                if (rs.getString("email").equals(email)) {
+                    System.out.println("mail trouvé ! ");
+                    return 1;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
+      public void ResetPaswword(String email, String password) {
+        String req = "UPDATE user SET password = ? WHERE email = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, password);
+            ps.setString(2, email);
+
+            ps.executeUpdate();
+            System.out.println("Password updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
 }
