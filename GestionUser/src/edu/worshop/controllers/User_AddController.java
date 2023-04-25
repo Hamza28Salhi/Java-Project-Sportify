@@ -20,6 +20,8 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +35,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
@@ -54,7 +57,7 @@ public class User_AddController implements Initializable {
      * Initializes the controller class.
      */
     ServiceUser su = new ServiceUser();
-    
+
     @FXML
     private TextField fullnameF;
     @FXML
@@ -68,23 +71,27 @@ public class User_AddController implements Initializable {
     private DatePicker dateNaissanceField;
     @FXML
     private ImageView imageView;
-    
+    @FXML
+    private ComboBox<String> roleu;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
-    
+
+        roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
+
+    }
+
     @FXML
     private void AddUser2(ActionEvent event) {
-    
-    String full_name = fullnameF.getText();
+
+        String full_name = fullnameF.getText();
         String email = emailF.getText();
         String address = adreeseF.getText();
         String password = passwordF.getText();
         Date date = Date.valueOf(dateNaissanceField.getValue());
-        
-    if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        String role = roleu.getValue();
+
+        if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             // Show an error message and return
             Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid email address", ButtonType.OK);
             alert.showAndWait();
@@ -93,11 +100,11 @@ public class User_AddController implements Initializable {
 
         // Check if password is at least 8 characters long
         if (password.length() < 8) {
-        // Show an error message and return
-        Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
-        alert.showAndWait();
-        return;
-    }
+            // Show an error message and return
+            Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
         // Check if address is not empty
         if (address.isEmpty()) {
             // Show an error message and return
@@ -127,73 +134,68 @@ public class User_AddController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
-    
-    // Convert the date from the DatePicker to a Date object
-   // Date date = Date.valueOf(dateNaissanceField.getValue());
-    
-    
-    // Get the filename of the image from the path
-    String img_user = MyConnection.getImage_Name();
-   // Update the User object with the new values
-    User updatedUser = new User();
-    updatedUser.setFull_name(full_name);
-    updatedUser.setEmail(email);
-    updatedUser.setPassword(password);
-    updatedUser.setAddress(address);
-    updatedUser.setDate_naissance(date);
-    updatedUser.setImg_user(img_user);
-    
-    su.add(updatedUser);
 
-    
-     // Show a success message
+        // Convert the date from the DatePicker to a Date object
+        // Date date = Date.valueOf(dateNaissanceField.getValue());
+        // Get the filename of the image from the path
+        String img_user = MyConnection.getImage_Name();
+        // Update the User object with the new values
+        User updatedUser = new User();
+        updatedUser.setFull_name(full_name);
+        updatedUser.setEmail(email);
+        updatedUser.setPassword(password);
+        updatedUser.setAddress(address);
+        updatedUser.setDate_naissance(date);
+        updatedUser.setImg_user(img_user);
+        List<String> roleList = new ArrayList<>();
+        roleList.add(role);
+        updatedUser.setRoles(roleList);
+        su.add(updatedUser);
+
+        // Show a success message
         Alert alert = new Alert(AlertType.INFORMATION, "User added successfully!", ButtonType.OK);
         alert.showAndWait();
-       try {
-        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
-    
-    @FXML
-private void chooseImage(ActionEvent event) {
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Select an image file");
-    fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-    );
-    Window window = ((Node) event.getTarget()).getScene().getWindow();
-    File selectedFile = fileChooser.showOpenDialog(window);
-    if (selectedFile != null) {
         try {
-            // Create a directory called "upload" if it doesn't exist
-            File uploadDir = new File("upload");
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-            
-            // Copy the selected file to the "upload" directory
-            String fileName = selectedFile.getName();
-            File destFile = new File("upload/" + fileName);
-            Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            // Set the ImageView's image to the selected image
-            Image image = new Image(destFile.toURI().toString());
-            imageView.setImage(image);
-            //Save the image name in img_Saver
-            MyConnection.setImage_Name(fileName);
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+
+    @FXML
+    private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("upload");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("upload/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+                Image image = new Image(destFile.toURI().toString());
+                imageView.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
 }
-    
-
-    

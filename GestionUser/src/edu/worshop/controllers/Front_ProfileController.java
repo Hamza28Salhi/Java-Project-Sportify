@@ -18,10 +18,13 @@ import edu.workshop.services.ServiceUser;
 import edu.worshop.model.User;
 import java.io.File;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -39,6 +42,11 @@ public class Front_ProfileController implements Initializable {
     @FXML
     private TextField addresst;
     ServiceUser su = new ServiceUser();
+    
+    @FXML
+    private Text Profile_Details;
+    @FXML
+    private Text Contact_Info;
 
     @FXML
     private ImageView ProfileImage;
@@ -61,6 +69,10 @@ public class Front_ProfileController implements Initializable {
             Image image = new Image(file.toURI().toString());
             ProfileImage.setImage(image);
         }
+        
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 20);
+        Profile_Details.setFont(font);
+        Contact_Info.setFont(font);
     }
 
     @FXML

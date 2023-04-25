@@ -11,12 +11,17 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.ServiceUser;
 import edu.worshop.interfaces.IService;
 import edu.worshop.model.User;
+import edu.worshop.utils.MyConnection;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +35,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
@@ -46,9 +52,9 @@ import javafx.stage.Window;
  * @author azizo
  */
 public class User_UpdateController implements Initializable {
-    
+
     ServiceUser su = new ServiceUser();
-    
+
     @FXML
     private TextField fullnameF;
     @FXML
@@ -62,6 +68,8 @@ public class User_UpdateController implements Initializable {
     private DatePicker dateNaissanceField;
     @FXML
     private ImageView imageView;
+    @FXML
+    private ComboBox<String> roleu;
 
     /**
      * Initializes the controller class.
@@ -70,29 +78,33 @@ public class User_UpdateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+
         fullnameF.setText(String.valueOf(User_ListController.U.getFull_name()));
         emailF.setText(String.valueOf(User_ListController.U.getEmail()));
         passwordF.setText(String.valueOf(User_ListController.U.getPassword()));
         adreeseF.setText(String.valueOf(User_ListController.U.getAddress()));
+
+        roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
         
         
-       
-    }    
-    
+
+    }
+
     @FXML
     private void EditUser2(ActionEvent event) {
-    // Retrieve the id of the Matches to update
-    int id = User_ListController.U.getId();
-    
-    // Retrieve the new values from the text fields
+        // Retrieve the id of the Matches to update
+        int id = User_ListController.U.getId();
+
+        // Retrieve the new values from the text fields
         String full_name = fullnameF.getText();
         String email = emailF.getText();
         String address = adreeseF.getText();
         String password = passwordF.getText();
         Date date = Date.valueOf(dateNaissanceField.getValue());
+        String role = roleu.getValue();
         //java.sql.Date dateNaissance = new java.sql.Date(Date.valueOf(dateNaissanceField.getValue()).getTime());
-    
-    if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+
+        if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             // Show an error message and return
             Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid email address", ButtonType.OK);
             alert.showAndWait();
@@ -101,11 +113,11 @@ public class User_UpdateController implements Initializable {
 
         // Check if password is at least 8 characters long
         if (password.length() < 8) {
-        // Show an error message and return
-        Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
-        alert.showAndWait();
-        return;
-    }
+            // Show an error message and return
+            Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
         // Check if address is not empty
         if (address.isEmpty()) {
             // Show an error message and return
@@ -122,7 +134,7 @@ public class User_UpdateController implements Initializable {
             return;
 
         }
-       /* if (su.emailExist(email)) {
+        /* if (su.emailExist(email)) {
             // Show an error message and return
             Alert alert = new Alert(Alert.AlertType.ERROR, "Email already exists", ButtonType.OK);
             alert.showAndWait();
@@ -135,53 +147,68 @@ public class User_UpdateController implements Initializable {
             alert.showAndWait();
             return;
         }
-    
-    // Convert the date from the DatePicker to a Date object
-   // Date date = Date.valueOf(dateNaissanceField.getValue());
-    
-    
-    String img_user = imageView.getImage() != null ? imageView.getImage().toString() : null;
-        // Update the User object with the new values
-    User updatedUser = new User();
-    updatedUser.setId(id);
-    updatedUser.setFull_name(full_name);
-    updatedUser.setEmail(email);
-    updatedUser.setPassword(password);
-    updatedUser.setAddress(address);
-    updatedUser.setDate_naissance(date);
-    su.update(updatedUser);
 
-    
-     // Show a success message
+        // Convert the date from the DatePicker to a Date object
+        // Date date = Date.valueOf(dateNaissanceField.getValue());
+        String img_user = MyConnection.getImage_Name();
+        // Update the User object with the new values
+        User updatedUser = new User();
+        updatedUser.setId(id);
+        updatedUser.setFull_name(full_name);
+        updatedUser.setEmail(email);
+        updatedUser.setPassword(password);
+        updatedUser.setAddress(address);
+        updatedUser.setDate_naissance(date);
+        updatedUser.setImg_user(img_user);
+        List<String> roleList = new ArrayList<>();
+        roleList.add(role);
+        updatedUser.setRoles(roleList);
+        su.update(updatedUser);
+
+        // Show a success message
         Alert alert = new Alert(AlertType.INFORMATION, "User updated successfully!", ButtonType.OK);
         alert.showAndWait();
-       try {
-        Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-}
-    
+
     @FXML
     private void chooseImage(ActionEvent event) {
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Select an image file");
-    fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-    );
-    Window window = ((Node) event.getTarget()).getScene().getWindow();
-    File selectedFile = fileChooser.showOpenDialog(window);
-    if (selectedFile != null) {
-        // TODO: Load and display the selected image
-        String imagePath = selectedFile.getAbsolutePath(); // get the absolute path of the selected file
-File imageFile = new File(imagePath); // create a File object with the imagePath
-Image image = new Image(imageFile.toURI().toString()); // create an Image object with the File
-imageView.setImage(image); // set the image to the ImageView
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("upload");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("upload/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+                Image image = new Image(destFile.toURI().toString());
+                imageView.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
-}
-    
+
 }

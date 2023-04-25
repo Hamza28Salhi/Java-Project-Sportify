@@ -40,10 +40,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javax.swing.filechooser.FileSystemView;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -62,6 +64,9 @@ public class User_ListController implements Initializable {
     ServiceUser sp = new ServiceUser();
     @FXML
     private TextField searchField;
+    @FXML
+    private Label label;
+    
     int index = -1;
 
     // Declare an ObservableList to store the users
@@ -121,6 +126,10 @@ public class User_ListController implements Initializable {
 
         SortedList<User> sortedList = new SortedList<>(filteredList);
         list1.setItems(sortedList);
+
+        
+       Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        label.setFont(font);
 
     }
 

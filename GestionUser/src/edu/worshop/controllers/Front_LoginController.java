@@ -20,7 +20,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -34,6 +36,7 @@ public class Front_LoginController implements Initializable {
     private TextField emaillogin;
     @FXML
     private TextField passwordlogin;
+    
 
     /**
      * Initializes the controller class.
@@ -42,6 +45,8 @@ public class Front_LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ServiceUser ServiceUser = new ServiceUser();
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 18);
+
     }
 
     @FXML
@@ -58,17 +63,17 @@ public class Front_LoginController implements Initializable {
             List<String> roles = loggedInUser.getRoles();
             if (roles.contains("[ROLE_ADMIN]")) {
                 redirectToDashboard();
-            } else if (roles.contains("[ROLE_USER]")){
+            } else if (roles.contains("[ROLE_USER]")) {
                 try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Profile.fxml"));
-    Parent root = loader.load();
-    Scene scene = new Scene(root);
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Profile.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             displayErrorMessage();
@@ -80,13 +85,12 @@ public class Front_LoginController implements Initializable {
     }
 
     private void redirectToDashboard() {
-        try { 
+        try {
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("User_List.fxml"));
             Parent root = loader.load();
-            
-          /*  emaillogin.getScene().setRoot(root);*/
 
+            /*  emaillogin.getScene().setRoot(root);*/
             // Create a new scene with the loaded FXML file
             Scene scene = new Scene(root);
 
@@ -114,10 +118,9 @@ public class Front_LoginController implements Initializable {
             e.printStackTrace();
         }
     }*/
-
     private void displayErrorMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz verify input", ButtonType.OK);
         alert.showAndWait();
-    } 
-    
+    }
+
 }
