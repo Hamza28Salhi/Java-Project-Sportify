@@ -25,8 +25,8 @@ import javax.mail.internet.MimeMessage;
  * @author HOUYEM
  */
 public class Emailsender {
-    private static final String USERNAME = "khmiri.iheb@esprit.tn";
-    private static final String PASSWORD = "a1b2c3IHEB";
+    private static final String USERNAME = "houyem.kaaniche@esprit.tn";
+    private static final String PASSWORD = "houyem0110001";
     
      public static void sendEmail_add(String toEmail,String message ) {
         

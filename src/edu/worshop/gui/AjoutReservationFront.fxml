@@ -18,7 +18,7 @@
             <Text layoutX="90.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" />
             <Text layoutX="94.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paiement" />
             <ChoiceBox fx:id="PaiementRfx" layoutX="168.0" layoutY="304.0" prefWidth="150.0" />
-            <TextField fx:id="TelephoneRfx" layoutX="168.0" layoutY="252.0" />
+            <TextField fx:id="TelephoneRfx" layoutX="168.0" layoutY="252.0" onKeyReleased="#veriftel" />
             <TextField fx:id="AdresseRfx" layoutX="168.0" layoutY="202.0" />
             <TextField fx:id="PrenomRfx" layoutX="168.0" layoutY="153.0" />
             <TextField fx:id="NomRfx" layoutX="168.0" layoutY="103.0" />

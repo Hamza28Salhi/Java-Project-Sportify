@@ -5,14 +5,19 @@
  */
 package edu.workshop.controllers;
 
+import com.google.zxing.qrcode.QRCodeWriter;
 import edu.workshop.services.Evenement1CRUD;
 import edu.worshop.interfaces.EvenementCRUD;
 import edu.worshop.model.Evenement;
+import edu.worshop.utils.MyConnection;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -27,6 +32,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,8 +41,14 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.util.Duration;
 import static jdk.nashorn.internal.objects.NativeJava.type;
+//import org.controlsfx.control.Notifications;
+
 
 /**
  * FXML Controller class
@@ -57,6 +69,8 @@ public class AjoutEvenementBackController implements Initializable {
     private TextField Even_picEvenementfx;
     @FXML
     private TextField TitreEvenementfx;
+     @FXML
+    private ImageView imageView;
 
     
     /**
@@ -74,7 +88,7 @@ public class AjoutEvenementBackController implements Initializable {
         String type = TypeEvenementfx.getText();
         String lieu = LieuEvenementfx.getText();
         String description = DescriptionEvenementfx.getText();
-        String even_pic = Even_picEvenementfx.getText();
+        //String even_pic = Even_picEvenementfx.getText();
         String titre = TitreEvenementfx.getText();
         
                int minLength = 6;
@@ -122,10 +136,7 @@ public class AjoutEvenementBackController implements Initializable {
             showAlert("La description doit contenir au moins " + minLength + " caractères");
          }
    
-         else if (even_pic.isEmpty()) {
-            showAlert("L'image est vide ");
-        
-    }else if (titre.isEmpty()) {
+        else if (titre.isEmpty()) {
             showAlert("Le titre est vide ");
             }else if (
        titre.length() < minLength1) {
@@ -145,10 +156,24 @@ Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
 
 
+                    // Get the filename of the image from the path
+        String even_pic = MyConnection.getImage_Name();
               Evenement E = new Evenement(date, type, lieu, description, even_pic, titre);
                     Evenement1CRUD event1 = new Evenement1CRUD();
                     event1.ajouterEvenement(E);
                     showAlert("Evénement ajouté avec succès ");
+                    
+                    QRCodeWriter qrCodeWriter;
+                   
+                 /*Notifications notificationBuilder = Notifications.create()
+                .title("download completed")
+                .text("saved")
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT);
+                 notificationBuilder.darkStyle();
+                 notificationBuilder.show();*/
+                    
+                   
     }
                  try {
         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AffichageEvenementBack.fxml"));
@@ -160,6 +185,8 @@ Optional<ButtonType> result = alert.showAndWait();
         Logger.getLogger(AjoutEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
         //showAlert("Error loading");
     }
+                 
+                  
  
     
 }}
@@ -171,4 +198,37 @@ Optional<ButtonType> result = alert.showAndWait();
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @FXML
+    private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("upload");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("upload/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+               javafx.scene.image.Image image = new javafx.scene.image.Image(destFile.toURI().toString());
+                imageView.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(AjoutEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+   
     }

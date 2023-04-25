@@ -10,7 +10,6 @@ import edu.workshop.services.Evenement1CRUD;
 import edu.workshop.services.Reservation1CRUD;
 import edu.worshop.model.Evenement;
 import edu.worshop.model.Reservation;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -24,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,6 +34,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -123,12 +126,12 @@ public class AjoutReservationFrontController implements Initializable {
              //showAlert("l'email est invalide!");
              Alert alert = new Alert(Alert.AlertType.INFORMATION, "l'email est invalide!", ButtonType.OK);
         alert.showAndWait();
-             }/*else if (verificationNumero) {
+             }else if (verificationNumero) {
              //showAlert("Le numero est invalide");
              Alert alert = new Alert(Alert.AlertType.INFORMATION, "Le numero est invalide!", ButtonType.OK);
         alert.showAndWait();
                
-             }*/else{
+             }else{
         
          
     
@@ -162,6 +165,14 @@ Optional<ButtonType> result = alert.showAndWait();
                         + "\n";
 
                 Emailsender.sendEmail_add("houyem.kaaniche@esprit.tn", message);
+                
+                 Notifications notificationBuilder = Notifications.create()
+                .title("réservation ajoutée")
+                .text("saved")
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT);
+                 notificationBuilder.darkStyle();
+                 notificationBuilder.show();
     
 
 try {
@@ -203,7 +214,7 @@ private boolean verifEmail(TextField chaine) {
             //verificationUserEmail = false;
 
         }}
-      /* @FXML
+       @FXML
     private void veriftel(KeyEvent event) {
     if (TelephoneRfx.getText().trim().length() == 8) {
         int nbChar = 0;
@@ -234,7 +245,7 @@ private boolean verifEmail(TextField chaine) {
         labeltel.setText("Il faut 8 chiffres");
        verificationNumero = true;
     }
-}*/
+}
     
         
 }

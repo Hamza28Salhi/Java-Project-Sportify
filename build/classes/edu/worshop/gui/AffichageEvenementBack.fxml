@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AffichageEvenementBackController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AffichageEvenementBackController">
    <children>
-      <ListView fx:id="affichageEvenementBackfx" layoutX="-2.0" layoutY="55.0" prefHeight="304.0" prefWidth="600.0" />
+      <ListView fx:id="affichageEvenementBackfx" layoutX="-2.0" layoutY="55.0" prefHeight="234.0" prefWidth="783.0" />
       <Button defaultButton="true" layoutX="405.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerEvenementBack" text="Supprimer" textFill="RED" />
       <Button defaultButton="true" layoutX="338.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutEvenementBack" text="Ajouter" textFill="#222897" />
       <Button defaultButton="true" layoutX="489.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierEvenementBack" text="Modifier" textFill="#222897" />
@@ -18,5 +19,7 @@
          </font>
       </Text>
       <Button defaultButton="true" layoutX="262.0" layoutY="361.0" mnemonicParsing="false" onAction="#AjoutReservationBack" text="Reserver" textFill="#222897" />
+      <Button defaultButton="true" layoutX="189.0" layoutY="361.0" mnemonicParsing="false" onAction="#qr_code" text="qr_code" textFill="#222897" />
+      <ImageView fx:id="code_qr" fitHeight="138.0" fitWidth="169.0" layoutX="32.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

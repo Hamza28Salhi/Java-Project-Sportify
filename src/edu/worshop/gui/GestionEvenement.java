@@ -5,6 +5,7 @@
  */
 package edu.worshop.gui;
 
+import com.google.zxing.qrcode.QRCodeWriter;
 import edu.workshop.services.Evenement1CRUD;
 import java.io.IOException;
 import javafx.application.Application;
@@ -26,6 +27,7 @@ public class GestionEvenement extends Application {
   
     @Override
     public void start(Stage primaryStage) {
+      
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -41,7 +43,7 @@ public class GestionEvenement extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AffichageEvenementBack.fxml"));
             Scene scene = new Scene(root);
-
+ 
             primaryStage.setTitle("Trippie");
 
             primaryStage.setScene(scene);
