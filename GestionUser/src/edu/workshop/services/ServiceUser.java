@@ -187,19 +187,22 @@ Statement st = conn.createStatement();
     }
 
     @Override
-    public User authenticate(String email, String password) {
-        try {
-            String qry = "SELECT id, email, password, full_name, address, roles FROM user WHERE email = ? AND password = ?";
-            PreparedStatement ps = conn.prepareStatement(qry);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
+public User authenticate(String email, String password) {
+    try {
+        String qry = "SELECT id, email, password, full_name, address, roles FROM user WHERE email = ?";
+        PreparedStatement ps = conn.prepareStatement(qry);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+        if (rs.next()) {
+            String encryptedPassword = rs.getString("password");
+            String decryptedPassword = PasswordEncryption.decrypt(encryptedPassword);
+            
+            if (decryptedPassword.equals(password)) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setEmail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
+                user.setPassword(decryptedPassword);
                 user.setAddress(rs.getString("address"));
                 user.setFull_name(rs.getString("full_name"));
 
@@ -207,27 +210,24 @@ Statement st = conn.createStatement();
                 List<String> roles = Arrays.asList(rs.getString("roles").split(","));
                 user.setRoles(roles);
 
-                /*SessionManager M = new SessionManager();
-                M.setIdM(rs.getInt("id"));
-                M.setEmailM(rs.getString("email"));
-                M.setPasswordM(rs.getString("password"));
-                M.setAddressM(rs.getString("address"));
-                M.setFull_nameM(rs.getString("full_name"));
-                
-                // fetch roles from the database based on user's roles column
-                List<String> rolesM = Arrays.asList(rs.getString("roles").split(","));
-                M.setRolesM(roles);*/
                 MyConnection.setUserId(user.getId());
 
                 return user;
             } else {
                 return null;
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        } else {
             return null;
         }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        return null;
+    } catch (Exception ex) {
+        System.out.println(ex.getMessage());
+        return null;
     }
+}
+
 
     public boolean emailExist(String email) {
         try {

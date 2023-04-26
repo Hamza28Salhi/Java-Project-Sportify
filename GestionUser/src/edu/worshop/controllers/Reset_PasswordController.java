@@ -10,6 +10,8 @@ import edu.workshop.services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,22 +58,15 @@ public class Reset_PasswordController implements Initializable {
             A.setContentText("Mot de passe modifié avec succes ! ");
             A.show();
             try {
-
-                Parent page1 = FXMLLoader.load(getClass().getResource("/GUI/Front_Login.fxml"));
-
-                Scene scene = new Scene(page1);
-
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                stage.setScene(scene);
-
-                stage.show();
-
-            } catch (IOException ex) {
-
-                System.out.println(ex.getMessage());
-
-            }
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
         } else {
             A.setContentText("veuillez saisir un mot de passe conforme !");
             A.show();
@@ -81,22 +76,15 @@ public class Reset_PasswordController implements Initializable {
     @FXML
     private void btnAnnulerReset(ActionEvent event) {
         try {
-
-                Parent page1 = FXMLLoader.load(getClass().getResource("/GUI/Forget_Password.fxml"));
-
-                Scene scene = new Scene(page1);
-
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                stage.setScene(scene);
-
-                stage.show();
-
-            } catch (IOException ex) {
-
-                System.out.println(ex.getMessage());
-
-            }
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Forget_Password.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
     }
     
 }

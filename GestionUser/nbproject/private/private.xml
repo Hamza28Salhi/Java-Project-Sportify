@@ -3,30 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/Reset_Password.fxml</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/EmailSender.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_login.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_registration.css</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/User.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_AddController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_RegistrationController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Forget_PasswordController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/VerifCodeController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/utils/MyConnection.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_profile.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_list.css</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_update.css</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/GestionUser.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_LoginController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/EmailSender.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_login.css</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/Front_Profile.fxml</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/User.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Forget_PasswordController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_UpdateController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/ServiceUser.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/workshop3a4/Workshop3A4.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Reset_PasswordController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_forgetpassword.css</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/VerifCode.fxml</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_update.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/Forget_Password.fxml</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/GestionUser.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_add.css</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_LoginController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_ProfileController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/PasswordEncryption.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_ListController.java</file>
