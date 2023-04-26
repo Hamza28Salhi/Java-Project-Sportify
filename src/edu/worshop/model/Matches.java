@@ -121,6 +121,15 @@ public class Matches implements Serializable {
     this.score = score;
     this.nomEquipeId = new Equipe(nomEquipeId, null);
 }
+          
+                    public Matches( String nom, String stade, Date date, String score, Equipe nomEquipeId) {
+   
+    this.nom = nom;
+    this.stade = stade;
+    this.date = date;
+    this.score = score;
+    this.nomEquipeId = nomEquipeId;
+}
 
 
     public Integer getId() {
@@ -222,6 +231,8 @@ public class Matches implements Serializable {
       public String toString() {
         return "Matches{" + "id=" + id + ", nom=" + nom + ", stade=" + stade + ", date=" + date + ", score=" + score +  ", Nom Equipe=" + (nomEquipeId != null ? nomEquipeId.getNom() : null) +
             '}';
+        
+        
     }
 
     

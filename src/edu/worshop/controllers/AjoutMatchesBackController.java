@@ -6,6 +6,7 @@
 package edu.worshop.controllers;
 import edu.workshop.services.Equipe1CRUD;
 import edu.workshop.services.Matches1CRUD;
+import static edu.worshop.controllers.ModifierMatchesBackController.nomEquipeid;
 import edu.worshop.model.Equipe;
 import edu.worshop.model.Matches;
 import java.io.IOException;
@@ -31,9 +32,12 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -47,10 +51,11 @@ public class AjoutMatchesBackController implements Initializable {
     private TextField StadeMatchesfx;
     @FXML
     private TextField ScoreMatchesfx;
-    @FXML
     private TextField NomEquipeIdMatchesfx;
     @FXML
     private DatePicker DateMatchesfx;
+    @FXML
+    private ChoiceBox<Equipe> boxCategorie;
     
 
     /**
@@ -58,12 +63,40 @@ public class AjoutMatchesBackController implements Initializable {
      */
      @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Equipe1CRUD cs = new Equipe1CRUD();
+         List<Equipe> testList = cs.afficherEquipe();
+         boxCategorie.setItems(FXCollections.observableArrayList(testList));
+          boxCategorie.setConverter(new StringConverter<Equipe>() {
+
+            @Override
+            public String toString(Equipe equipe) {
+        return equipe == null ? "" : equipe.getNom();
+    }
+            @Override
+              public Equipe fromString(String string) {
+       // Find the Equipe object that matches the selected string
+    for (Equipe equipe : boxCategorie.getItems()) {
+        if (equipe.getNom().equals(string)) {
+            return equipe;
+        }
+    }
+
+    // If no match is found, return null
+    return null;
+    }
+        });
+    
+          
+     
+         
+         
+
      
     }    
 
       @FXML
     private void AjouterMatchesBack(ActionEvent event) {
-           if (NomMatchesfx.getText().isEmpty() || StadeMatchesfx.getText().isEmpty() || ScoreMatchesfx.getText().isEmpty() || NomEquipeIdMatchesfx.getText().isEmpty() || DateMatchesfx.getValue() == null) {
+           if (NomMatchesfx.getText().isEmpty() || StadeMatchesfx.getText().isEmpty() || ScoreMatchesfx.getText().isEmpty()  || DateMatchesfx.getValue() == null) {
         showAlert("Please fill in all fields.");
         return;
     }
@@ -86,13 +119,9 @@ LocalDate currentDate = LocalDate.now(); // Gets the current date
 
         String stade = StadeMatchesfx.getText();
         String score = ScoreMatchesfx.getText();
-        int nomEquipeid;
-try {
-    nomEquipeid = Integer.parseInt(NomEquipeIdMatchesfx.getText());
-} catch (NumberFormatException e) {
-    showAlert("Nom Equipe ID should be a number.");
-    return;
-}
+        
+       Integer nomEquipeId = boxCategorie.getValue().getId();
+
 
         
          
@@ -110,7 +139,7 @@ Optional<ButtonType> result = alert.showAndWait();
                     
                     
                     
-              Matches R = new Matches( nom, stade,date, score,nomEquipeid);
+              Matches R = new Matches( nom, stade,date, score,nomEquipeId);
                     Matches1CRUD res1 = new Matches1CRUD();
                     res1.ajouterMatches(R);
                     System.out.println(AffichageEquipeBackController.E.getId());

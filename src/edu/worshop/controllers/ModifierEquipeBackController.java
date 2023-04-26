@@ -11,8 +11,12 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.Equipe1CRUD;
 import edu.worshop.interfaces.EquipeCRUD;
 import edu.worshop.model.Equipe;
+import edu.worshop.utils.MyConnection;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -29,7 +33,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 
 /**
@@ -54,6 +62,9 @@ public class ModifierEquipeBackController implements Initializable {
     static String classement;
     static String entraineur;
     static String categorie;
+    static String picture;
+    @FXML
+    private ImageView Imageview;
     
     /**
      * Initializes the controller class.
@@ -89,6 +100,7 @@ public class ModifierEquipeBackController implements Initializable {
     String entraineur = EntraineurEquipeMfx.getText().trim();
     String categorie = CategorieEquipeMfx.getText().trim();
     int classement = 0;
+    String picture = MyConnection.getImage_Name();
     
     // Check that Classement is a positive integer
     try {
@@ -136,7 +148,9 @@ public class ModifierEquipeBackController implements Initializable {
     }
     
     // Create a new Equipe object with the updated values
-    Equipe updatedEquipe = new Equipe(id, nom, joueurs, classement, entraineur, categorie);
+           
+
+    Equipe updatedEquipe = new Equipe(id, nom, joueurs, classement, entraineur, categorie,picture);
     
     // Update the Equipe in the database using the Equipe1CRUD class
     EquipeCRUD equipeCRUD = new Equipe1CRUD();
@@ -156,4 +170,35 @@ public class ModifierEquipeBackController implements Initializable {
         //showAlert("Error loading");
     }
 }
+
+    @FXML
+     private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("uploadd");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("uploadd/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+                Image image = new Image(destFile.toURI().toString());
+                Imageview.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(AjoutEquipeBackController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
