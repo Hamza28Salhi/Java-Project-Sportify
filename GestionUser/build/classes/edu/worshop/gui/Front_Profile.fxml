@@ -15,9 +15,9 @@
         <URL value="@/edu/worshop/controllers/front_profile.css" />
     </stylesheets>
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="500.0" prefWidth="700.0">
          <left>
-            <AnchorPane prefHeight="500.0" prefWidth="216.0" style="-fx-background-color: #151F30;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #151F30;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="36.0" fitWidth="28.0" layoutX="50.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,46 +44,41 @@
                         <Image url="@../../../../../../../../Downloads/icons8-lock-50.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="57.0" layoutY="178.0" mnemonicParsing="false" onMouseClicked="#EditUser" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #1f283b;" text="Edit Profile" textFill="WHITE" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="178.0" />
-                  <ImageView fx:id="ProfileImage" fitHeight="138.0" fitWidth="150.0" layoutX="33.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="83.0" layoutY="279.0" mnemonicParsing="false" onMouseClicked="#EditUser" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="279.0" />
+                  <ImageView fx:id="ProfileImage" fitHeight="199.0" fitWidth="220.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
          </left>
          <right>
-            <AnchorPane prefHeight="500.0" prefWidth="486.0" style="-fx-background-color: #1d2940;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #1d2940;" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="full_namet" layoutX="158.0" layoutY="147.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
-                  <Text fx:id="Contact_Info" fill="WHITE" layoutX="41.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Info" wrappingWidth="164.4437255859375">
+                  <TextField fx:id="full_namet" layoutX="158.0" layoutY="185.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px; -fx-border-color: #103778; -fx-text-fill: white;" />
+                  <Text fill="WHITE" layoutX="41.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" wrappingWidth="87.6436767578125">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="41.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" wrappingWidth="66.84368133544922">
+                  <Text fill="WHITE" layoutX="41.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:" wrappingWidth="100.4437255859375">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="41.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:" wrappingWidth="89.24371337890625">
+                  <Text fill="WHITE" layoutX="40.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="89.24371337890625">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="41.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="89.24371337890625">
+                  <Text fill="WHITE" layoutX="41.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="89.24371337890625">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="41.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="89.24371337890625">
+                  <TextField fx:id="date_naisst" layoutX="158.0" layoutY="245.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <TextField fx:id="emailt" layoutX="158.0" layoutY="302.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <TextField fx:id="addresst" layoutX="158.0" layoutY="367.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <Text fx:id="Profile_Details" fill="WHITE" layoutX="40.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Details" wrappingWidth="220.44375610351562">
                      <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="date_naisst" layoutX="158.0" layoutY="189.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
-                  <TextField fx:id="emailt" layoutX="158.0" layoutY="316.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
-                  <TextField fx:id="addresst" layoutX="158.0" layoutY="357.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
-                  <Text fx:id="Profile_Details" fill="WHITE" layoutX="41.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Details" wrappingWidth="164.4437255859375">
-                     <font>
-                        <Font size="17.0" />
+                        <Font size="25.0" />
                      </font>
                   </Text>
                </children>

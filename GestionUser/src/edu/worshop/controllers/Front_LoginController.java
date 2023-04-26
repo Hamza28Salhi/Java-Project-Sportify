@@ -57,7 +57,7 @@ private Hyperlink forgetPasswordLink;
     }
 
     @FXML
-    private void connexionF(ActionEvent event) {
+    private void connexionF(ActionEvent event) throws IOException {
         String email = emaillogin.getText();
         String password = passwordlogin.getText();
 
@@ -69,7 +69,12 @@ private Hyperlink forgetPasswordLink;
         if (loggedInUser != null) {
             List<String> roles = loggedInUser.getRoles();
             if (roles.contains("[ROLE_ADMIN]")) {
-                redirectToDashboard();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
             } else if (roles.contains("[ROLE_USER]")) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Profile.fxml"));
@@ -88,40 +93,7 @@ private Hyperlink forgetPasswordLink;
     }
 
 
-    private void redirectToDashboard() {
-        try {
-            // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("User_List.fxml"));
-            Parent root = loader.load();
-
-            /*  emaillogin.getScene().setRoot(root);*/
-            // Create a new scene with the loaded FXML file
-            Scene scene = new Scene(root);
-
-            // Get the current stage
-            Stage stage = (Stage) emaillogin.getScene().getWindow();
-
-            // Set the new scene to the current stage
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /*private void redirectToProfile() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/workshop/gui/Front_Profile.fxml"));
-    Parent root = loader.load();
-    Scene scene = new Scene(root);
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+    
     private void displayErrorMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz verify input", ButtonType.OK);
         alert.showAndWait();

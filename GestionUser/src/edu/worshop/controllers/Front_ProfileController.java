@@ -18,6 +18,8 @@ import edu.workshop.services.ServiceUser;
 import edu.worshop.model.User;
 import java.io.File;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -70,9 +72,9 @@ public class Front_ProfileController implements Initializable {
             ProfileImage.setImage(image);
         }
         
-        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 20);
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 25);
         Profile_Details.setFont(font);
-        Contact_Info.setFont(font);
+        
     }
 
     @FXML
@@ -86,6 +88,10 @@ public class Front_ProfileController implements Initializable {
         user.setAddress(addresst.getText());
         user.setFull_name(full_namet.getText());
         su.update(user);
+        
+        // Show a success message
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Profile Updated successfully!", ButtonType.OK);
+        alert.showAndWait();
     }
 
 }

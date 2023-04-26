@@ -37,11 +37,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -70,6 +72,8 @@ public class User_UpdateController implements Initializable {
     private ImageView imageView;
     @FXML
     private ComboBox<String> roleu;
+    @FXML
+    private Label label;
 
     /**
      * Initializes the controller class.
@@ -86,7 +90,8 @@ public class User_UpdateController implements Initializable {
 
         roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
         
-        
+         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        label.setFont(font);
 
     }
 
@@ -177,6 +182,8 @@ public class User_UpdateController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
+      
+        
     }
 
     @FXML

@@ -5,6 +5,7 @@
  */
 package edu.worshop.controllers;
 
+import edu.workshop.services.PasswordEncryption;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,14 +39,17 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -73,21 +78,26 @@ public class User_AddController implements Initializable {
     private ImageView imageView;
     @FXML
     private ComboBox<String> roleu;
+    @FXML
+    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
+        
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        label.setFont(font);
 
     }
 
     @FXML
-    private void AddUser2(ActionEvent event) {
+    private void AddUser2(ActionEvent event) throws Exception {
 
         String full_name = fullnameF.getText();
         String email = emailF.getText();
         String address = adreeseF.getText();
-        String password = passwordF.getText();
+        String password = PasswordEncryption.encrypt(passwordF.getText());
         Date date = Date.valueOf(dateNaissanceField.getValue());
         String role = roleu.getValue();
 
@@ -164,6 +174,11 @@ public class User_AddController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Notifications.create()
+                    .title("Notification")
+                    .text("user ajouter.")
+                    .position(Pos.BOTTOM_RIGHT)
+                    .showInformation();
     }
 
     @FXML

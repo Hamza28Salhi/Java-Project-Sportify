@@ -177,7 +177,7 @@ public class ServiceUser implements IService {
     @Override
     public void update(User user) {
         try {
-            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "', date_naiss = '" + user.getDate_naissance() + "' WHERE id = " + user.getId();
+            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "', date_naiss = '" + user.getDate_naissance() + "', img_user = '" + user.getImg_user() + "' WHERE id = " + user.getId();
 Statement st = conn.createStatement();
             st.executeUpdate(qry);
             System.out.println("User updated !");
