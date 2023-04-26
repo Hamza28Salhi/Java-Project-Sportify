@@ -8,6 +8,7 @@
             <file>file:/E:/workshop3A4/src/edu/worshop/gui/GestionEvenement.java</file>
             <file>file:/E:/workshop3A4/src/edu/worshop/utils/MyConnection.java</file>
             <file>file:/E:/workshop3A4/src/edu/workshop/controllers/AffichageEvenementBackController.java</file>
+            <file>file:/E:/workshop3A4/src/edu/workshop/controllers/AfficherReservationBackController.java</file>
             <file>file:/E:/workshop3A4/src/edu/worshop/model/Evenement.java</file>
             <file>file:/E:/workshop3A4/src/edu/workshop/services/Emailsender.java</file>
         </group>

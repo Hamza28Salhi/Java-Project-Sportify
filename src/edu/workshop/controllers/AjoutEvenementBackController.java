@@ -163,7 +163,7 @@ Optional<ButtonType> result = alert.showAndWait();
                     event1.ajouterEvenement(E);
                     showAlert("Evénement ajouté avec succès ");
                     
-                    QRCodeWriter qrCodeWriter;
+                    //QRCodeWriter qrCodeWriter;
                    
                  /*Notifications notificationBuilder = Notifications.create()
                 .title("download completed")

@@ -15,10 +15,14 @@ import edu.worshop.model.Reservation;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +30,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
 /**
@@ -119,7 +125,57 @@ for (int i = 0; i < list2.size(); i++) {
         showAlert("Veuillez sélectionner une réservation à supprimer.");
     }
     }
+
+    @FXML
+    private void statistiqueReservation(ActionEvent event) {
+       // Create a map to store the frequency of each type
+        Map<String, Integer> typeFrequency = new HashMap<>();
+
+        // Loop through the items in the TableView
+        for (Reservation o : AfficherReservationBackfx.getItems()) {
+            //int points = o.getPoints();
+            String nom = o.getNom();
+
+            if (typeFrequency.containsKey(nom)) {
+                typeFrequency.put(nom, typeFrequency.get(nom) + 1);
+            } else {
+                typeFrequency.put(nom, 1);
+            }
+        }
+    
+        // Create a PieChart data set
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (String nom: typeFrequency.keySet()) {
+            int frequency = typeFrequency.get(nom);
+            double percentage = (double) frequency / AfficherReservationBackfx.getItems().size() * 100;
+
+            String percentageText = String.format("%.2f%%", percentage);
+
+
+            PieChart.Data slice = new PieChart.Data("Nom" + " " + percentageText, frequency);
+            pieChartData.add(slice);
+        }
+
+
+    
+         // Create a PieChart with the data set
+        PieChart chart = new PieChart(pieChartData);
+     
+        // Show percentage values in the chart's tooltip
+        for (final PieChart.Data data : chart.getData()) {
+            Tooltip tooltip = new Tooltip();
+            tooltip.setText(String.format("%.2f%%", (data.getPieValue() / AfficherReservationBackfx.getItems().size() * 200)));
+            Tooltip.install(data.getNode(), tooltip);
+        }
+
+        // Show the chart in a new window
+        Scene scene = new Scene(chart);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+       } 
     }
+    
     
 
        

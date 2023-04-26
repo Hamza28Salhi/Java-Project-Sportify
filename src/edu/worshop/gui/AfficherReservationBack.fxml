@@ -16,5 +16,6 @@
             <Font name="Arial Unicode MS" size="27.0" />
          </font>
       </Text>
+      <Button defaultButton="true" layoutX="223.0" layoutY="361.0" mnemonicParsing="false" onAction="#statistiqueReservation" text="Statistique" textFill="#222897" />
    </children>
 </AnchorPane>
