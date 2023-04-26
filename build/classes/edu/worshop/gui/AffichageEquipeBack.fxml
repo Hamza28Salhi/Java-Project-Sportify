@@ -26,6 +26,8 @@
                         <Image url="@image/teswiraequipa.png" />
                      </image>
                   </ImageView>
+                  <Button defaultButton="true" layoutX="106.0" layoutY="386.0" mnemonicParsing="false" onAction="#musicButton" text="musicButton" textFill="#222897" />
+                  <Button defaultButton="true" layoutX="207.0" layoutY="386.0" mnemonicParsing="false" onAction="#pauseMusicButton" prefHeight="25.0" prefWidth="126.0" text="pauseMusicButton" textFill="#222897" />
                </children>
             </Pane>
           

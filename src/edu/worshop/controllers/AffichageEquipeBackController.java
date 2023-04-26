@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.Equipe1CRUD;
 import edu.worshop.interfaces.EquipeCRUD;
 import edu.worshop.model.Equipe;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -29,6 +30,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 
@@ -41,6 +44,7 @@ import javafx.stage.Stage;
 public class AffichageEquipeBackController implements Initializable {
         @FXML
     private ListView<Equipe> affichageEquipeBackfx;
+        
     //static Equipe E;
 static int id,classement;
 static String nom,joueurs,entraineur,categorie,picture;
@@ -56,6 +60,9 @@ static Equipe E = new Equipe();
         ListView<Equipe> list1 = affichageEquipeBackfx;
 EquipeCRUD inter = new Equipe1CRUD();
 List<Equipe> list2 = inter.afficherEquipe();
+
+    
+    
 for (int i = 0; i < list2.size(); i++) {
     Equipe E = list2.get(i);
     list1.getItems().add(E); // add Equipe to ListView
@@ -63,7 +70,9 @@ for (int i = 0; i < list2.size(); i++) {
 
 
         } 
-    
+     String path = "C:\\xampp\\htdocs\\music\\Hazim.mp3";
+    Media media = new Media(new File(path).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
 
 
    @FXML
@@ -165,6 +174,25 @@ for (int i = 0; i < list2.size(); i++) {
         Logger.getLogger(AjoutMatchesBackController.class.getName()).log(Level.SEVERE, null, ex);
         //showAlert("Error loading");
     }
+    }
+
+    @FXML
+    private void musicButton(ActionEvent event) {
+             mediaPlayer.play();
+       // Image img = new Image("C:\\xampp\\htdocs\\music\\ala.jpg");
+             
+//         Notifications notificationBuilder = Notifications.create()
+//                .title("Musique")
+//                .text("      Musique Jouée").graphic(new ImageView(img)).hideAfter(Duration.seconds(5))
+//                .position(Pos.BOTTOM_RIGHT);
+     
+    }
+
+    @FXML
+    private void pauseMusicButton(ActionEvent event) {
+           mediaPlayer.pause();
+        //Image img = new Image("fllogo.png");
+      
     }
 
     
