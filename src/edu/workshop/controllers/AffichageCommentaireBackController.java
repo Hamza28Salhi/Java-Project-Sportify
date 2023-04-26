@@ -5,6 +5,7 @@
  */
 package edu.workshop.controllers;
 
+import static edu.workshop.controllers.AffichageEvenementBackController.P;
 import edu.workshop.services.Commentaire1CRUD;
 import edu.workshop.services.Post1CRUD;
 import edu.worshop.interfaces.CommentaireCRUD;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,11 +83,57 @@ for (int i = 0; i < list2.size(); i++) {
     }
 }
     @FXML
-    public void AjoutCommentaireBack(){
+    public void AjoutCommentaireBack(ActionEvent event){
+                
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AjoutCommentaireBack.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AffichageEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+        }
     
 }
     @FXML
-    public void ModifierCommentaireBack(){}
+    public void ModifierCommentaireBack(ActionEvent event){
+        
+        ListView<Commentaire> list = (ListView<Commentaire>) affichageCommentaireBackfx; //ListView<Post> list = affichagePostBackfx;
+        CommentaireCRUD inter = new Commentaire1CRUD();
+        int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        
+  if (selectedIndex >=0){
+            
+        
+        Commentaire c = list.getSelectionModel().getSelectedItem();
+
+        /*int id = c.getId();
+        int post_id = c.getPost_id();
+        String contenu_Commentaire = c.getContenuCommentaire();
+        String auteur_Commentaire = c.getAuteurCommentaire();*/
+        C=c;
+      
+        
+        
+        
+        try {
+
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/ModifierCommentaireBack.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AffichageEvenementBackController.class.getName()).log(Level.SEVERE, null, ex);
+        //AffichagePostBackController
+        }
+        }else{showAlert("Veuillez sélectionner un commentaire à modifier.");
+  }
+    }
 
     @FXML
     private void RetourPostBack(ActionEvent event) throws IOException {

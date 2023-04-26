@@ -23,6 +23,7 @@ public class Commentaire {
         
     }
     public Commentaire(int id, int post_id, String contenu_Commentaire, String auteur_Commentaire) {
+        this.id = id;
         this.post_id = post_id;
         this.contenu_Commentaire = contenu_Commentaire;
         this.auteur_Commentaire = auteur_Commentaire;

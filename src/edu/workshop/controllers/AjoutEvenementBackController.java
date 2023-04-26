@@ -190,9 +190,58 @@ private void chooseImage(ActionEvent event) {
         }
     }
 }
-    
-    
-    
+  
+//*******************************************************************************************************************
+/*
+@FXML
+private void chooseImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Select an image file");
+    fileChooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+    );
+    Window window = ((Node) event.getTarget()).getScene().getWindow();
+    File selectedFile = fileChooser.showOpenDialog(window);
+    if (selectedFile != null) {
+        try {
+            // Create a directory called "upload" if it doesn't exist
+            File uploadDir = new File("upload");
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            
+            // Copy the selected file to the "upload" directory
+            String fileName = selectedFile.getName();
+            File destFile = new File("upload/" + fileName);
+            Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            // Set the ImageView's image to the selected image
+            Image image = new Image(destFile.toURI().toString());
+            imageView.setImage(image);
+            
+            // Get the image file name
+            String imageFileName = MyConnection.getImage_Name();
+            
+            // Open the image file
+            File imageFile = new File("upload/" + imageFileName);
+            
+            // Convert the image file to a byte array
+            byte[] imageData = new byte[(int) imageFile.length()];
+            FileInputStream fis = new FileInputStream(imageFile);
+            fis.read(imageData);
+            fis.close();
+            
+            // Insert the image data into the database
+            PreparedStatement stmt = MyConnection.getInstance().getConn().prepareStatement("INSERT INTO Post (imagePost) VALUES (?)");
+            stmt.setBytes(1, imageData);
+            stmt.executeUpdate();
+            
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(AjoutPostBackController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+*/
+//*******************************************************************************************************************
     
     
 }

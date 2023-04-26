@@ -11,7 +11,9 @@ import edu.worshop.model.Post;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Collections;
 import static java.util.Collections.list;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -46,7 +48,7 @@ static String titre_Post,contenu_Post,image_Post,auteur_Post;
 static Post P = new Post();
     @FXML
     private ComboBox<String> comb;
-
+ 
     /**
      * Initializes the controller class.
      */
@@ -110,12 +112,12 @@ for (int i = 0; i < list2.size(); i++) {
             
         
         Post p = list.getSelectionModel().getSelectedItem();
-
+/*
         int id = p.getId();
         String titre_Post = p.getTitrePost();
         String contenu_Post = p.getContenuPost();
         String image_Post = p.getImagePost();
-        String auteur_Post = p.getAuteurPost();
+        String auteur_Post = p.getAuteurPost();*/
         P=p;
       
         
@@ -192,6 +194,28 @@ for (int i = 0; i < list2.size(); i++) {
 
     @FXML
     private void TriPostBack(ActionEvent event) {
+        String s =comb.getSelectionModel().getSelectedItem();
+            if (s.equals("Ordre alphabetique")) {
+        // Récupération de la liste des posts
+        PostCRUD inter = new Post1CRUD();
+        List<Post> posts = inter.afficherPost();
+        
+        // Tri des posts selon l'ordre alphabétique des titres
+        Collections.sort(posts, new Comparator<Post>() {
+            @Override
+            public int compare(Post p1, Post p2) {
+                return p1.getTitrePost().compareToIgnoreCase(p2.getTitrePost());
+            }
+        });
+        
+        // Mise à jour de l'affichage avec la liste triée des posts
+        // ...
+         affichagePostBackfx.getItems().clear();
+ ListView<Post> list1 = (ListView<Post>) affichagePostBackfx;
+    for (Post post : posts) {
+        list1.getItems().add(post);
+    } 
+    }
         
     }
     

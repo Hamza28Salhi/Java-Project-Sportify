@@ -3,23 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/services/Post1CRUD.java</file>
             <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AffichageEvenementBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/services/Commentaire1CRUD.java</file>
+            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/services/Post1CRUD.java</file>
             <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/model/Post.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/ModifierEvenementBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/workshop3a4/Workshop3A4.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/gui/AffichageCommentaireBack.fxml</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AjoutPostBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/interfaces/CommentaireCRUD.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/gui/AjoutPostBack.fxml</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/utils/MyConnection.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AjoutEvenementBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/gui/GestionPost.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AjoutCommentaireBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/worshop/model/Commentaire.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AffichageCommentaireBackController.java</file>
-            <file>file:/C:/Users/sammo/OneDrive/Bureau/FinalJava/src/edu/workshop/controllers/AjoutReservationFrontController.java</file>
         </group>
     </open-files>
 </project-private>
