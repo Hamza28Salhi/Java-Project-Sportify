@@ -17,6 +17,15 @@ import java.util.logging.Logger;
  */
 public class MyConnection {
     
+    private static String image_Name;
+public static String getImage_Name() {
+        return image_Name;
+    }
+
+    public static void setImage_Name(String image_Name) {
+        MyConnection.image_Name = image_Name;
+    }
+    
    private static Connection conn; //DB Credations
     
 String url = "jdbc:mysql://localhost:3306/sportify?zeroDateTimeBehavior=convertToNull";
@@ -42,5 +51,6 @@ private static MyConnection instance;
     public Connection getConn(){
         return MyConnection.getInstance().conn;
     }
+    
     
 }

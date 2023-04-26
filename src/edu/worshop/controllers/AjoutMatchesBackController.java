@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -67,13 +68,21 @@ public class AjoutMatchesBackController implements Initializable {
         return;
     }
         //String Equipe_id = Equipe_idRfx.getValue();
-        Date date = Date.valueOf(DateMatchesfx.getValue());
+Date date = java.sql.Date.valueOf(DateMatchesfx.getValue());
      String nom = NomMatchesfx.getText().trim();
 if (nom.isEmpty() || !Character.isUpperCase(nom.charAt(0)) || !nom.matches("[a-zA-Z ]+")) {
     showAlert("Please enter a valid value for Nom, starting with an uppercase letter and without symbols.");
     return;
 }
 nom = Character.toUpperCase(nom.charAt(0)) + nom.substring(1);
+
+LocalDate currentDate = LocalDate.now(); // Gets the current date
+         String dateStringlocal = currentDate.toString();
+        String datee = date.toString();
+        int comparaison = datee.compareTo(dateStringlocal);
+        if (comparaison < 0) {
+            showAlert("il faut que la date est supérieure à la date système");
+        }
 
         String stade = StadeMatchesfx.getText();
         String score = ScoreMatchesfx.getText();

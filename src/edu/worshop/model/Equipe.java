@@ -90,7 +90,7 @@ public class Equipe implements Serializable {
        
 
     }
-     public Equipe( String nom, String joueurs, int classement, String entraineur, String categorie,String Picture) {
+     public Equipe( String nom, String joueurs, int classement, String entraineur, String categorie,String picture) {
         this.nom = nom;
         this.joueurs = joueurs;
         this.classement = classement;

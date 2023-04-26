@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -42,8 +43,10 @@ public class AffichageEquipeBackController implements Initializable {
     private ListView<Equipe> affichageEquipeBackfx;
     //static Equipe E;
 static int id,classement;
-static String nom,joueurs,entraineur,categorie;
+static String nom,joueurs,entraineur,categorie,picture;
 static Equipe E = new Equipe();
+    @FXML
+    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
@@ -163,5 +166,10 @@ for (int i = 0; i < list2.size(); i++) {
         //showAlert("Error loading");
     }
     }
+
+    
+    
+    
+    
  
     }

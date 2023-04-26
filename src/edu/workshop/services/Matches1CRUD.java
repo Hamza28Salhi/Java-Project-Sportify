@@ -9,11 +9,16 @@ import edu.worshop.model.Equipe;
 import edu.worshop.model.Matches;
 import edu.worshop.utils.MyConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 /**
  *
  * @author Ace River
@@ -82,9 +87,32 @@ String req = "UPDATE `Matches` SET `nom`='" + M.getNom() + "', `stade`='" + M.ge
     
     
     
-    
-    
-    
+    public ObservableMap<String, Object> getMatchStatistics() {
+    ObservableMap<String, Object> stats = FXCollections.observableHashMap();
+    try {
+        // Get the total number of matches
+        String totalMatchesQuery = "SELECT COUNT(*) FROM matches";
+        PreparedStatement stmt1 = conn.prepareStatement(totalMatchesQuery);
+        ResultSet rs1 = stmt1.executeQuery();
+        if (rs1.next()) {
+            stats.put("totalMatches", rs1.getInt(1));
+        }
+
+        // Get the number of matches per team
+        String teamMatchesQuery = "SELECT nom_equipe_id, COUNT(*) FROM matches GROUP BY nom_equipe_id";
+        PreparedStatement stmt2 = conn.prepareStatement(teamMatchesQuery);
+        ResultSet rs2 = stmt2.executeQuery();
+        ObservableMap<String, Integer> teamMatchCounts = FXCollections.observableHashMap();
+        while (rs2.next()) {
+            teamMatchCounts.put(rs2.getString(1), rs2.getInt(2));
+        }
+        stats.put("teamMatches", teamMatchCounts);
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return stats;
+}
+
     
     
     

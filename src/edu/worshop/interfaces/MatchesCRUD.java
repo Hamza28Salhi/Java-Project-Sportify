@@ -6,6 +6,8 @@
 package edu.worshop.interfaces;
 import edu.worshop.model.Matches;
 import java.util.List;
+import java.util.Map;
+import javafx.collections.ObservableMap;
 
 /**
  *
@@ -17,4 +19,6 @@ public interface MatchesCRUD {
     public List<Matches> afficherMatches();
     public void supprimerMatches(int id);
     public void modifierMatches(Matches M);
+
+   
 }

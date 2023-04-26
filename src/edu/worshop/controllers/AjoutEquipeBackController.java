@@ -11,8 +11,12 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.Equipe1CRUD;
 import edu.worshop.interfaces.EquipeCRUD;
 import edu.worshop.model.Equipe;
+import edu.worshop.utils.MyConnection;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -34,7 +38,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import static jdk.nashorn.internal.objects.NativeJava.type;
 
 /**
@@ -54,6 +62,8 @@ public class AjoutEquipeBackController implements Initializable {
     private TextField EntraineurEquipefx;
     @FXML
     private TextField CategorieEquipefx;
+    @FXML
+    private ImageView Imageview;
 
     
 
@@ -130,7 +140,8 @@ private void AjouterEquipeBack(ActionEvent event) {
     Optional<ButtonType> result = alert.showAndWait();
 
     if (result.get() == ButtonType.OK) {
-        Equipe E = new Equipe(nom, joueurs, classement, entraineur, categorie);
+        String picture = MyConnection.getImage_Name();
+        Equipe E = new Equipe(nom, joueurs, classement, entraineur, categorie , picture);
         Equipe1CRUD event1 = new Equipe1CRUD();
         event1.ajouterEquipe(E);
         showAlert("Equipe added successfully");
@@ -145,6 +156,7 @@ private void AjouterEquipeBack(ActionEvent event) {
     } catch (IOException ex) {
         Logger.getLogger(AjoutEquipeBackController.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
 }
 
     private void showAlert(String message) {
@@ -154,5 +166,35 @@ private void AjouterEquipeBack(ActionEvent event) {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    }
 
+    @FXML
+       private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an image file");
+        fileChooser.getExtensionFilters().addAll(
+        );
+        Window window = ((Node) event.getTarget()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(window);
+        if (selectedFile != null) {
+            try {
+                // Create a directory called "upload" if it doesn't exist
+                File uploadDir = new File("upload");
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+
+                // Copy the selected file to the "upload" directory
+                String fileName = selectedFile.getName();
+                File destFile = new File("upload/" + fileName);
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Set the ImageView's image to the selected image
+                Image image = new Image(destFile.toURI().toString());
+                Imageview.setImage(image);
+                //Save the image name in img_Saver
+                MyConnection.setImage_Name(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(AjoutEquipeBackController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+}
