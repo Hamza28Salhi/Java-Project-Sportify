@@ -30,6 +30,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,6 +45,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import static jdk.nashorn.internal.objects.NativeJava.type;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -156,6 +158,11 @@ private void AjouterEquipeBack(ActionEvent event) {
     } catch (IOException ex) {
         Logger.getLogger(AjoutEquipeBackController.class.getName()).log(Level.SEVERE, null, ex);
     }
+    Notifications.create()
+                    .title("Notification")
+                    .text("user ajouter.")
+                    .position(Pos.BOTTOM_RIGHT)
+                    .showInformation();
     
 }
 

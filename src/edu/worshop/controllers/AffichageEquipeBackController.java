@@ -20,6 +20,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,9 +33,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -51,6 +58,10 @@ static String nom,joueurs,entraineur,categorie,picture;
 static Equipe E = new Equipe();
     @FXML
     private PieChart pieChart;
+        private ObservableList<Equipe> equipeList;
+    @FXML
+    private TextField searchField;
+
 
     /**
      * Initializes the controller class.
@@ -60,6 +71,7 @@ static Equipe E = new Equipe();
         ListView<Equipe> list1 = affichageEquipeBackfx;
 EquipeCRUD inter = new Equipe1CRUD();
 List<Equipe> list2 = inter.afficherEquipe();
+equipeList = FXCollections.observableArrayList(list2);
 
     
     
@@ -67,9 +79,57 @@ for (int i = 0; i < list2.size(); i++) {
     Equipe E = list2.get(i);
     list1.getItems().add(E); // add Equipe to ListView
 }
+  list1.setCellFactory(param -> new ListCell<Equipe>() {
+            @Override
+            protected void updateItem(Equipe item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getId() + "   |   " + item.getNom() + "   |   " + item.getJoueurs() + "   |   " + item.getClassement() + "   |   " + item.getEntraineur() + "   |   " + " (" + item.getCategorie() + ")");
+                }
+            }
+        });
 
+        // Ajouter une fonction de recherche
+        FilteredList<Equipe> filteredList = new FilteredList<>(equipeList, p -> true);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(e -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if ( e.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par nom complet
+                } else if (e.getJoueurs().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par adresse e-mail
+                } else if (String.valueOf(e.getClassement()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par ID
+                } else if (e.getEntraineur().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par date de naissance
+                } else if (e.getCategorie().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par adresse
+                }
+
+                return false; // Aucune correspondance trouvée
+            });
+        });
+
+        SortedList<Equipe> sortedList = new SortedList<>(filteredList);
+        list1.setItems(sortedList);
+
+        
+ 
 
         } 
+    
+    
+    
+    
+    
+    
      String path = "C:\\xampp\\htdocs\\music\\Hazim.mp3";
     Media media = new Media(new File(path).toURI().toString());
     MediaPlayer mediaPlayer = new MediaPlayer(media);
