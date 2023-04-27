@@ -44,7 +44,7 @@ public class GestionCategorie extends Application {
 
     
     try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherProduitBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherProduitFront.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Hello World!");

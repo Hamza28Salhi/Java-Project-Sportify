@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author lenovo
@@ -87,5 +89,31 @@ public class Produit1CRUD implements ProduitCRUD{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    
+     public ObservableList<Produit> afficherproduit() {
+       ObservableList<Produit> myList= FXCollections.observableArrayList();
+        
+    
+        try {
+            String sql = "SELECT * FROM personne WHERE role = 'User'";
+            Statement st = conn.createStatement();
+            ResultSet rs= ste.executeQuery(sql);
+            while(rs.next()){
+                 Produit p = new Produit();
+                 p.setId(rs.getInt(1));
+                 p.setNom_produit(rs.getString("nom")); 
+                 p.setPrix_produit(rs.getDouble("prix_produit"));
+                 p.setMarque_produit(rs.getString("marque_produit"));
+                 p.setImage(rs.getString("image"));
+                  p.setQuantite(rs.getInt("quantite"));
+         
+                myList.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
     }
 }

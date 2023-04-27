@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,12 +22,12 @@
                         <Font name="Berlin Sans FB" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="272.0" layoutY="372.0" mnemonicParsing="false" onAction="#SupprimerProduitBack" text="Supprimer">
+                  <Button layoutX="188.0" layoutY="372.0" mnemonicParsing="false" onAction="#SupprimerProduitBack" text="Supprimer">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="178.0" layoutY="372.0" mnemonicParsing="false" onAction="#ModifierProduitBack" text="Modifier">
+                  <Button layoutX="99.0" layoutY="372.0" mnemonicParsing="false" onAction="#ModifierProduitBack" text="Modifier">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -36,12 +37,14 @@
                         <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/logos.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="371.0" layoutY="372.0" mnemonicParsing="false" onAction="#ListeCategorieBack" text="Liste Categorie">
+                  <Button layoutX="286.0" layoutY="372.0" mnemonicParsing="false" onAction="#ListeCategorieBack" text="Liste Categorie">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="stat" layoutX="493.0" layoutY="372.0" mnemonicParsing="false" onAction="#OnClickedStatistique" text="Statestique" />
+                  <Button fx:id="stat" layoutX="493.0" layoutY="372.0" mnemonicParsing="false" onAction="#OnClickedStatistique" text="PDF" />
+                  <Button layoutX="410.0" layoutY="372.0" mnemonicParsing="false" onAction="#statbutton" text="Statestique" />
+                  <TextField fx:id="searchField" layoutX="25.0" layoutY="46.0" />
                </children>
             </Pane>
          </children>
