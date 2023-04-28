@@ -9,6 +9,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import static com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil.matches;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -24,12 +25,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static java.util.regex.Pattern.matches;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -37,6 +40,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,6 +48,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
@@ -61,7 +66,14 @@ import jfxtras.scene.control.CalendarPicker;
 public class AffichageMatchesBackController implements Initializable {
      @FXML
     private ListView<Matches> affichageMatchesBackfx;
-         private Matches1CRUD matchesCRUD;
+           private Matches1CRUD matchesCRUD = new Matches1CRUD();
+
+
+        
+        private List<String> matches = new ArrayList<>();
+
+
+
 
 
     //static Matches E;
@@ -76,6 +88,8 @@ static Matches E = new Matches();
     private Button startButton;
     @FXML
     private Button stopButton;
+    @FXML
+    private Button printButton;
     /**
      * Initializes the controller class.
      */
@@ -117,6 +131,7 @@ for (int i = 0; i < list2.size(); i++) {
         ListView<Matches> list = affichageMatchesBackfx;
         MatchesCRUD inter = new Matches1CRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
+        
         
 
         Matches e = list.getSelectionModel().getSelectedItem();
@@ -339,6 +354,34 @@ private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, 
                 matchesCRUD.stopNotifications();
 
     }
+
+    @FXML
+    private void handlePrintButtonAction(ActionEvent event) {
+         // create a PrinterJob
+         matches.add("Match 1: Team A vs. Team B");
+         
+        
+    List<Matches> matches = matchesCRUD.afficherMatches();
+
+
+   PrinterJob job = PrinterJob.createPrinterJob();
+if (job != null) {
+        // create a new TextArea to hold the list of matches
+        TextArea textArea = new TextArea();
+        // set the contents of the TextArea to the list of matches
+        StringBuilder sb = new StringBuilder("List of Matches:\n");
+        for (Matches match : matches) {
+            sb.append(match.toString()).append("\n");
+        }
+        textArea.setText(sb.toString());
+        // print the TextArea
+        boolean success = job.printPage(textArea);
+        if (success) {
+            job.endJob();
+        }
+   }
+    }
+    
     
 
 

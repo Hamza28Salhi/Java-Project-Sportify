@@ -32,6 +32,7 @@
                               <Image url="@image/teswiraequipa.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="printButton" defaultButton="true" layoutX="374.0" layoutY="511.0" mnemonicParsing="false" onAction="#handlePrintButtonAction" prefHeight="25.0" prefWidth="72.0" text="Print List" textFill="#222897" />
                         
                      </children></Pane>
                   <ListView fx:id="affichageMatchesBackfx" layoutY="53.0" prefHeight="304.0" prefWidth="600.0" />
