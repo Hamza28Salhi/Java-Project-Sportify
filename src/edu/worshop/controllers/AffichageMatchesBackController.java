@@ -10,6 +10,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import static com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil.matches;
+import edu.workshop.services.Mailservice;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -90,6 +91,16 @@ static Matches E = new Matches();
     private Button stopButton;
     @FXML
     private Button printButton;
+    @FXML
+    private Button SendMail;
+    @FXML
+    private TextField recipientField;
+    @FXML
+    private TextField idField;
+    @FXML
+    private TextField nomField;
+    @FXML
+    private TextField stadeField;
     /**
      * Initializes the controller class.
      */
@@ -380,6 +391,33 @@ if (job != null) {
             job.endJob();
         }
    }
+    }
+
+    @FXML
+    private void SendMail(ActionEvent event) {
+        Mailservice mailService = new Mailservice();
+    String recipient = recipientField.getText();
+     String date = idField.getText();
+    String nom = nomField.getText();
+    String stade = stadeField.getText();
+    mailService.sendMail(recipient,date,nom,stade);
+        
+    }
+
+    @FXML
+    private void recipientField(ActionEvent event) {
+    }
+
+    @FXML
+    private void idField(ActionEvent event) {
+    }
+
+    @FXML
+    private void nomField(ActionEvent event) {
+    }
+
+    @FXML
+    private void stadeField(ActionEvent event) {
     }
     
     
