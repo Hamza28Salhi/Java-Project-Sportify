@@ -15,9 +15,12 @@ import javafx.fxml.Initializable;
 import edu.workshop.services.Matches1CRUD;
 import edu.worshop.interfaces.MatchesCRUD;
 import edu.worshop.model.Matches;
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -45,6 +48,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import jfxtras.scene.control.CalendarPicker;
 
 
@@ -204,43 +208,72 @@ for (int i = 0; i < list2.size(); i++) {
         this.lieutf.setText(ad);
     }
 
-    @FXML
-    private void QrCode(ActionEvent event) {
-        Matches p = affichageMatchesBackfx.getSelectionModel().getSelectedItem();
-      
+@FXML
+private void QrCode(ActionEvent event) {
+    Matches p = affichageMatchesBackfx.getSelectionModel().getSelectedItem();
 
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        String Information = "nom du match : "+p.getNom()+"\n"+"Date : "+p.getDate();
-        int width = 300;
-        int height = 300;
-        BufferedImage bufferedImage = null;
-         try{
-            BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
-            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-            bufferedImage.createGraphics();
-            
-            Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
-            graphics.setColor(Color.WHITE);
-            graphics.fillRect(0, 0, width, height);
-            graphics.setColor(Color.BLACK);
-            
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    if (byteMatrix.get(i, j)) {
-                        graphics.fillRect(i, j, 1, 1);
-                    }
-                }
+    QRCodeWriter qrCodeWriter = new QRCodeWriter();
+    String Information = "nom du match : "+p.getNom()+"\n"+"Date : "+p.getDate();
+    int width = 300;
+    int height = 300;
+BufferedImage bufferedImage = null;
+try {
+    BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
+    bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    bufferedImage.createGraphics();
+
+    Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+    
+    // Set background color to red-blue gradient
+    GradientPaint gradient = new GradientPaint(0, 0, new Color(238, 33, 50), width, height, new Color(0, 47, 108));
+    graphics.setPaint(gradient);
+    graphics.fillRect(0, 0, width, height);
+    
+    // Calculate the size of the QR code without padding
+    int qrCodeSize = Math.min(width, height);
+
+    // Calculate the padding needed around the QR code
+    int paddingX = (width - qrCodeSize) / 2;
+    int paddingY = (height - qrCodeSize) / 2;
+    
+
+    // Draw the QR code onto the image
+    graphics.setColor(Color.BLACK);
+    for (int i = 0; i < qrCodeSize; i++) {
+        for (int j = 0; j < qrCodeSize; j++) {
+            if (byteMatrix.get(i, j)) {
+                graphics.fillRect(i + paddingX, j + paddingY, 1, 1);
             }
-            
-            System.out.println("Success...");
-            
-            code_qr.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
-            
-        } catch (WriterException ex) {
         }
-        
-        
     }
+
+    // Load logo image and resize if needed
+    BufferedImage logoImage = ImageIO.read(new File("upload/logo.png"));
+    if (logoImage.getWidth() > qrCodeSize / 4) {
+        logoImage = resizeImage(logoImage, qrCodeSize / 4, qrCodeSize / 4);
+    }
+
+    // Draw logo onto QR code
+    int centerX = paddingX + qrCodeSize / 2;
+    int centerY = paddingY + qrCodeSize / 2;
+    graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+    graphics.drawImage(logoImage, centerX - (logoImage.getWidth() / 2), centerY - (logoImage.getHeight() / 2), null);
+
+    System.out.println("Success...");
+
+    code_qr.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+} catch (WriterException | IOException ex) {
+    ex.printStackTrace();
+}
+
+}
+private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
+    BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+    Graphics2D graphics2D = resizedImage.createGraphics();
+    graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+    graphics2D.dispose();
+    return resizedImage;
+}
 
     @FXML
     private void stat(ActionEvent event) {
