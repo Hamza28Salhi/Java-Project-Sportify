@@ -39,7 +39,7 @@ public class GestionEquipe extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AffichageEquipeBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AffichageMatchesBack.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Trippie");

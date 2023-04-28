@@ -45,6 +45,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import jfxtras.scene.control.CalendarPicker;
 
 
 
@@ -56,6 +57,9 @@ import javafx.stage.Stage;
 public class AffichageMatchesBackController implements Initializable {
      @FXML
     private ListView<Matches> affichageMatchesBackfx;
+         private Matches1CRUD matchesCRUD;
+
+
     //static Matches E;
 static int id;   
 static Date date;
@@ -64,6 +68,10 @@ static Matches E = new Matches();
     private TextField lieutf;
     @FXML
     private ImageView code_qr;
+    @FXML
+    private Button startButton;
+    @FXML
+    private Button stopButton;
     /**
      * Initializes the controller class.
      */
@@ -75,6 +83,7 @@ for (int i = 0; i < list2.size(); i++) {
     Matches E = list2.get(i);
     list1.getItems().add(E); // add Matches to ListView
 }
+
 
 
         } 
@@ -276,6 +285,28 @@ for (int i = 0; i < list2.size(); i++) {
         
         
     }
+     public void setMatchesCRUD(Matches1CRUD matchesCRUD) {
+        this.matchesCRUD = matchesCRUD;
+    }
+
+   @FXML
+    private void onStartButtonClicked(ActionEvent event) {
+                 matchesCRUD = new Matches1CRUD();
+
+        if (matchesCRUD != null) {
+            matchesCRUD.startNotifications();
+        } else {
+            System.out.println("matchesCRUD is null");
+        }
+    }
+
+    @FXML
+    private void onStopButtonClicked(ActionEvent event) {
+        
+                matchesCRUD.stopNotifications();
+
+    }
+    
 
 
     }

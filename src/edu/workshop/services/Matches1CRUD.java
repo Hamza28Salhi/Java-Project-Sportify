@@ -19,6 +19,16 @@ import java.util.List;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import static java.time.temporal.TemporalQueries.localDate;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import static javax.management.Query.match;
+import static jdk.nashorn.internal.objects.NativeString.match;
+import org.controlsfx.control.Notifications;
 /**
  *
  * @author Ace River
@@ -27,7 +37,9 @@ public class Matches1CRUD  implements MatchesCRUD{
     
    Statement ste;
     Connection conn = MyConnection.getInstance().getConn();
-    
+        private Timer timer;
+        
+
     
   public void ajouterMatches(Matches M) {
     try {
@@ -113,7 +125,77 @@ String req = "UPDATE `Matches` SET `nom`='" + M.getNom() + "', `stade`='" + M.ge
     return stats;
 }
 
-    
-    
-    
+   public void startNotifications() {
+    Platform.runLater(() -> {
+        // Schedule the background task to run every minute
+        timer = new Timer();
+        timer.schedule(new NotificationTask(), 0, 60 * 1000);
+    });
 }
+    
+      public void stopNotifications() {
+        timer.cancel();
+    }
+  
+
+    public Matches1CRUD() {
+        timer = new Timer();
+    }
+      
+       private class NotificationTask extends TimerTask {
+
+
+    @Override
+    public void run() {
+        Platform.runLater(() -> {
+            try {
+                Connection conn = MyConnection.getInstance().getConn();
+String query = "SELECT * FROM matches WHERE date BETWEEN ? AND ?";
+
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+                stmt.setString(1, LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+                stmt.setString(2, LocalDate.now().plusWeeks(1).format(DateTimeFormatter.ISO_DATE));
+
+                ResultSet rs = stmt.executeQuery();
+                List<Matches> matches = new ArrayList<>();
+                while (rs.next()) {
+                    Matches match = new Matches();
+                    match.setId(rs.getInt("id"));
+                    match.setNom(rs.getString("nom"));
+                    match.setStade(rs.getString("stade"));
+                    match.setDate(rs.getDate("date"));
+                    match.setScore(rs.getString("score"));
+                    matches.add(match);
+                }
+                if (!matches.isEmpty()) {
+                    Notifications.create()
+                            .title("Upcoming matches")
+                            .text("You have " + matches.size() + " matches this week!")
+                               .onAction(event -> {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Upcoming Matches");
+                            alert.setHeaderText("List of upcoming matches:");
+                            StringBuilder message = new StringBuilder();
+                            for (Matches match : matches) {
+                                message.append(match.getDate())
+                                        .append(" - ");
+                                  message.append(match.getStade())
+                                        .append(" - ")
+                                        .append(match.getNom())
+                                        .append("\n");
+                            }
+                            alert.setContentText(message.toString());
+                            alert.showAndWait();
+                        })
+                            .showInformation();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
+    }
+  
+       }}
+
+
