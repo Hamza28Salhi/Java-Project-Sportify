@@ -45,8 +45,10 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -198,8 +200,83 @@ for (int i = 0; i < list2.size(); i++) {
         }
           
     }
+    
+    
+   /* @FXML
+    Pagination pagination;
+    
+    
+    public void start(final Stage stage) throws Exception {
+    
+    pagination = new Pagination(10);
+    pagination.setStyle("-fx-border-color:blue");
+    pagination.setPageFactory((Integer pageIndex) -> createPage(pageIndex));
+    
+    
+    AnchorPane anchor = new AnchorPane();
+    AnchorPane.setTopAnchor(pagination, 10.0);
+    AnchorPane.setBottomAnchor(pagination, 10.0);
+    AnchorPane.setLeftAnchor(pagination, 10.0);
+    AnchorPane.setRightAnchor(pagination, 10.0);
+   
+    anchor.getChildren().add(pagination);
+    Scene scene = new Scene(anchor);
+    
+    stage.setScene(scene);
+    stage.show();
+    
+    }
+    
+    public VBox createPage(int pageIndex)
+    { VBox pageBox = new VBox();
+    Label pageLabel = new Label("Page : "+ (pageIndex+1));
+    pageBox.getChildren().add(pageLabel);
+    
+    return pageBox;
+    }
+    */
+   // public static void main(String[] args) throws Exception {
+      //  Launch(args);
+   // }
+    
+    
+    public VBox createPage(int pageIndex) {
+    VBox pageBox = new VBox();
+    pageBox.setSpacing(10);
+
+    // Calculer les indices des deux produits à afficher
+    int index1 = pageIndex * 2;
+    int index2 = index1 + 1;
+    if (index1 >= AfficherProduitFrontfx.getItems().size()) {
+        return pageBox;
     }
 
+    // Créer un VBox pour chaque produit à afficher
+    VBox box1 = createProductBox(AfficherProduitFrontfx.getItems().get(index1));
+    pageBox.getChildren().add(box1);
+
+    if (index2 < AfficherProduitFrontfx.getItems().size()) {
+        VBox box2 = createProductBox(AfficherProduitFrontfx.getItems().get(index2));
+        pageBox.getChildren().add(box2);
+    }
+
+    return pageBox;
+}
+
+private VBox createProductBox(Produit produit) {
+    VBox productBox = new VBox();
+    productBox.setAlignment(Pos.CENTER);
+    productBox.setSpacing(5);
+
+    Label nomLabel = new Label(produit.getNom_produit());
+    Label prixLabel = new Label(String.valueOf(produit.getPrix_produit()));
+    ImageView imageView = new ImageView(new Image(produit.getImage()));
+
+    productBox.getChildren().addAll(imageView, nomLabel, prixLabel);
+
+    return productBox;
+}
+}
 
 
     

@@ -5,6 +5,13 @@
  */
 package edu.workshop.controllers;
 
+
+
+
+
+
+import com.sun.javafx.font.FontFactory;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Element;
 import static edu.workshop.controllers.AfficherCategorieBackController.C;
 import edu.workshop.services.Categorie1CRUD;
 import edu.workshop.services.Produit1CRUD;
@@ -12,8 +19,14 @@ import edu.worshop.interfaces.CategorieCRUD;
 import edu.worshop.interfaces.ProduitCRUD;
 import edu.worshop.model.Categorie;
 import edu.worshop.model.Produit;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,11 +49,16 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.StageStyle;
+import javax.swing.text.Document;
+
 
 
 
@@ -251,7 +269,172 @@ for (int i = 0; i < list2.size(); i++) {
         stage.show();
        }
     
+//    @FXML
+//private void handle(ActionEvent event) {
+//    Document document = new Document();
+//    try {
+//        // Create a temporary file with a unique name to store the PDF
+//        File tempFile = File.createTempFile("table", ".pdf");
+//
+//        // Set the file to be deleted on exit
+//        tempFile.deleteOnExit();
+//
+//        // Write the PDF to the temporary file
+//        PdfWriter.getInstance(document, new FileOutputStream(tempFile));
+//        document.open();
+//
+//  // Add a title to the PDF document with custom font and color
+//  Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24, BaseColor.BLUE);
+//  Paragraph title = new Paragraph("Liste des Dépenses", titleFont);
+//  title.setAlignment(Element.ALIGN_CENTER);
+// document.add(title);
+//  document.add(new Paragraph("\n"));
+//
+//
+//
+//
+//
+//        PdfPTable pdfTable = new PdfPTable(6);
+//        addTableHeader(pdfTable);
+//        addRows(pdfTable,List );
+//        document.add(pdfTable);
+//        document.close();
+//
+//        // Create a new FileChooser to allow the user to choose where to save the file
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setInitialFileName("table.pdf");
+//
+//        // Set the initial directory for the FileChooser to the user's home directory
+//        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+//
+//        // Show the FileChooser and wait for the user to select a file
+//        File file = fileChooser.showSaveDialog(List.getScene().getWindow());
+//
+//           // Show a success message
+//           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//           alert.setTitle("Impression");
+//           alert.setHeaderText(null);
+//           alert.setContentText("Les dépenses sélectionnées ont été imprimées avec succès en PDF.");
+//           alert.showAndWait();
+//           
+//           // Open the PDF file with the default PDF viewer
+//           if (Desktop.isDesktopSupported()) {
+//               Desktop.getDesktop().open(tempFile);
+//           }
+//
+//        // If the user selected a file, copy the contents of the temporary file to the selected file
+//        if (file != null) {
+//            Files.copy(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+//        }
+//    } catch (IOException | DocumentException e) {
+//        e.printStackTrace();
+//    }
+//}
+
+ @FXML
+    private void export(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export to CSV");
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("CSV Files", "*.csv")
+        );
+        File selectedFile = fileChooser.showSaveDialog(null);
+        if (selectedFile != null) {
+            try {
+                FileWriter fileWriter = new FileWriter(selectedFile);
+                ObservableList<Produit> userList = FXCollections.observableArrayList();
+
+               // ObservableList<Produit> produit = userList.getItems();
+                fileWriter.append("Nom_produit, Prix_produit , Marque_produit\n");
+                for (Produit category : userList) {
+                    fileWriter.append(category.getNom_produit());
+                    fileWriter.append(",");
+                     fileWriter.append(String.valueOf(category.getPrix_produit()));
+                    fileWriter.append(",");
+                   
+                    fileWriter.append(category.getMarque_produit());
+                    fileWriter.append("\n");
+                    
+                    
+                }
+                fileWriter.close();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Export Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Data exported to " + selectedFile.getAbsolutePath());
+                alert.showAndWait();
+                //open file
+                Desktop.getDesktop().open(selectedFile);
+                    
+            } catch (IOException ex) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Export Error");
+                alert.setHeaderText(null);
+                alert.setContentText("An error occurred while exporting the data");
+                alert.showAndWait();
+            }
+        }
+    }
     
+    
+//    @FXML
+//private void export(ActionEvent event) {
+//    // create a new FileChooser dialog
+//    FileChooser fileChooser = new FileChooser();
+//    fileChooser.setTitle("Export to CSV");
+//    fileChooser.getExtensionFilters().addAll(
+//            new FileChooser.ExtensionFilter("CSV Files", "*.csv")
+//    );
+//
+//    // show the dialog and get the selected file
+//    File selectedFile = fileChooser.showSaveDialog(null);
+//
+//    // check if a file was selected
+//    if (selectedFile != null) {
+//        try {
+//            // create a new FileWriter for the selected file
+//            FileWriter fileWriter = new FileWriter(selectedFile);
+//
+//            // get the list of Produit objects from the ObservableList
+//            ObservableList<Produit> userList = FXCollections.observableArrayList();
+//            userList.addAll(new Produit("Produit1", 10.0, "Marque1"),
+//                            new Produit("Produit2", 20.0, "Marque2"),
+//                            new Produit("Produit3", 30.0, "Marque3"));
+//
+//            // write the header row to the CSV file
+//            fileWriter.append("Nom_produit, Prix_produit , Marque_produit\n");
+//
+//            // write each Produit object to the CSV file
+//            for (Produit produit : userList) {
+//                fileWriter.append(produit.getNom_produit());
+//                fileWriter.append(",");
+//                fileWriter.append(String.valueOf(produit.getPrix_produit()));
+//                fileWriter.append(",");
+//                fileWriter.append(produit.getMarque_produit());
+//                fileWriter.append("\n");
+//            }
+//
+//            // close the FileWriter and show a success message
+//            fileWriter.close();
+//            Alert alert = new Alert(AlertType.INFORMATION);
+//            alert.setTitle("Export Successful");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Data exported to " + selectedFile.getAbsolutePath());
+//            alert.showAndWait();
+//
+//            // open the exported file
+//            Desktop.getDesktop().open(selectedFile);
+//        } catch (IOException ex) {
+//            // show an error message if there was an error exporting the data
+//            Alert alert = new Alert(AlertType.ERROR);
+//            alert.setTitle("Export Error");
+//            alert.setHeaderText(null);
+//            alert.setContentText("An error occurred while exporting the data");
+//            alert.showAndWait();
+//        }
+//    }
+//}
+
     }
     
     

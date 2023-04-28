@@ -45,6 +45,7 @@
                   <Button fx:id="stat" layoutX="493.0" layoutY="372.0" mnemonicParsing="false" onAction="#OnClickedStatistique" text="PDF" />
                   <Button layoutX="410.0" layoutY="372.0" mnemonicParsing="false" onAction="#statbutton" text="Statestique" />
                   <TextField fx:id="searchField" layoutX="25.0" layoutY="46.0" />
+                  <Button fx:id="export" layoutX="545.0" layoutY="372.0" mnemonicParsing="false" onAction="#export" text="Export" />
                </children>
             </Pane>
          </children>
