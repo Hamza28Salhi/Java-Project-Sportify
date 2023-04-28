@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -36,7 +37,7 @@ public class Reset_PasswordController implements Initializable {
     @FXML
     private TextField tfConfirmer;
     @FXML
-    private Button BtnReset;
+    private Label LoginLabel;
 
     /**
      * Initializes the controller class.

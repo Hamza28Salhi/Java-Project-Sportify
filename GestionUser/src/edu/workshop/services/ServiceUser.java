@@ -50,7 +50,7 @@ public class ServiceUser implements IService {
         try {
             if (p instanceof User) { // Vérifie si p est un objet de type User
                 //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')"; 
-                String qry = "INSERT INTO user(email, password, address, full_name, roles, date_naiss) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','" + ((User) p).getDate_naissance() + "')";
+                String qry = "INSERT INTO user(email, password, address, full_name, roles, date_naiss,user_pic) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','" + ((User) p).getDate_naissance() + "','" + ((User) p).getImg_user()+ "')";
                 //String qry = "INSERT INTO user(email, password, address, full_name) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
                 ste = conn.createStatement();
                 ste.executeUpdate(qry);
@@ -96,18 +96,20 @@ public class ServiceUser implements IService {
     public List<User> ListUsers() {
     List<User> list = new ArrayList<>();
     try {
-        String qry = "SELECT id, full_name, email,password, address, date_naiss, roles FROM user";
+        String qry = "SELECT id, full_name, email,password, address, date_naiss,user_pic, roles roles FROM user";
         Statement st = conn.createStatement();
         ResultSet RS = st.executeQuery(qry);
         while (RS.next()) {
             List<String> roles = Arrays.asList(RS.getString("roles").split(","));
             User R = new User(
                 RS.getInt("id"),
-                RS.getString("full_name"),
                 RS.getString("email"),
-                RS.getString("password"),
                 RS.getString("address"),
+                RS.getString("password"),
+                RS.getString("full_name"),
+                RS.getString("user_pic"),
                 RS.getDate("date_naiss"),
+                
                 roles
             );
             list.add(R);
@@ -177,7 +179,7 @@ public class ServiceUser implements IService {
     @Override
     public void update(User user) {
         try {
-            String qry = "UPDATE user SET email = '" + user.getEmail() + "', password = '" + user.getPassword() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "', date_naiss = '" + user.getDate_naissance() + "', img_user = '" + user.getImg_user() + "' WHERE id = " + user.getId();
+            String qry = "UPDATE user SET email = '" + user.getEmail() + "', address = '" + user.getAddress() + "', full_name = '" + user.getFull_name() + "', date_naiss = '" + user.getDate_naissance() + "', img_user = '" + user.getImg_user() + "' WHERE id = " + user.getId();
 Statement st = conn.createStatement();
             st.executeUpdate(qry);
             System.out.println("User updated !");

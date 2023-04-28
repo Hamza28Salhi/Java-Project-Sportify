@@ -34,6 +34,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -43,6 +44,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -61,8 +63,7 @@ public class User_UpdateController implements Initializable {
     private TextField fullnameF;
     @FXML
     private TextField emailF;
-    @FXML
-    private TextField passwordF;
+   
     @FXML
     private TextField adreeseF;
     int index = -1;
@@ -74,6 +75,10 @@ public class User_UpdateController implements Initializable {
     private ComboBox<String> roleu;
     @FXML
     private Label label;
+    @FXML
+    private Button chooseImage;
+    @FXML
+    private Button EditUser2;
 
     /**
      * Initializes the controller class.
@@ -85,13 +90,16 @@ public class User_UpdateController implements Initializable {
 
         fullnameF.setText(String.valueOf(User_ListController.U.getFull_name()));
         emailF.setText(String.valueOf(User_ListController.U.getEmail()));
-        passwordF.setText(String.valueOf(User_ListController.U.getPassword()));
+        
         adreeseF.setText(String.valueOf(User_ListController.U.getAddress()));
 
         roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
         
          Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+         Font buttonfont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 16);
         label.setFont(font);
+        chooseImage.setFont(buttonfont);
+        EditUser2.setFont(buttonfont);
 
     }
 
@@ -104,7 +112,7 @@ public class User_UpdateController implements Initializable {
         String full_name = fullnameF.getText();
         String email = emailF.getText();
         String address = adreeseF.getText();
-        String password = passwordF.getText();
+        
         Date date = Date.valueOf(dateNaissanceField.getValue());
         String role = roleu.getValue();
         //java.sql.Date dateNaissance = new java.sql.Date(Date.valueOf(dateNaissanceField.getValue()).getTime());
@@ -116,13 +124,7 @@ public class User_UpdateController implements Initializable {
             return;
         }
 
-        // Check if password is at least 8 characters long
-        if (password.length() < 8) {
-            // Show an error message and return
-            Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
-            alert.showAndWait();
-            return;
-        }
+        
         // Check if address is not empty
         if (address.isEmpty()) {
             // Show an error message and return
@@ -145,13 +147,7 @@ public class User_UpdateController implements Initializable {
             alert.showAndWait();
             return;
         }*/
-        // Check if password is at least 8 characters long
-        if (password.length() < 8) {
-            // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Password must be at least 8 characters long.", ButtonType.OK);
-            alert.showAndWait();
-            return;
-        }
+        
 
         // Convert the date from the DatePicker to a Date object
         // Date date = Date.valueOf(dateNaissanceField.getValue());
@@ -161,7 +157,7 @@ public class User_UpdateController implements Initializable {
         updatedUser.setId(id);
         updatedUser.setFull_name(full_name);
         updatedUser.setEmail(email);
-        updatedUser.setPassword(password);
+        
         updatedUser.setAddress(address);
         updatedUser.setDate_naissance(date);
         updatedUser.setImg_user(img_user);
@@ -216,6 +212,14 @@ public class User_UpdateController implements Initializable {
                 Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @FXML
+    private void chooseImage(MouseEvent event) {
+    }
+
+    @FXML
+    private void EditUser2(MouseEvent event) {
     }
 
 }

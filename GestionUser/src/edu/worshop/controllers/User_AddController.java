@@ -36,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -45,6 +46,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -80,6 +82,10 @@ public class User_AddController implements Initializable {
     private ComboBox<String> roleu;
     @FXML
     private Label label;
+    @FXML
+    private Button chooseImage;
+    @FXML
+    private Button AddUser2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,7 +93,10 @@ public class User_AddController implements Initializable {
         roleu.getItems().addAll("ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER");
         
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        Font buttonfont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 16);
         label.setFont(font);
+        chooseImage.setFont(buttonfont);
+        AddUser2.setFont(buttonfont);
 
     }
 
@@ -174,11 +183,7 @@ public class User_AddController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Notifications.create()
-                    .title("Notification")
-                    .text("user ajouter.")
-                    .position(Pos.BOTTOM_RIGHT)
-                    .showInformation();
+        
     }
 
     @FXML
@@ -211,6 +216,14 @@ public class User_AddController implements Initializable {
                 Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @FXML
+    private void chooseImage(MouseEvent event) {
+    }
+
+    @FXML
+    private void AddUser2(MouseEvent event) {
     }
 
 }

@@ -68,6 +68,7 @@ public class Front_ProfileController implements Initializable {
             date_naisst.setText(user.getDate_naissance().toString());
 
             File file = new File("upload/" + user.getImg_user());
+            
             Image image = new Image(file.toURI().toString());
             ProfileImage.setImage(image);
         }

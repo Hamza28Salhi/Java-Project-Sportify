@@ -44,6 +44,16 @@ public class User {
         this.roles = roles;
     }
 
+    public User(int id, String email, String address, String password, String full_name, String img_user, Date date_naissance, List<String> roles) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.date_naissance = date_naissance;
+    }
+
     public User(String email, String address, String password, String full_name,String img_user, List<String> roles) {
         this.email = email;
         this.address = address;

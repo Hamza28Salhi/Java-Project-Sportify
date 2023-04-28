@@ -17,13 +17,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -45,6 +48,8 @@ public class Forget_PasswordController implements Initializable {
     }
     @FXML
     private Button BtnCode;
+    @FXML
+    private Label LoginLabel;
 
     /**
      * Initializes the controller class.
@@ -52,6 +57,7 @@ public class Forget_PasswordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     
@@ -88,26 +94,24 @@ public class Forget_PasswordController implements Initializable {
             A.setContentText("Veuillez saisir une adresse mail valide ! ");
             A.show();
         }
+        Notifications.create()
+                    .title("Notification")
+                    .text("Check your email fo verification code!")
+                    .position(Pos.BOTTOM_RIGHT)
+                    .showInformation();
     }
     
     @FXML
     private void btnAnnulerForgot(ActionEvent event) {
-        try {
-
-                    Parent page1 = FXMLLoader.load(getClass().getResource("/GUI/Front_Login.fxml"));
-
-                    Scene scene = new Scene(page1);
-
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                    stage.setScene(scene);
-
-                    stage.show();
-
-                } catch (IOException ex) {
-
-                    System.out.println(ex.getMessage());
-
-                }
+         try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
     }
 }

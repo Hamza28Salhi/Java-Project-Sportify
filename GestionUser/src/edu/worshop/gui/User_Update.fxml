@@ -15,15 +15,14 @@
         <URL value="@/edu/worshop/controllers/user_update.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="fullnameF" layoutX="61.0" layoutY="118.0" minHeight="30.0" minWidth="200.0" prefWidth="150.0" promptText="Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
-      <TextField fx:id="emailF" layoutX="61.0" layoutY="193.0" minHeight="30.0" minWidth="200.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
-      <TextField fx:id="passwordF" layoutX="61.0" layoutY="263.0" minHeight="30.0" minWidth="200.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
-      <TextField fx:id="adreeseF" layoutX="61.0" layoutY="340.0" minHeight="30.0" minWidth="200.0" promptText="Address" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
-      <DatePicker fx:id="dateNaissanceField" layoutX="61.0" layoutY="456.0" minHeight="30.0" minWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="fullnameF" layoutX="61.0" layoutY="185.0" minHeight="30.0" minWidth="200.0" prefWidth="150.0" promptText="Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
+      <TextField fx:id="emailF" layoutX="61.0" layoutY="256.0" minHeight="30.0" minWidth="200.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
+      <TextField fx:id="adreeseF" layoutX="61.0" layoutY="319.0" minHeight="30.0" minWidth="200.0" promptText="Address" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;-fx-text-fill: white;" />
+      <DatePicker fx:id="dateNaissanceField" layoutX="61.0" layoutY="447.0" minHeight="30.0" minWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
       <ImageView fx:id="imageView" fitHeight="237.0" fitWidth="246.0" layoutX="428.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="516.0" layoutY="371.0" mnemonicParsing="false" onAction="#chooseImage" onMouseClicked="#chooseImage" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Import" textFill="WHITE" />
-      <Button layoutX="639.0" layoutY="486.0" mnemonicParsing="false" onAction="#EditUser2" onMouseClicked="#EditUser2" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Update" textFill="WHITE" />
-      <ComboBox fx:id="roleu" layoutX="86.0" layoutY="401.0" prefWidth="150.0" />
+      <Button fx:id="chooseImage" layoutX="516.0" layoutY="371.0" mnemonicParsing="false" onAction="#chooseImage" onMouseClicked="#chooseImage" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Import" textFill="WHITE" />
+      <Button fx:id="EditUser2" layoutX="639.0" layoutY="486.0" mnemonicParsing="false" onAction="#EditUser2" onMouseClicked="#EditUser2" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #0593a1;" text="Update" textFill="WHITE" />
+      <ComboBox fx:id="roleu" layoutX="86.0" layoutY="386.0" prefWidth="150.0" />
       <Label fx:id="label" layoutX="288.0" layoutY="43.0" prefHeight="74.0" prefWidth="279.0" text="Update User" textFill="WHITE">
          <font>
             <Font size="50.0" />

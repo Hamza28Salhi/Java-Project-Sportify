@@ -15,17 +15,17 @@
     
    <children>
       <ListView fx:id="User_Listfx" layoutX="45.0" layoutY="166.0" prefHeight="314.0" prefWidth="710.0" />
-      <Button layoutX="427.0" layoutY="506.0" mnemonicParsing="false" onAction="#addUser" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #0593a1;" text="Add" textFill="WHITE">
+      <Button fx:id="addUser" layoutX="427.0" layoutY="506.0" mnemonicParsing="false" onAction="#addUser" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #0593a1;" text="Add" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="628.0" layoutY="506.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Delete" textFill="WHITE">
+      <Button fx:id="deleteUser" layoutX="628.0" layoutY="506.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Delete" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="522.0" layoutY="506.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Update" textFill="WHITE">
+      <Button fx:id="updateUser" layoutX="522.0" layoutY="506.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Update" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -35,5 +35,15 @@
          <font>
             <Font size="50.0" />
          </font></Label>
+      <Button fx:id="stat" layoutX="62.0" layoutY="506.0" mnemonicParsing="false" onAction="#stat" prefHeight="38.0" prefWidth="96.0" style="-fx-background-color: #ff7a4a;" text="Pie Chart" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="pdf" layoutX="177.0" layoutY="506.0" mnemonicParsing="false" onAction="#pdf" prefHeight="38.0" prefWidth="96.0" style="-fx-background-color: #ff7a4a;" text="PDF" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
