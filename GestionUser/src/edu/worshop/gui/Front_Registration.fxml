@@ -22,18 +22,47 @@
             <TextField fx:id="emailF" layoutX="151.0" layoutY="197.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0593A2;" />
             <TextField fx:id="addressF" layoutX="151.0" layoutY="310.0" promptText="Address" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
             <TextField fx:id="full_nameF" layoutX="151.0" layoutY="146.0" promptText="Full Name" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
-            <Button layoutX="183.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#Register" prefHeight="36.0" prefWidth="78.0" style="-fx-background-color: #0593A2;" text="Register" textFill="WHITE" />
-            <DatePicker fx:id="dateNaissanceField" layoutX="141.0" layoutY="368.0" />
-            <Label layoutX="186.0" layoutY="350.0" text="Date Of Birth:" textFill="#a4a4a4" />
+            <Button fx:id="Register" layoutX="183.0" layoutY="491.0" mnemonicParsing="false" onAction="#Register" onMouseClicked="#Register" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #0593A2;" text="Register" textFill="WHITE" />
+            <DatePicker fx:id="dateNaissanceField" layoutX="141.0" layoutY="368.0" promptText="Date Of Birth" />
             <PasswordField fx:id="passwordFF" layoutX="151.0" layoutY="254.0" promptText="Password" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
-            <Label layoutX="167.0" layoutY="68.0" prefHeight="46.0" prefWidth="124.0" text="Register" textFill="#0cbad1">
+            <ImageView fx:id="imageView" fitHeight="71.0" fitWidth="86.0" layoutX="250.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1.0;" />
+            <Button fx:id="chooseImage" layoutX="142.0" layoutY="426.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #0593A2;" text="Picture:" textFill="WHITE" />
+            <Hyperlink fx:id="redirectlogin" layoutX="152.0" layoutY="553.0" prefHeight="24.0" prefWidth="191.0" text="Already have an account?" />
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-name-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-email-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-password-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-address-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-calendar-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="100.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-image-50.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label" layoutX="124.0" layoutY="68.0" prefHeight="46.0" prefWidth="204.0" text="Register" textFill="#0593a2">
                <font>
                   <Font size="31.0" />
                </font>
             </Label>
-            <ImageView fx:id="imageView" fitHeight="71.0" fitWidth="86.0" layoutX="218.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="140.0" layoutY="423.0" mnemonicParsing="false" onAction="#chooseImage" text="Import" />
-            <Hyperlink fx:id="redirectlogin" layoutX="152.0" layoutY="553.0" prefHeight="24.0" prefWidth="191.0" text="Already have an account?" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="434.0" style="-fx-background-color: #0593A2;">

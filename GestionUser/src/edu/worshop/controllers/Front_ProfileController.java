@@ -17,8 +17,16 @@ import edu.workshop.services.ServiceUser;
  */
 import edu.worshop.model.User;
 import java.io.File;
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,6 +35,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -47,11 +57,13 @@ public class Front_ProfileController implements Initializable {
     
     @FXML
     private Text Profile_Details;
-    @FXML
-    private Text Contact_Info;
 
     @FXML
     private ImageView ProfileImage;
+    @FXML
+    private Button EditUser;
+    @FXML
+    private Button logout;
 
     /**
      * Initializes the controller class.
@@ -74,6 +86,9 @@ public class Front_ProfileController implements Initializable {
         }
         
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 25);
+        Font buttonfont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 16);
+        EditUser.setFont(buttonfont);
+        logout.setFont(buttonfont);
         Profile_Details.setFont(font);
         
     }
@@ -93,6 +108,26 @@ public class Front_ProfileController implements Initializable {
         // Show a success message
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Profile Updated successfully!", ButtonType.OK);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void EditUser(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+         try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                    
+                    
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
     }
 
 }

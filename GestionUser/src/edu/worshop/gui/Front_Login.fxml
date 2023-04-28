@@ -18,9 +18,9 @@
    <children>
       <AnchorPane layoutX="440.0" prefHeight="600.0" prefWidth="459.0">
          <children>
-            <Button layoutX="183.0" layoutY="346.0" mnemonicParsing="false" onAction="#connexionF" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #0593A2;" text="Login" textFill="WHITE" />
+            <Button fx:id="connexionF" layoutX="183.0" layoutY="346.0" mnemonicParsing="false" onAction="#connexionF" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #0593A2;" text="Login" textFill="WHITE" />
             <TextField fx:id="emaillogin" layoutX="127.0" layoutY="216.0" prefHeight="28.0" prefWidth="202.0" promptText="Email" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
-            <Label fx:id="LoginLabel" layoutX="183.0" layoutY="63.0" text="Login" textFill="#0593a2">
+            <Label fx:id="LoginLabel" layoutX="161.0" layoutY="63.0" text="Login" textFill="#0593a2">
                <font>
                   <Font name="Arial Black" size="31.0" />
                </font>
@@ -28,6 +28,16 @@
             <Hyperlink fx:id="redirectforgetpasssword" layoutX="161.0" layoutY="529.0" prefHeight="24.0" prefWidth="164.0" text="Forget your password?" />
             <Hyperlink fx:id="redirectregister" layoutX="206.0" layoutY="553.0" prefHeight="24.0" prefWidth="164.0" text="Register" />
             <PasswordField fx:id="passwordlogin" layoutX="127.0" layoutY="266.0" prefHeight="28.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px;" />
+            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="83.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-email-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="26.0" layoutX="83.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-password-50.png" />
+               </image>
+            </ImageView>
             
          </children>
       </AnchorPane>

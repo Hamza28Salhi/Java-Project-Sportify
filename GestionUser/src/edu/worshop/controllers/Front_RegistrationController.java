@@ -27,14 +27,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -63,6 +66,12 @@ public class Front_RegistrationController implements Initializable {
     private ImageView imageView;
     @FXML
     private Hyperlink redirectlogin;
+    @FXML
+    private Button Register;
+    @FXML
+    private Button chooseImage;
+    @FXML
+    private Label label;
 
     /**
      * Initializes the controller class.
@@ -83,6 +92,14 @@ public class Front_RegistrationController implements Initializable {
         }
             
              });
+        Image defaultImage = new Image("default.png");
+        imageView.setImage(defaultImage);
+        
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        Font buttonfont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 16);
+        label.setFont(font);
+        Register.setFont(buttonfont);
+        chooseImage.setFont(buttonfont);
         
     }    
 
@@ -202,6 +219,10 @@ public class Front_RegistrationController implements Initializable {
                 Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @FXML
+    private void Register(ActionEvent event) {
     }
     
 }

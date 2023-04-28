@@ -38,7 +38,7 @@ public class GestionUser extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("User_List.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Front_Profile.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);

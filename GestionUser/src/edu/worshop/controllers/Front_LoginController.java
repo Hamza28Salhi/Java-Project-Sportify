@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -42,13 +43,13 @@ public class Front_LoginController implements Initializable {
     @FXML
     private TextField passwordlogin;
     @FXML
-    private TextField repeatPassword;
-    @FXML
     private Label LoginLabel;
     @FXML
     private Hyperlink redirectforgetpasssword;
     @FXML
     private Hyperlink redirectregister;
+    @FXML
+    private Button connexionF;
     
 
     /**
@@ -86,6 +87,10 @@ public class Front_LoginController implements Initializable {
         }
             
              });
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        Font buttonfont = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 16);
+        LoginLabel.setFont(font);
+        connexionF.setFont(buttonfont);
     }
 
     @FXML
@@ -144,9 +149,6 @@ public class Front_LoginController implements Initializable {
     }
 
 
-    @FXML
-    private void redirectforgetpasssword(ActionEvent event) {
-    }
     
     
 
