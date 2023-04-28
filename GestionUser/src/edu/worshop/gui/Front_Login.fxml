@@ -16,6 +16,15 @@
         <URL value="@/edu/worshop/controllers/front_login.css" />
     </stylesheets>
    <children>
+      <AnchorPane fx:id="logoo" prefHeight="600.0" prefWidth="436.0" style="-fx-background-color: #0593A2;">
+         <children>
+            <ImageView fitHeight="219.0" fitWidth="188.0" layoutX="122.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
       <AnchorPane layoutX="440.0" prefHeight="600.0" prefWidth="459.0">
          <children>
             <Button fx:id="connexionF" layoutX="183.0" layoutY="346.0" mnemonicParsing="false" onAction="#connexionF" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #0593A2;" text="Login" textFill="WHITE" />
@@ -39,15 +48,6 @@
                </image>
             </ImageView>
             
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="436.0" style="-fx-background-color: #0593A2;">
-         <children>
-            <ImageView fitHeight="219.0" fitWidth="188.0" layoutX="122.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/logo.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </children>

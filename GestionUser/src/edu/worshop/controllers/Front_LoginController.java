@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +30,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -50,6 +55,11 @@ public class Front_LoginController implements Initializable {
     private Hyperlink redirectregister;
     @FXML
     private Button connexionF;
+    private int passwordAttempts = 0;// variable pour vérifier si l'interface
+    @FXML
+    private AnchorPane logoo;
+    @FXML
+    private ImageView logo;
     
 
     /**
@@ -138,9 +148,34 @@ public class Front_LoginController implements Initializable {
             }
         } else {
             displayErrorMessage();
+            
+            // Bloquer l'interface si l'utilisateur saisit un mot de passe incorrect 3 fois
+            passwordAttempts++;
+            if (passwordAttempts == 3) {
+                connexionF.setDisable(true);
+                passwordlogin.setDisable(true);
+                emaillogin.setDisable(true);
+                LoginLabel.setDisable(true);
+                redirectforgetpasssword.setDisable(true);
+                 
+                redirectregister.setDisable(true);
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            connexionF.setDisable(false);
+                            passwordlogin.setDisable(false);
+                            emaillogin.setDisable(false);
+                            LoginLabel.setDisable(false);
+                            redirectforgetpasssword.setDisable(false);
+                            passwordAttempts = 0;
+                        });
+                    }
+                }, 60000); // 1 minute en millisecondes
         }
     }
-
+    }
 
     
     private void displayErrorMessage() {

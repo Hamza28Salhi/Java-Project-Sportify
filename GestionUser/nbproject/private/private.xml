@@ -15,7 +15,6 @@
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_profile.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_list.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/FrontController/Match_FrontController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/User_List.fxml</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Abonnement_AddController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Match_ListController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_update.css</file>
@@ -28,7 +27,6 @@
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_login.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Product_UpdateController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/FrontController/Abonnement_FrontController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/Front_Profile.fxml</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/User.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Post_ListController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/FrontController/Event_FrontController.java</file>
@@ -40,15 +38,12 @@
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/workshop3a4/Workshop3A4.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Reset_PasswordController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/front_forgetpassword.css</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/Front_Registration.fxml</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/FrontController/Post_FrontController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Abonnement_ListController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/FrontController/Product_FrontController.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/User_Add.fxml</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/user_add.css</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_ProfileController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/PasswordEncryption.java</file>
-            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/User_Update.fxml</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_ListController.java</file>
             <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Event_AddController.java</file>
         </group>
