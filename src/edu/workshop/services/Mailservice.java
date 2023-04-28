@@ -54,12 +54,12 @@ public class Mailservice {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject(" Notification de reponse de Match !!! ");
+            message.setSubject(" Notification Match!!! ");
             //Text in emial :
             //message.setText("  → Text message for Your Appointement ← ");
             //Html code in email :
             message.setContent(
-                    "<h1 style=\"color:red\">La date de votre match est : " + date + "</h1>"
+                    "<h1 style=\"color:blue\">La date du match est : " + date + "</h1>"
 + "<br/><h2>Nom du match : " + nom + "</h2></br>"
 + "<p>Stade : " + stade + "</p>"
 + "<img width=\"50%\" height=\"50%\" src=\"https://i.imgur.com/HL4euq4.jpeg\">"
