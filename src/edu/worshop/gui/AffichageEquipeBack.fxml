@@ -44,7 +44,7 @@
                      </fill>
                   </Text>
          
-                  <ListView fx:id="affichageEquipeBackfx" layoutX="87.0" layoutY="135.0" prefHeight="338.0" prefWidth="715.0" />
+                  <ListView fx:id="affichageEquipeBackfx" layoutX="87.0" layoutY="135.0" prefHeight="362.0" prefWidth="803.0" />
                   <ImageView fx:id="addeh" fitHeight="45.0" fitWidth="45.0" layoutX="25.0" layoutY="141.0" onMouseClicked="#addeh" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/pngwing.com%20(6).png" />

@@ -105,17 +105,29 @@ for (int i = 0; i < list2.size(); i++) {
     Equipe E = list2.get(i);
     list1.getItems().add(E); // add Equipe to ListView
 }
-  list1.setCellFactory(param -> new ListCell<Equipe>() {
-            @Override
-            protected void updateItem(Equipe item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText(item.getId() + "   |   " + item.getNom() + "   |   " + item.getJoueurs() + "   |   " + item.getClassement() + "   |   " + item.getEntraineur() + "   |   " + " (" + item.getCategorie() + ")");
-                }
+list1.setCellFactory(param -> new ListCell<Equipe>() {
+    @Override
+    protected void updateItem(Equipe item, boolean empty) {
+        super.updateItem(item, empty);
+        if (empty || item == null) {
+            setText(null);
+            setGraphic(null);
+        } else {
+            setText(item.getId() + "      " + item.getNom() + "      " + item.getJoueurs() + "     " + item.getClassement() + "     " + item.getEntraineur() + "     " + " (" + item.getCategorie() + ")");
+            ImageView imageView = new ImageView();
+            imageView.setFitHeight(70);
+            imageView.setFitWidth(70);
+            File file = new File("upload/" + item.getPicture());
+            if (file.exists()) {
+                Image image = new Image(file.toURI().toString());
+                imageView.setImage(image);
+                setGraphic(imageView);
             }
-        });
+        }
+    }
+});
+
+        
 
         // Ajouter une fonction de recherche
         FilteredList<Equipe> filteredList = new FilteredList<>(equipeList, p -> true);

@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -117,21 +119,49 @@ static Matches E = new Matches();
     private ImageView deleteh;
     @FXML
     private ImageView editeh;
+    @FXML
+    private TableView<Matches> affichageMatchesBackfxt;
+    @FXML
+private TableColumn<Matches, Integer> idColumn;
+@FXML
+private TableColumn<Matches, String> nomColumn;
+@FXML
+private TableColumn<Matches, String> stadeColumn;
+@FXML
+private TableColumn<Matches, String> scoreColumn;
+@FXML
+private TableColumn<Matches, Date> dateColumn;
+    @FXML
+    private Button trier;
+
     /**
      * Initializes the controller class.
      */
     public void initialize(URL url, ResourceBundle rb) {
+    // ListView
         ListView<Matches> list1 = affichageMatchesBackfx;
-MatchesCRUD inter = new Matches1CRUD();
-List<Matches> list2 = inter.afficherMatches();
-for (int i = 0; i < list2.size(); i++) {
-    Matches E = list2.get(i);
-    list1.getItems().add(E); // add Matches to ListView
-}
+        MatchesCRUD inter = new Matches1CRUD();
+        List<Matches> list2 = inter.afficherMatches();
+        for (int i = 0; i < list2.size(); i++) {
+            Matches E = list2.get(i);
+            list1.getItems().add(E); // add Matches to ListView
+        }
+
+        // TableView
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        stadeColumn.setCellValueFactory(new PropertyValueFactory<>("stade"));
+        scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        List<Matches> matchesList = matchesCRUD.afficherMatches();
+        ObservableList<Matches> matchesObservableList = FXCollections.observableArrayList(matchesList);
+        affichageMatchesBackfxt.setItems(matchesObservableList);
+        affichageMatchesBackfxt.getColumns().addAll(idColumn, nomColumn, stadeColumn, scoreColumn, dateColumn);
+    }
 
 
-
-        } 
+         
     
 
 
@@ -717,6 +747,18 @@ try {
             Logger.getLogger(AffichageMatchesBackController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    @FXML
+    private void trier(ActionEvent event) {
+          ObservableList<Matches> list = affichageMatchesBackfx.getItems();
+    Collections.sort(list, new Comparator<Matches>() {
+        @Override
+        public int compare(Matches e1, Matches e2) {
+            return e1.getNom().compareToIgnoreCase(e2.getNom());
+        }
+    });
+    affichageMatchesBackfx.setItems(list);
     }
     
 
