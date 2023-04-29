@@ -36,7 +36,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
+import static jdk.nashorn.internal.objects.NativeJava.to;
 import org.controlsfx.control.Notifications;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 /**
  * FXML Controller class
@@ -62,6 +66,8 @@ public class AjoutReservationFrontController implements Initializable {
     @FXML
     private Label labeltel;
     private boolean verificationNumero;
+    public static final String ACCOUNT_SID = "AC267d2e7ee78971c7843af4d09222d026";
+    public static final String AUTH_TOKEN = "90f8dd73796a22d88a3e5ec3f8b9d720";
     
     
    
@@ -75,7 +81,19 @@ public class AjoutReservationFrontController implements Initializable {
         // TODO
         PaiementRfx.getItems().addAll(PaiementRfxVariable);
         //Evenement_idRfx.getItems().addAll(Evenement_idRfxVariable);
-    }    
+    }   
+    
+    public static void sendSms(String recipient, String messageBody) {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        Message message = Message.creator(
+                new PhoneNumber(recipient), // To number
+                new PhoneNumber("+16205249295"), // From number
+                messageBody) // SMS body
+                .create();
+
+        System.out.println("Message sent: " + message.getSid());
+    }
 
     @FXML
     private void AjoutReservationFront(ActionEvent event) {
@@ -149,6 +167,7 @@ Optional<ButtonType> result = alert.showAndWait();
                     res1.ajouterReservation(R);
                     //showAlert("Réservation ajoutée avec succès");
                      System.out.println("Réservation ajoutée avec succès");
+                     sendSms("+21625992141", "une réservation a été ajouté ");
                       
                      
                      String message = "Dear [Client's Name],\n"
@@ -173,6 +192,8 @@ Optional<ButtonType> result = alert.showAndWait();
                 .position(Pos.BOTTOM_RIGHT);
                  notificationBuilder.darkStyle();
                  notificationBuilder.show();
+                 
+              
     
 
 try {
@@ -246,6 +267,9 @@ private boolean verifEmail(TextField chaine) {
        verificationNumero = true;
     }
 }
+    
+  
+    
     
         
 }

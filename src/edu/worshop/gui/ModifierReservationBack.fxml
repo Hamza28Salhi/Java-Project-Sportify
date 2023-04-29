@@ -10,22 +10,30 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.ModifierReservationBackController">
    <children>
-      <TextField fx:id="NomMfx" layoutX="218.0" layoutY="103.0" />
-      <TextField fx:id="PrenomMfx" layoutX="218.0" layoutY="148.0" />
-      <TextField fx:id="AdresseMfx" layoutX="218.0" layoutY="196.0" />
-      <TextField fx:id="TelephoneMfx" layoutX="218.0" layoutY="243.0" />
-      <ChoiceBox fx:id="PaiementMfx" layoutX="218.0" layoutY="291.0" prefWidth="150.0" />
-      <Text layoutX="135.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-      <Text layoutX="133.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
-      <Text layoutX="133.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
-      <Text layoutX="133.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" />
-      <Text layoutX="133.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paiement" />
-      <Button defaultButton="true" layoutX="483.0" layoutY="344.0" mnemonicParsing="false" onAction="#ModifierReservationBack" text="Modifier" textFill="#222897" />
-      <Text fill="#0825ff" layoutX="148.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier une réservation" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Unicode MS" size="27.0" />
-         </font>
-      </Text>
+      <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="610.0" prefWidth="910.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);" styleClass="mainFxmlClass">
+         <children>
+            <TextField fx:id="NomMfx" layoutX="254.0" layoutY="140.0" />
+            <TextField fx:id="PrenomMfx" layoutX="254.0" layoutY="185.0" />
+            <TextField fx:id="AdresseMfx" layoutX="254.0" layoutY="233.0" />
+            <TextField fx:id="TelephoneMfx" layoutX="254.0" layoutY="280.0" />
+            <ChoiceBox fx:id="PaiementMfx" layoutX="254.0" layoutY="328.0" prefWidth="150.0" />
+            <Text layoutX="171.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+            <Text layoutX="169.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+            <Text layoutX="169.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
+            <Text layoutX="169.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" />
+            <Text layoutX="169.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paiement" />
+            <Text fill="WHITE" layoutX="197.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier une réservation" textAlignment="CENTER">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <Button layoutX="397.0" layoutY="419.0" mnemonicParsing="false" onAction="#ModifierReservationBack" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #0593a1;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
       <Label fx:id="labelMtel" layoutX="380.0" layoutY="247.0" prefHeight="17.0" prefWidth="164.0" />
    </children>
 </AnchorPane>

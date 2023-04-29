@@ -8,14 +8,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AfficherReservationBackController">
    <children>
-      <ListView fx:id="AfficherReservationBackfx" layoutX="-5.0" layoutY="70.0" prefHeight="281.0" prefWidth="600.0" />
-      <Button defaultButton="true" layoutX="317.0" layoutY="361.0" mnemonicParsing="false" onAction="#ModifierReservationBack" text="Modifier" textFill="#222897" />
-      <Button defaultButton="true" layoutX="403.0" layoutY="361.0" mnemonicParsing="false" onAction="#SupprimerReservationBack" text="Supprimer" textFill="RED" />
-      <Text fill="#0825ff" layoutX="107.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afichage de la liste des réservations" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Unicode MS" size="27.0" />
-         </font>
-      </Text>
-      <Button defaultButton="true" layoutX="223.0" layoutY="361.0" mnemonicParsing="false" onAction="#statistiqueReservation" text="Statistique" textFill="#222897" />
+      <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="604.0" prefWidth="904.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);" styleClass="mainFxmlClass">
+         <children>
+            <Text fill="WHITE" layoutX="36.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage de la liste des réservations" textAlignment="CENTER">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <ListView fx:id="AfficherReservationBackfx" layoutY="140.0" prefHeight="281.0" prefWidth="896.0" />
+            <Button layoutX="207.0" layoutY="456.0" mnemonicParsing="false" onAction="#ModifierReservationBack" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: #0593a1;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="538.0" layoutY="456.0" mnemonicParsing="false" onAction="#SupprimerReservationBack" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #0593a1;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

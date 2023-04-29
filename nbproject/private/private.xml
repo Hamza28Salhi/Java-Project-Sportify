@@ -5,6 +5,7 @@
         <group>
             <file>file:/E:/workshop3A4/src/edu/workshop/controllers/AjoutReservationFrontController.java</file>
             <file>file:/E:/workshop3A4/src/edu/workshop/controllers/AjoutEvenementBackController.java</file>
+            <file>file:/E:/workshop3A4/src/edu/worshop/model/Reservation.java</file>
             <file>file:/E:/workshop3A4/src/edu/worshop/gui/GestionEvenement.java</file>
             <file>file:/E:/workshop3A4/src/edu/worshop/utils/MyConnection.java</file>
             <file>file:/E:/workshop3A4/src/edu/workshop/controllers/AffichageEvenementBackController.java</file>
