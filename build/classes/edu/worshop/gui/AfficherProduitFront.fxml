@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -17,7 +20,7 @@
          <children>
             <Pane layoutX="-4.0" prefHeight="102.0" prefWidth="610.0" style="-fx-background-color: #6A35B7;">
                <children>
-                  <Text fill="WHITE" layoutX="174.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique Sportify" textAlignment="CENTER">
+                  <Text fill="WHITE" layoutX="185.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique Sportify" textAlignment="CENTER">
                      <font>
                         <Font name="Berlin Sans FB" size="36.0" />
                      </font>
@@ -27,14 +30,54 @@
                         <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/logos.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="114.0" layoutY="38.0" mnemonicParsing="false" onAction="#qr_code" text="qr_code" />
+                  <Button layoutX="107.0" layoutY="70.0" mnemonicParsing="false" onAction="#qr_code" text="qr_code">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037879221367114">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.2639999985694885" green="0.03999999910593033" blue="0.6000000238418579" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                   <ImageView fx:id="code_qr" fitHeight="90.0" fitWidth="114.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                  <Pagination fx:id="pagination" layoutX="461.0" prefHeight="102.0" prefWidth="114.0" />
+                  <Button layoutX="173.0" layoutY="71.0" mnemonicParsing="false" onAction="#trier" prefHeight="25.0" prefWidth="60.0" text="trier">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037879221367114">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.2639999985694885" green="0.03999999910593033" blue="0.6000000238418579" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <ListView fx:id="AfficherProduitFrontfx" layoutX="21.0" layoutY="120.0" prefHeight="262.0" prefWidth="563.0" />
          </children>
       </Pane>
       <FlowPane fx:id="catpane" layoutX="176.0" layoutY="363.0" prefHeight="102.0" prefWidth="169.0" />
+      <Pagination fx:id="pagination" layoutX="487.0" layoutY="363.0" maxPageIndicatorCount="2" prefHeight="102.0" prefWidth="114.0" />
    </children>
 </AnchorPane>

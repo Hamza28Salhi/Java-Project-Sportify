@@ -15,7 +15,10 @@
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/workshop/controllers/AfficherProduitBackController.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/model/Produit.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/workshop/controllers/AjoutCategorieBackController.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/gui/AfficherProduitBack.fxml</file>
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/model/Categorie.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/gui/PiechartController.java</file>
+            <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/utils/MyConnection.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/workshop/controllers/AfficherCategorieBackController.java</file>
             <file>file:/C:/Users/lenovo/Desktop/java2/workshop3A4/src/edu/worshop/gui/AfficherCategorieBack.fxml</file>
         </group>

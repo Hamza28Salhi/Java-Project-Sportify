@@ -23,6 +23,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -73,6 +75,8 @@ static Produit P = new Produit();
     private FlowPane catpane;
     @FXML
     private ImageView code_qr;
+    @FXML
+    private Pagination pagination;
 
     
     
@@ -242,7 +246,7 @@ for (int i = 0; i < list2.size(); i++) {
     
     public VBox createPage(int pageIndex) {
     VBox pageBox = new VBox();
-    pageBox.setSpacing(10);
+    pageBox.setSpacing(2);
 
     // Calculer les indices des deux produits à afficher
     int index1 = pageIndex * 2;
@@ -266,7 +270,7 @@ for (int i = 0; i < list2.size(); i++) {
 private VBox createProductBox(Produit produit) {
     VBox productBox = new VBox();
     productBox.setAlignment(Pos.CENTER);
-    productBox.setSpacing(5);
+    productBox.setSpacing(2);
 
     Label nomLabel = new Label(produit.getNom_produit());
     Label prixLabel = new Label(String.valueOf(produit.getPrix_produit()));
@@ -276,6 +280,21 @@ private VBox createProductBox(Produit produit) {
 
     return productBox;
 }
+
+    @FXML
+    private void trier(ActionEvent event) {
+        ObservableList<Produit> listeProduits = AfficherProduitFrontfx.getItems();
+    Collections.sort(listeProduits, new Comparator<Produit>() {
+        @Override
+        public int compare(Produit p1, Produit p2) {
+            return p1.getMarque_produit().compareToIgnoreCase(p2.getMarque_produit());
+        }
+    });
+   AfficherProduitFrontfx.setItems(listeProduits);
+    }
+
+
+
 }
 
 

@@ -10,7 +10,8 @@ package edu.worshop.model;
  * @author lenovo
  */
 public class Produit {
-     private int id, categorie_id;
+     public int id;
+     public int categorie_id;
         private String nom_produit;
         
         private double prix_produit;
@@ -39,7 +40,6 @@ public class Produit {
         this.image = image;
         this.quantite = quantite;
     }
-
     public Produit() {
     }
 
@@ -101,9 +101,10 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", categorie_id=" + categorie_id + ", nom_produit=" + nom_produit + ", prix_produit=" + prix_produit + ", marque_produit=" + marque_produit + ", image=" + image + ", quantite=" + quantite + '}';
+        return "Produit{" + "categorie_id=" + categorie_id + ", nom_produit=" + nom_produit + ", prix_produit=" + prix_produit + ", marque_produit=" + marque_produit + ", image=" + image + ", quantite=" + quantite + '}';
     }
-        
+
+    
         
         
 }
