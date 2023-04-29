@@ -64,7 +64,7 @@ public class ModifierEvenementBackController implements Initializable {
         AuteurMfx.setText(String.valueOf(AffichageEvenementBackController.P.getAuteurPost()));
         ContenuMfx.setText(String.valueOf(AffichageEvenementBackController.P.getContenuPost()));
         ImagePostMfx.setText(String.valueOf(AffichageEvenementBackController.P.getImagePost()));
-    }    
+    }
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -104,8 +104,8 @@ public class ModifierEvenementBackController implements Initializable {
          }else if (!contenu.matches("(?s)[a-zA-Z\\s]+")) {
             showAlert("Le contenu doit être alphabétique avec des retours à la ligne");
         }else if (
-       contenu.length() < 50) {
-            showAlert("Le contenu doit contenir au moins " + 50 + " caractères");
+       contenu.length() < 10) {
+            showAlert("Le contenu doit contenir au moins " + 10 + " caractères");
          }
    
          else if (imagePost.isEmpty()) {

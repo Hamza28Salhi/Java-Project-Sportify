@@ -15,11 +15,14 @@ import java.util.Collections;
 import static java.util.Collections.list;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +31,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -48,6 +53,9 @@ static String titre_Post,contenu_Post,image_Post,auteur_Post;
 static Post P = new Post();
     @FXML
     private ComboBox<String> comb;
+    private ObservableList<Post> postList;
+    @FXML
+    private TextField searchField;
  
     /**
      * Initializes the controller class.
@@ -62,13 +70,41 @@ static Post P = new Post();
         ListView<Post> list1 = (ListView<Post>) affichagePostBackfx; //ListView<Post> list1 = affichagePostBackfx;
 PostCRUD inter = new Post1CRUD();
 List<Post> list2 = inter.afficherPost();
+postList = FXCollections.observableArrayList(list2);
 for (int i = 0; i < list2.size(); i++) {
     Post P = list2.get(i);
     list1.getItems().add(P); // add Post to ListView
 }
 
+// Ajouter une fonction de recherche
+        FilteredList<Post> filteredList = new FilteredList<>(postList, p -> true);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(Post -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
 
-        }   
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Post.getAuteurPost().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par nom complet
+                } else if (Post.getContenuPost().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par adresse e-mail
+                } else if (String.valueOf(Post.getId()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par ID
+                } else if (Post.getTitrePost().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par date de naissance
+                } 
+
+                return false; // Aucune correspondance trouvée
+            });
+        });
+
+        SortedList<Post> sortedList = new SortedList<>(filteredList);
+        list1.setItems(sortedList);
+
+
+        }
 
            @FXML
     private void SupprimerPostBack(ActionEvent event) {
@@ -76,10 +112,17 @@ for (int i = 0; i < list2.size(); i++) {
     PostCRUD inter = new Post1CRUD();
 
     int selectedIndex = list.getSelectionModel().getSelectedIndex();
-    if (selectedIndex >= 0) {      
+    if (selectedIndex >= 0) {   
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Confirmation");
+                alert.setHeaderText(null);
+                alert.setContentText("êtes vous sûr de vouloir supprimer ce Post ?");
+Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
         Post P = list.getSelectionModel().getSelectedItem();
         inter.supprimerPost(P.getId());
         list.getItems().remove(selectedIndex);
+    }
     } else {
         showAlert("Veuillez sélectionner un post à supprimer.");
     }
@@ -210,14 +253,13 @@ for (int i = 0; i < list2.size(); i++) {
         
         // Mise à jour de l'affichage avec la liste triée des posts
         // ...
-         affichagePostBackfx.getItems().clear();
- ListView<Post> list1 = (ListView<Post>) affichagePostBackfx;
-    for (Post post : posts) {
-        list1.getItems().add(post);
-    } 
+         postList = FXCollections.observableArrayList(posts);
+            ListView<Post> list1 = (ListView<Post>) affichagePostBackfx;
+            list1.setItems(postList);
+    }
     }
         
-    }
+    
     
     
     
