@@ -42,12 +42,15 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -71,12 +74,17 @@ static int prix_produit;
 static String marque_produit, image;
 static int quantite;
 static Produit P = new Produit();
+      //  private ObservableList<Produit> userList;
+
     @FXML
     private FlowPane catpane;
+   
     @FXML
     private ImageView code_qr;
     @FXML
     private Pagination pagination;
+    @FXML
+    private TextField searchfield;
 
     
     
@@ -93,10 +101,36 @@ for (int i = 0; i < list2.size(); i++) {
     Produit P = list2.get(i);
     list1.getItems().add(P); // add Evenement to ListView
           // refrechpane();
+          
+          
 }
+// // Ajouter une fonction de recherche
+//        FilteredList<Produit> filteredList = new FilteredList<>(userList, p -> true);
+//        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            filteredList.setPredicate(Produit -> {
+//                if (newValue == null || newValue.isEmpty()) {
+//                    return true;
+//                }
+//
+//                String lowerCaseFilter = newValue.toLowerCase();
+//
+//                if (Produit.getNom_produit().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true; // Recherche par nom complet
+//                } else if (Produit.getMarque_produit().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true; // Recherche par adresse e-mail
+//                } 
+//
+//                return false; // Aucune correspondance trouvée
+//            });
+//        });
+//
+//        SortedList<Produit> sortedList = new SortedList<>(filteredList);
+//        list1.setItems(sortedList);
+//        // TODO
 
-        // TODO
-    }  
+
+
+  }  
    
 
     /**
@@ -293,7 +327,7 @@ private VBox createProductBox(Produit produit) {
    AfficherProduitFrontfx.setItems(listeProduits);
     }
 
-
+   
 
 }
 

@@ -17,7 +17,7 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Pane layoutX="-11.0" layoutY="-5.0" prefHeight="410.0" prefWidth="610.0" style="-fx-background-color: #6030A8;">
+            <Pane layoutX="-11.0" layoutY="-5.0" prefHeight="410.0" prefWidth="610.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);">
                <children>
                   <ListView fx:id="AfficherProduitBackfx" layoutX="19.0" layoutY="83.0" prefHeight="283.0" prefWidth="489.0" />
                   <Text layoutX="205.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Produits" textAlignment="CENTER">
@@ -128,8 +128,9 @@
                      </textFill>
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Button>
-                  <Button layoutX="512.0" layoutY="83.0" mnemonicParsing="false" onAction="#statbutton" prefHeight="27.0" prefWidth="87.0" text="Statestique">
+                     </font>
+                  </Button>
+                  <Button layoutX="512.0" layoutY="132.0" mnemonicParsing="false" onAction="#statbutton" prefHeight="27.0" prefWidth="87.0" text="Statestique">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -148,9 +149,10 @@
                               </Stop>
                            </stops>
                         </LinearGradient>
-                     </textFill></Button>
-                  <TextField fx:id="searchField" layoutX="19.0" layoutY="53.0" promptText="recherche" />
-                  <Button fx:id="export" layoutX="512.0" layoutY="134.0" mnemonicParsing="false" onAction="#export" prefHeight="25.0" prefWidth="87.0" text="Export">
+                     </textFill>
+                  </Button>
+                  <TextField fx:id="searchField" layoutX="19.0" layoutY="52.0" promptText="recherche" />
+                  <Button fx:id="export" layoutX="512.0" layoutY="83.0" mnemonicParsing="false" onAction="#export" prefHeight="25.0" prefWidth="87.0" text="Export Excel">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037878498886571">
                            <stops>
@@ -169,7 +171,29 @@
                      </textFill>
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Button>
+                     </font>
+                  </Button>
+                  <Button layoutX="535.0" layoutY="12.0" mnemonicParsing="false" onAction="#ListeProduitFront" text="Boutique">
+                     <textFill>
+                        <LinearGradient endX="0.9848484992980957" endY="1.0" startX="0.9886363780859746" startY="0.39772732691331336">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.7062170505523682" green="0.13009746372699738" blue="0.7473683953285217" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.14427220821380615" green="0.11969999969005585" blue="0.5699999928474426" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

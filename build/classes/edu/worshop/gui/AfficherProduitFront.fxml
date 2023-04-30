@@ -16,9 +16,9 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.controllers.AfficherProduitFrontController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="602.0" style="-fx-background-color: #D9D0E6;">
+      <Pane prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #22629A;">
          <children>
-            <Pane layoutX="-4.0" prefHeight="102.0" prefWidth="610.0" style="-fx-background-color: #6A35B7;">
+            <Pane layoutX="-4.0" prefHeight="480.0" prefWidth="648.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);">
                <children>
                   <Text fill="WHITE" layoutX="185.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique Sportify" textAlignment="CENTER">
                      <font>
@@ -30,7 +30,7 @@
                         <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/logos.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="107.0" layoutY="70.0" mnemonicParsing="false" onAction="#qr_code" text="qr_code">
+                  <Button layoutX="14.0" layoutY="397.0" mnemonicParsing="false" onAction="#qr_code" prefHeight="25.0" prefWidth="83.0" text="qr_code">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037879221367114">
                            <stops>
@@ -50,8 +50,7 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <ImageView fx:id="code_qr" fitHeight="90.0" fitWidth="114.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="173.0" layoutY="71.0" mnemonicParsing="false" onAction="#trier" prefHeight="25.0" prefWidth="60.0" text="trier">
+                  <Button layoutX="14.0" layoutY="92.0" mnemonicParsing="false" onAction="#trier" prefHeight="25.0" prefWidth="122.0" text="trier par marque">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037879221367114">
                            <stops>
@@ -72,12 +71,13 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <ListView fx:id="AfficherProduitFrontfx" layoutX="12.0" layoutY="128.0" prefHeight="242.0" prefWidth="625.0" />
+                  <ImageView fx:id="code_qr" fitHeight="90.0" fitWidth="114.0" layoutX="112.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
-            <ListView fx:id="AfficherProduitFrontfx" layoutX="21.0" layoutY="120.0" prefHeight="262.0" prefWidth="563.0" />
          </children>
       </Pane>
       <FlowPane fx:id="catpane" layoutX="176.0" layoutY="363.0" prefHeight="102.0" prefWidth="169.0" />
-      <Pagination fx:id="pagination" layoutX="487.0" layoutY="363.0" maxPageIndicatorCount="2" prefHeight="102.0" prefWidth="114.0" />
+      <Pagination fx:id="pagination" layoutX="475.0" layoutY="429.0" maxPageIndicatorCount="2" prefHeight="50.0" prefWidth="220.0" />
    </children>
 </AnchorPane>

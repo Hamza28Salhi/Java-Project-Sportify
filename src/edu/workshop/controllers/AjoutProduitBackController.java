@@ -40,8 +40,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.awt.Image;
+import java.time.Duration;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -166,6 +169,13 @@ Optional<ButtonType> result = alert.showAndWait();
                     
                     
     }
+                Notifications notificationBuilder = Notifications.create()
+                .title("produit ajoutée")
+                .text("saved")
+               // .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT);
+                 notificationBuilder.darkStyle();
+                 notificationBuilder.show();
                         try {
         Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AfficherProduitBack.fxml"));
         Scene scene = new Scene(page1);
@@ -223,5 +233,7 @@ Optional<ButtonType> result = alert.showAndWait();
             }
         }
     }
+    
+    
     
 }

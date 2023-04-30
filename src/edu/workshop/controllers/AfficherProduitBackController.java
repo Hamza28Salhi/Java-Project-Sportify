@@ -113,6 +113,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import com.itextpdf.text.Element;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 
@@ -258,7 +260,24 @@ for (int i = 0; i < list2.size(); i++) {
         showAlert("Veuillez sélectionner une réservation à supprimer.");
     }
     }
+    
+     @FXML
+    private void ListeProduitFront(ActionEvent event) {
+         try {
 
+            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AfficherProduitFront.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherProduitFrontController.class.getName()).log(Level.SEVERE, null, ex);
+            
+
+        }
+    }
+
+   
     @FXML
     private void ListeCategorieBack(ActionEvent event) {
        
@@ -275,6 +294,12 @@ for (int i = 0; i < list2.size(); i++) {
 
         }
     }
+    
+ 
+        
+    
+
+   
 
     private void OnClickedStatistique(ActionEvent event) {
           try {
@@ -292,6 +317,17 @@ for (int i = 0; i < list2.size(); i++) {
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void statbutton(ActionEvent event) {
         
@@ -462,6 +498,12 @@ pdfTable.addCell(newcell);
         }
     }
 
+   
+    
+}
+
+
+
     
    
     
@@ -471,7 +513,7 @@ pdfTable.addCell(newcell);
 
     
 
-}
+
     
     
     
