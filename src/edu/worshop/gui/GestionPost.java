@@ -37,7 +37,7 @@ public class GestionPost extends Application {
         // tackPane root = new StackPane();
         //root.getChildren().add(btn);
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AffichagePostBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Post_List.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Posts");

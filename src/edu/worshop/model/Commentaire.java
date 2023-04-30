@@ -11,20 +11,22 @@ import java.sql.Date;
  * @author sammo
  */
 public class Commentaire { 
-    private int id, post_id;
+    private int id, post_id,id_user;
     private String contenu_Commentaire,auteur_Commentaire;
     //private Date dateCreation_Commentaire;
 
-    public Commentaire(int post_id, String contenu_Commentaire, String auteur_Commentaire) {
+    public Commentaire(int post_id,int id_user, String contenu_Commentaire, String auteur_Commentaire) {
         this.post_id = post_id;
+        this.id_user = id_user;
         this.contenu_Commentaire = contenu_Commentaire;
         this.auteur_Commentaire = auteur_Commentaire;
         //this.dateCreation_Commentaire = dateCreation_Commentaire;
         
     }
-    public Commentaire(int id, int post_id, String contenu_Commentaire, String auteur_Commentaire) {
+    public Commentaire(int id, int post_id, int id_user,String contenu_Commentaire, String auteur_Commentaire) {
         this.id = id;
         this.post_id = post_id;
+        this.id_user = id_user;
         this.contenu_Commentaire = contenu_Commentaire;
         this.auteur_Commentaire = auteur_Commentaire;
         //this.dateCreation_Commentaire = dateCreation_Commentaire;
@@ -66,6 +68,15 @@ public class Commentaire {
         this.post_id = post_id;
     }
 
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+    
+    
     
        
 
