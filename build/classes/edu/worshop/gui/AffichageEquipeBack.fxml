@@ -43,8 +43,6 @@
                         </LinearGradient>
                      </fill>
                   </Text>
-         
-                  <ListView fx:id="affichageEquipeBackfx" layoutX="87.0" layoutY="135.0" prefHeight="362.0" prefWidth="803.0" />
                   <ImageView fx:id="addeh" fitHeight="45.0" fitWidth="45.0" layoutX="25.0" layoutY="141.0" onMouseClicked="#addeh" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/pngwing.com%20(6).png" />
@@ -72,6 +70,13 @@
                         <Image url="@image/580b57fcd9996e24bc43c4f5.png" />
                      </image>
                   </ImageView>
+                 <ListView fx:id="affichageEquipeBackfx" layoutX="185.0" layoutY="130.0" prefHeight="410.0" prefWidth="749.0" 
+          style="-fx-background-color: #f8f8f8; 
+                 -fx-border-color: #ddd;
+                 -fx-border-radius: 4px;
+                 -fx-font-size: 16px;
+                 -fx-text-fill: #333;">
+</ListView>
                </children>
             </Pane>
             <ImageView fitHeight="204.0" fitWidth="218.0" layoutX="13.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">

@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/worshop/controllers/AffichageMatchesBackController.java</file>
             <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/worshop/gui/GestionEquipe.java</file>
-            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/workshop/services/Mailservice.java</file>
+            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/worshop/controllers/AffichageMatchesBackController.java</file>
+            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/worshop/controllers/AffichageEquipeBackController.java</file>
+            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/worshop/gui/AffichageEquipeBack.fxml</file>
+            <file>file:/C:/Users/Ace%20River/Desktop/Daawwg/workshop3A4/src/edu/workshop/services/Matches1CRUD.java</file>
         </group>
     </open-files>
 </project-private>
