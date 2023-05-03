@@ -161,7 +161,7 @@ espacepost.setText(Post_ListController.P.getContenuPost());
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Post_ListController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Commentaire_ListController.class.getName()).log(Level.SEVERE, null, ex);
         //AffichagePostBackController
         }
         }else{showAlert("Veuillez sélectionner un commentaire à modifier.");

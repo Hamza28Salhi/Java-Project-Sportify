@@ -82,7 +82,7 @@ Optional<ButtonType> result = alert.showAndWait();
                     
                     int userId = MyConnection.getUserId();
         User user = new ServiceUser().getUserById(userId);
-              Commentaire C = new Commentaire(Post_ListController.P.getId(),userId,contenu,auteur);
+              Commentaire C = new Commentaire(Post_ListController.P.getId(),contenu,auteur,userId);
                     Commentaire1CRUD res1 = new Commentaire1CRUD();
                     res1.ajouterCommentaire(C);
                     System.out.println(Post_ListController.P.getId());

@@ -15,6 +15,8 @@ import java.util.List;
 public interface PostCRUD {
     public void ajouterPost(Post P);
     public List<Post> afficherPost();
+    public int recupererNbrRating(Post P);
+    public List<Post> afficherrPost();
      public void supprimerPost(int id);
      public void modifierPost(Post P);
     
