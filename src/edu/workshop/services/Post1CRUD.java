@@ -29,7 +29,7 @@ public class Post1CRUD implements PostCRUD{
        try {
             if (P instanceof Post) {
            //likes + dislike
-String req = "INSERT INTO `post`(`titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`,`rating`,`nbr_rating`) VALUES ('"+P.getTitrePost()+"','"+P.getContenuPost()+"','"+P.getImagePost()+"','"+P.getAuteurPost()+"','"+P.getRating()+"','"+P.getNbr_rating()+"')";
+String req = "INSERT INTO `post`(`titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`) VALUES ('"+P.getTitrePost()+"','"+P.getContenuPost()+"','"+P.getImagePost()+"','"+P.getAuteurPost()+"')";
 //date + likes + dislike
 //String req = "INSERT INTO `post`(`titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `dateCreation_Post`) VALUES ('"+P.getTitrePost()+"','"+P.getContenuPost()+"','"+P.getImagePost()+"','"+P.getAuteurPost()+"','"+P.getDateCreationPost()+"')";
     
@@ -45,26 +45,11 @@ ste = conn.createStatement();
         }
     }
     
-    @Override
-    public int recupererNbrRating(Post post) {
-    try {
-        String req = "SELECT nbr_rating FROM Post WHERE id = " + post.getId();
-        Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery(req);
-        if (rs.next()) {
-            return rs.getInt("nbr_rating");
-        }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-    return 0;
-}
     //**************************************************************************************************************
-    @Override
     public List<Post> afficherrPost() {
        List<Post> list = new ArrayList<>();
         try {
-        String req = "SELECT `id`, `titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `likes`, `dislike`, `rating`,`nbr_rating` FROM `post`";
+        String req = "SELECT `id`, `titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `likes`, `dislike` FROM `post`";
             Statement st = conn.createStatement();
            
             ResultSet RS= st.executeQuery(req);
@@ -78,8 +63,6 @@ ste = conn.createStatement();
              //P.setDateCreationPost(RS.getDate(6)); //getDate
              P.setLikes(RS.getInt(6));
              P.setDislike(RS.getInt(7));
-             P.setRating(RS.getDouble(8));
-             P.setNbr_rating(RS.getInt(9));
              list.add(P);
             }
         } catch (SQLException ex) {
@@ -93,7 +76,7 @@ ste = conn.createStatement();
     public List<Post> afficherPost() {
        List<Post> list = new ArrayList<>();
         try {
-        String req = "SELECT `id`, `titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `likes`, `dislike`  FROM `post`";
+        String req = "SELECT `id`, `titre_Post`, `contenu_Post`, `image_Post`, `auteur_Post`, `likes`, `dislike` FROM `post`";
             Statement st = conn.createStatement();
            
             ResultSet RS= st.executeQuery(req);
@@ -132,7 +115,7 @@ ste = conn.createStatement();
     public void modifierPost(Post P) {
         try {
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String req = "UPDATE `Post` SET `titre_Post` = '" + P.getTitrePost()+ "', `contenu_Post` = '"+ P.getContenuPost()+ "', `image_Post` = '" + P.getImagePost()+ "', `auteur_Post` = '" + P.getAuteurPost()+"', `rating` = '" + P.getRating()+"', `nbr_rating` = '" + P.getNbr_rating()+"' WHERE `id` = " + P.getId();
+        String req = "UPDATE `Post` SET `titre_Post` = '" + P.getTitrePost()+ "', `contenu_Post` = '"+ P.getContenuPost()+ "', `image_Post` = '" + P.getImagePost()+ "', `auteur_Post` = '" + P.getAuteurPost()+ "' WHERE `id` = " + P.getId();
         Statement st = conn.createStatement();            
         //  String req = "UPDATE `Post` SET `titre_Post` = '" + P.getTitrePost()+ "', `contenu_Post` = '"+ P.getContenuPost()+ "', `image_Post` = '" + P.getImagePost()+ "', `auteur_Post` = '" + P.getAuteurPost()+ "', `dateCreation_Post` = '" + P.getDateCreationPost()+ "' WHERE `id` = " + P.getId();
             st.executeUpdate(req);
