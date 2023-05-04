@@ -59,6 +59,23 @@ ste = conn.createStatement();
     }
     return 0;
 }
+    
+    
+    
+        @Override
+    public int recupererRating(Post post) {
+    try {
+        String req = "SELECT rating FROM Post WHERE id = " + post.getId();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if (rs.next()) {
+            return rs.getInt("rating");
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return 0;
+}
     //**************************************************************************************************************
     @Override
     public List<Post> afficherrPost() {

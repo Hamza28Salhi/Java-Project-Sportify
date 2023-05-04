@@ -214,8 +214,9 @@ private void ModifierPostBack(ActionEvent event) {
          Post p = postSelected;
                      PostCRUD inter = new Post1CRUD();
          int nbrRating = inter.recupererNbrRating(p);
+         int Rrating = inter.recupererRating(p);
 
-        P= new Post(p.getId(),p.getTitrePost(),p.getContenuPost(),p.getImagePost(),p.getAuteurPost(),p.getRating(),nbrRating);
+        P= new Post(p.getId(),p.getTitrePost(),p.getContenuPost(),p.getImagePost(),p.getAuteurPost(),Rrating,nbrRating);
         
          System.out.println("nbRating?"+nbrRating);
 

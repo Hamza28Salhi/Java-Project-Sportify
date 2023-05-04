@@ -69,7 +69,7 @@ static Commentaire C = new Commentaire();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
                 // TODO
-
+        PostRating.setRating(Post_ListController.P.getRating());
                 ListView<Commentaire> list1 = (ListView<Commentaire>) affichageCommentaireBackfx; //ListView<Post> list1 = affichagePostBackfx;
 CommentaireCRUD inter = new Commentaire1CRUD();
 List<Commentaire> list2 = inter.afficherCommentaireParPostId(Post_ListController.P.getId());
@@ -180,9 +180,9 @@ espacepost.setText(Post_ListController.P.getContenuPost());
     @FXML
     private void rating(ActionEvent event) {
         PostCRUD inter = new Post1CRUD();
-                
+                int n=Post_ListController.P.getNbr_rating();
         System.out.println("rating given: "+ PostRating.getRating());
-        if(Post_ListController.P.getNbr_rating()==0)
+        if(n==0)
         {
                                          System.out.println("le nombre de fois qu'on a noté ce post est:"+Post_ListController.P.getNbr_rating());
 
@@ -199,21 +199,51 @@ espacepost.setText(Post_ListController.P.getContenuPost());
 
         }
         else{
-            System.out.println("le nombre de fois qu'on a noté ce post est:"+Post_ListController.P.getNbr_rating());
+             /*System.out.println("************************************************");
+oppo.afficherrPost();
+             System.out.println("************************************************");
+*/
+            System.out.println("le nombre de fois qu'on a noté ce post est:"+Post_ListController.P.getNbr_rating()+", il a la note de "+Post_ListController.P.getRating());
+                         System.out.printf(" plus precisemment: %.6f",Post_ListController.P.getRating());
             Post P = new Post(Post_ListController.P.getId(),Post_ListController.P.getTitrePost(),Post_ListController.P.getContenuPost(),Post_ListController.P.getImagePost(),Post_ListController.P.getAuteurPost(),PostRating.getRating(),Post_ListController.P.getNbr_rating() );
              P.setNbr_rating(P.getNbr_rating()+1);
                              System.out.println("nouv ratnbr"+P.getNbr_rating());
+//int nbr=2;
+//double rat=3.0;
 
-             int coeff=P.getNbr_rating()+1;
-             double moyenne_ancienne= (P.getRating()/coeff);
-             double moyenne_one_rate = (PostRating.getRating()/coeff);
-             double moyenne_nouvelle=moyenne_ancienne+moyenne_one_rate;
-             P.setRating(moyenne_nouvelle);
+             System.out.println("------------------------------------------------");
+             System.out.println("l'operation:");
+             
+             
+             int coeff=P.getNbr_rating();
+             //int coef=2;
+             System.out.println("coeff="+P.getNbr_rating());
+             
+             
+             
+             double somme_ancienne= (Post_ListController.P.getRating()*(coeff-1));
+             //double anc=3.0/2;
+             System.out.println("ancienne note="+Post_ListController.P.getRating()+"et donc ancienne somme"+somme_ancienne);
+             
+             
+             //double moyenne_one_rate = (PostRating.getRating()/coeff);
+             double somme_actuelle = (somme_ancienne+PostRating.getRating());
+             //double act=5.0/2;
+             System.out.println("note actuelle="+PostRating.getRating()+"et donc somme actuelle"+somme_actuelle);
+             
+             
+             
+             //double moyenne_nouvelle=moyenne_ancienne+moyenne_one_rate;
+             double nouvelle_note=somme_actuelle/coeff;
+             //double nouv=4;
+             System.out.println("nouvelle note moyenne="+ nouvelle_note);
+             P.setRating(nouvelle_note);
+                          System.out.println("------------------------------------------------");
+
               //Post even = new Post(Post_ListController.P.getTitrePost(),Post_ListController.P.getContenuPost(),Post_ListController.P.getImagePost(),Post_ListController.P.getAuteurPost(),P.getRating(),P.getNbr_rating() );
                 inter.modifierPost(P);
-                System.out.println(P);
-                                System.out.println(P.getRating());
-                                System.out.println(P.getNbr_rating());
+                                System.out.println("LE NOUVEAU NOUVEAU NOUVEAU rating de ce post"+P.getRating());
+                                System.out.println("le nombre de fois que ce post a été noté"+P.getNbr_rating());
                                 
         }
     }
