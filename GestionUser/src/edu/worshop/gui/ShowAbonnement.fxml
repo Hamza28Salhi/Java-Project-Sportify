@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.ShowAbonnementController">
+   <children>
+      <ListView fx:id="listView" layoutX="23.0" layoutY="151.0" prefHeight="402.0" prefWidth="1239.0" />
+      <AnchorPane prefHeight="123.0" prefWidth="1300.0" style="-fx-background-color: #3E4455;">
+         <children>
+            <Text fill="WHITE" layoutX="519.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abonnement" wrappingWidth="228.8974609375">
+               <font>
+                  <Font name="System Bold Italic" size="36.0" />
+               </font>
+            </Text>
+            <Button layoutX="1251.0" layoutY="11.0" onAction="#handleClose" prefHeight="17.0" prefWidth="28.0" text="X" textFill="#eee4e4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

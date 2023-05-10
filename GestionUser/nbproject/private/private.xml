@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/Matches.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/HomeController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AffichageEquipeBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/Reservation1CRUD.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/model/User.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_AddController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_RegistrationController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AffichageEquipeFrontController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AffichageMatchesFrontController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AffichageEvenementBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_UpdateController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Commentaire_ListController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AfficherProduitBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AffichageMatchesBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AfficherReservationBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/ModifierReservationBackController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/GestionUser.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/Front_ProfileController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/PostFront_ListController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/CommentaireFront_ListController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/gui/CommentaireFront_List.fxml</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/User_ListController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/worshop/controllers/AfficherProduitFrontController.java</file>
+            <file>file:/C:/Users/azizo/OneDrive/Documents/NetBeansProjects/workshop3A4/workshop3A4/src/edu/workshop/services/Post1CRUD.java</file>
+        </group>
+    </open-files>
+</project-private>

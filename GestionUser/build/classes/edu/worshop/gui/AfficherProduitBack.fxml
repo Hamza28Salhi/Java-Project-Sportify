@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AfficherProduitBackController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="792.0">
+         <children>
+            <Pane layoutX="-11.0" layoutY="-10.0" prefHeight="605.0" prefWidth="802.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);">
+               <children>
+                  <ListView fx:id="AfficherProduitBackfx" layoutX="19.0" layoutY="83.0" prefHeight="401.0" prefWidth="617.0" />
+                  <Text fx:id="label" fill="WHITE" layoutX="231.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Produits" textAlignment="CENTER">
+                     <font>
+                        <Font name="Berlin Sans FB" size="50.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="126.0" layoutY="508.0" mnemonicParsing="false" onAction="#SupprimerProduitBack" text="Supprimer">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.9848484992980957" endY="1.0" startX="0.9886363780859746" startY="0.7613636688752607">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.4842105209827423" green="0.21161793172359467" blue="0.21161793172359467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="508.0" mnemonicParsing="false" onAction="#ModifierProduitBack" text="Modifier">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.9848484992980957" endY="0.9659091098742052" startX="0.9886363780859746" startY="0.6856061111796986">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.4842105209827423" green="0.21161793172359467" blue="0.21161793172359467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <ImageView fitHeight="75.0" fitWidth="57.0" layoutX="527.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Esprit/3A/3A/2eme%20semestre/PIdev/imagesss/logos.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="231.0" layoutY="508.0" mnemonicParsing="false" onAction="#ListeCategorieBack" text="Liste Categorie">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.9886363925355853" endY="1.0" startX="0.9886363780859746" startY="0.511363690549677">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.4842105209827423" green="0.21161793172359467" blue="0.21161793172359467" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button fx:id="pdf" layoutX="657.0" layoutY="284.0" mnemonicParsing="false" onAction="#pdf" prefHeight="25.0" prefWidth="87.0" text="PDF">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037878498886571">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.10491228103637695" green="0.23225146532058716" blue="0.410526305437088" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.18518517911434174" green="0.1886419802904129" blue="0.20000000298023224" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="657.0" layoutY="216.0" mnemonicParsing="false" onAction="#statbutton" prefHeight="27.0" prefWidth="87.0" text="Statestique">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5568181745933765">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.10491228103637695" green="0.23225146532058716" blue="0.410526305437088" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5656140446662903" green="0.6252163648605347" blue="0.821052610874176" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <TextField fx:id="searchField" layoutX="19.0" layoutY="52.0" promptText="recherche" />
+                  <Button fx:id="export" layoutX="657.0" layoutY="150.0" mnemonicParsing="false" onAction="#export" prefHeight="25.0" prefWidth="87.0" text="Export Excel">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5037878498886571">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.10491228103637695" green="0.23225146532058716" blue="0.410526305437088" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.18518517911434174" green="0.1886419802904129" blue="0.20000000298023224" opacity="0.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="674.0" layoutY="508.0" mnemonicParsing="false" onAction="#redirecttohome" prefHeight="25.0" prefWidth="75.0" text="Logout">
+                     <textFill>
+                        <LinearGradient endX="0.9848484992980957" endY="1.0" startX="0.9886363780859746" startY="0.39772732691331336">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.7062170505523682" green="0.13009746372699738" blue="0.7473683953285217" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.14427220821380615" green="0.11969999969005585" blue="0.5699999928474426" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

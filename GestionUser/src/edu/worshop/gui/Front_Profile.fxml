@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.Front_ProfileController">
+    <stylesheets>
+        <URL value="@/edu/worshop/controllers/front_profile.css" />
+    </stylesheets>
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="500.0" prefWidth="700.0">
+         <left>
+            <AnchorPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #151F30;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="EditUser" layoutX="83.0" layoutY="511.0" mnemonicParsing="false" onAction="#EditUser" onMouseClicked="#EditUser" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b; -fx-border-width: # 0px 0px 2px 0px; -fx-border-color: #eb1e45;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="511.0" />
+                  <ImageView fx:id="ProfileImage" fitHeight="199.0" fitWidth="220.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="chooseimage" layoutX="83.0" layoutY="207.0" mnemonicParsing="false" onAction="#chooseimage" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b; -fx-border-color: #eb1e45;" text="Picture" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #1d2940;" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="full_namet" layoutX="215.0" layoutY="209.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px; -fx-border-color: #103778; -fx-text-fill: white;" />
+                  <Text fx:id="fullname" fill="WHITE" layoutX="98.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" wrappingWidth="87.6436767578125">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dateofbirth" fill="WHITE" layoutX="98.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:" wrappingWidth="100.4437255859375">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Addresss" fill="WHITE" layoutX="97.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="89.24371337890625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Email" fill="WHITE" layoutX="98.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="89.24371337890625">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="date_naisst" layoutX="215.0" layoutY="269.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <TextField fx:id="emailt" layoutX="215.0" layoutY="326.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <TextField fx:id="addresst" layoutX="215.0" layoutY="391.0" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-border-width: 0 px 0 px 2 px 0 px;                    -fx-border-color: #103778; -fx-text-fill: white; -fx-control-inner-background: #1d2940;" />
+                  <Text fx:id="Profile_Details" fill="WHITE" layoutX="215.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" wrappingWidth="174.8438720703125">
+                     <font>
+                        <Font size="49.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="logout" layoutX="502.0" layoutY="520.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b; -fx-border-color: #eb1e45; -fx-border-width: # 0px 0px 2px 0px;" text="Logout" textFill="WHITE" />
+                  <Button fx:id="logout1" layoutX="56.0" layoutY="520.0" mnemonicParsing="false" onAction="#redirecttoshop" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b; -fx-border-width: # 0px 0px 2px 0px; -fx-border-color: #eb1e45;" text="Shop" textFill="WHITE" />
+                  <Button fx:id="logout2" layoutX="156.0" layoutY="520.0" mnemonicParsing="false" onAction="#redirecttoblog" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #1f283b; -fx-border-width: # 0px 0px 2px 0px; -fx-border-color: #eb1e45;" text="Blog" textFill="WHITE" />
+                  <Button fx:id="logout21" layoutX="260.0" layoutY="520.0" mnemonicParsing="false" onAction="#redirecttoMatch" prefHeight="42.0" prefWidth="98.0" style="-fx-background-color: #1f283b; -fx-border-width: # 0px 0px 2px 0px; -fx-border-color: #eb1e45;" text="Matches" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

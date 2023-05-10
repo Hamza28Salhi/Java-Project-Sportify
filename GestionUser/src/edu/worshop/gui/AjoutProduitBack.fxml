@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AjoutProduitBackController">
+   <children>
+      <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="410.0" prefWidth="610.0" style="-fx-background-color: linear-gradient(to right, #123879 , #ffffff);">
+         <children>
+            <TextField fx:id="NomProduitfx" layoutX="88.0" layoutY="174.0" promptText="Nom Produit" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="PrixProduitfx" layoutX="88.0" layoutY="239.0" promptText="Prix Produit" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="MarqueProduitfx" layoutX="88.0" layoutY="298.0" promptText="Marque" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="Imagefx" layoutX="88.0" layoutY="353.0" promptText="Image" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="Quantitefx" layoutX="88.0" layoutY="399.0" promptText="Quantite" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <Text fx:id="label" fill="#202a71" layoutX="237.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Produit" textAlignment="CENTER">
+               <font>
+                  <Font name="Berlin Sans FB" size="50.0" />
+               </font>
+            </Text>
+            <Button layoutX="581.0" layoutY="354.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #2B8DDE;" text="Importer" textFill="#f7fdff" />
+            <ImageView fx:id="imageView" fitHeight="169.0" fitWidth="200.0" layoutX="445.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="569.0" layoutY="489.0" mnemonicParsing="false" onAction="#AjouterProduitBack" text="Ajouter Produit" textFill="#4b0e89">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="66.0" fitWidth="62.0" layoutX="538.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/logos.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
