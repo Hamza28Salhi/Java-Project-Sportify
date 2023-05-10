@@ -170,11 +170,23 @@ espacepost.setText(Post_ListController.P.getContenuPost());
 
     @FXML
     private void RetourPostBack(ActionEvent event) throws IOException {
+        if(PostFront_ListController.f_b==1)
+        //if(Post_ListController.P.getIdUser)
+        {
+           Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/PostFront_List.fxml"));
+    Scene scene = new Scene(page1);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    PostFront_ListController.f_b=0;
+        }
+        else{
     Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Post_List.fxml"));
     Scene scene = new Scene(page1);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+    }
 }
 
     @FXML

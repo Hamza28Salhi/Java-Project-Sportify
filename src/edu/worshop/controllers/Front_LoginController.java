@@ -71,7 +71,7 @@ private Hyperlink forgetPasswordLink;
         if (loggedInUser != null) {
             List<String> roles = loggedInUser.getRoles();
             if (roles.contains("[ROLE_ADMIN]")) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Post_List.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -85,7 +85,7 @@ private Hyperlink forgetPasswordLink;
                     .showInformation();
             } else if (roles.contains("[ROLE_USER]")) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Post_List.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/PostFront_List.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
