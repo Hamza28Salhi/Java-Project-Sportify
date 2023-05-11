@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.worshop.controllers.CalendarController">
+
+<GridPane fx:id="calendarGridPane" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="10" vgap="10">
+    <Label text="Mon" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Label text="Tue" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Label text="Wed" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Label text="Thu" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <Label text="Fri" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <Label text="Sat" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+    <Label text="Sun" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+</GridPane>
+
+</AnchorPane>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AffichageEquipeBackController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Pane layoutX="-31.0" layoutY="-14.0" prefHeight="725.0" prefWidth="1119.0" style="-fx-background-color: linear-gradient(to bottom, #EE2132, #002F6C);">
+               <children>
+                  <Button defaultButton="true" layoutX="1062.0" layoutY="686.0" mnemonicParsing="false" onAction="#pauseMusicButton" prefHeight="17.0" prefWidth="49.0" text="Pause" textFill="#222897" />
+                  <TextField fx:id="searchField" layoutX="32.0" layoutY="14.0" />
+                  <ImageView fx:id="cview" fitHeight="150.0" fitWidth="200.0" layoutX="756.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fontSmoothingType="LCD" layoutX="315.0" layoutY="44.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipes" textAlignment="CENTER" wrappingWidth="347.03662109375">
+                     <font>
+                        <Font name="Unispace-Bold" size="35.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="0.4597156398104265" endY="1.0" startX="0.4454976303317536" startY="0.5829383886255924">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.06695237755775452" green="0.029999999329447746" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Text>
+                  <ImageView fx:id="addeh" fitHeight="45.0" fitWidth="45.0" layoutX="25.0" layoutY="141.0" onMouseClicked="#addeh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/pngwing.com%20(6).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="editeh" fitHeight="45.0" fitWidth="47.0" layoutX="32.0" layoutY="207.0" onMouseClicked="#editeh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/pngwing.com%20(5).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="deleteh" fitHeight="58.0" fitWidth="49.0" layoutX="25.0" layoutY="262.0" onMouseClicked="#deleteh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/pngwing.com%20(4).png" />
+                     </image>
+                  </ImageView>
+                  <Button defaultButton="true" layoutX="36.0" layoutY="94.0" mnemonicParsing="false" onAction="#Matchesref" text="Matches" textFill="#222897" />
+                  <Button defaultButton="true" layoutX="97.0" layoutY="94.0" mnemonicParsing="false" onAction="#Equipesref" text="Equipes" textFill="#d71717" />
+                  <ImageView fx:id="pdfff" fitHeight="58.0" fitWidth="49.0" layoutX="1062.0" layoutY="15.0" onMouseClicked="#pdfff" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/5f439d82777cdb0004f2ecb2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="playy" fitHeight="58.0" fitWidth="49.0" layoutX="1062.0" layoutY="82.0" onMouseClicked="#playy" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/580b57fcd9996e24bc43c4f5.png" />
+                     </image>
+                  </ImageView>
+                 <ListView fx:id="affichageEquipeBackfx" layoutX="185.0" layoutY="130.0" prefHeight="410.0" prefWidth="749.0" 
+          style="-fx-background-color: #f8f8f8; 
+                 -fx-border-color: #ddd;
+                 -fx-border-radius: 4px;
+                 -fx-font-size: 16px;
+                 -fx-text-fill: #333;">
+</ListView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="204.0" fitWidth="218.0" layoutX="13.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.StatisticsController">
+        <VBox spacing="10.0" layoutX="50.0" layoutY="50.0">
+        <Label text="Statistics" style="-fx-font-size: 24px;" />
+        <Label text="Total Matches: " />
+        <Label fx:id="totalMatchesLabel" text="Total Matches: " />
+
+
+
+
+        <TableView fx:id="teamTable">
+            <columns>
+                <TableColumn fx:id="teamNameColumn" text="Team" />
+                <TableColumn fx:id="matchCountColumn" text="Matches" />
+                        <TableColumn fx:id="teamIdColumn" text="Team ID" />
+
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>

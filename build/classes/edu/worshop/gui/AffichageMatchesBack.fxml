@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AffichageMatchesBackController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="3.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <Pane layoutX="-22.0" layoutY="-14.0" prefHeight="656.0" prefWidth="1119.0" style="-fx-background-color: linear-gradient(to bottom, #EE2132, #002F6C);">
+
+                     <children>
+                        <TableView fx:id="affichageMatchesBackfxt" layoutX="8.0" layoutY="607.0" prefHeight="0.0" prefWidth="0.0">
+                          <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="nomColumn" prefWidth="75.0" text="nom" />
+                              <TableColumn fx:id="stadeColumn" prefWidth="75.0" text="stade" />
+                              <TableColumn fx:id="scoreColumn" prefWidth="75.0" text="score" />
+                              <TableColumn fx:id="dateColumn" prefWidth="75.0" text="date" />
+                          </columns>
+                        </TableView>
+                        <ImageView fx:id="bellbi" fitHeight="58.0" fitWidth="41.0" layoutX="1072.0" layoutY="14.0" onMouseClicked="#bellbi" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="223.0" fitWidth="126.0" layoutX="951.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/584856a7e0bb315b0f7675aa.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="code_qr" fitHeight="187.0" fitWidth="189.0" layoutX="843.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="SendMail" defaultButton="true" layoutX="1014.0" layoutY="600.0" mnemonicParsing="false" onAction="#SendMail" prefHeight="25.0" prefWidth="72.0" text="SendMail" textFill="#222897" />
+                        <TextField fx:id="recipientField" layoutX="937.0" layoutY="423.0" onAction="#recipientField" />
+                        <TextField fx:id="idField" layoutX="937.0" layoutY="462.0" onAction="#idField" />
+                        <TextField fx:id="nomField" layoutX="937.0" layoutY="501.0" onAction="#nomField" />
+                        <TextField fx:id="stadeField" layoutX="937.0" layoutY="537.0" onAction="#stadeField" />
+                        <Text fill="WHITE" layoutX="868.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="865.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="865.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="864.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stade:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="fill" defaultButton="true" layoutX="919.0" layoutY="600.0" mnemonicParsing="false" onAction="#fill" prefHeight="25.0" prefWidth="72.0" text="fill" textFill="#222897" />
+                        <ImageView fitHeight="204.0" fitWidth="218.0" layoutX="6.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/logo.png" />
+                           </image>
+                        </ImageView>
+                        <ListView fx:id="affichageMatchesBackfx" layoutX="59.0" layoutY="100.0" prefHeight="343.0" prefWidth="794.0" />
+                        <Text fontSmoothingType="LCD" layoutX="229.0" layoutY="74.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Matches" textAlignment="CENTER" wrappingWidth="347.03662109375">
+                           <font>
+                              <Font name="Unispace-Bold" size="35.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="0.4597156398104265" endY="1.0" startX="0.4454976303317536" startY="0.5829383886255924">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.06695237755775452" green="0.029999999329447746" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <ImageView fx:id="stats" fitHeight="45.0" fitWidth="57.0" layoutX="1070.0" layoutY="70.0" onMouseClicked="#stats" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="printa" fitHeight="45.0" fitWidth="49.0" layoutX="1070.0" layoutY="128.0" onMouseClicked="#printa" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(3).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="qrcodeuh" fitHeight="78.0" fitWidth="58.0" layoutX="1064.0" layoutY="179.0" onMouseClicked="#qrcodeur" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(2).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="addeh" fitHeight="45.0" fitWidth="45.0" layoutX="13.0" layoutY="128.0" onMouseClicked="#addeh" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(6).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="deleteh" fitHeight="58.0" fitWidth="49.0" layoutX="7.0" layoutY="239.0" onMouseClicked="#deleteh" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(4).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="editeh" fitHeight="45.0" fitWidth="47.0" layoutX="13.0" layoutY="186.0" onMouseClicked="#editeh" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/pngwing.com%20(5).png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="trier" defaultButton="true" layoutX="686.0" layoutY="602.0" mnemonicParsing="false" onAction="#trier" prefHeight="25.0" prefWidth="72.0" text="Tri" textFill="#222897" />
+                        
+                     </children></Pane>
+                  <Button defaultButton="true" layoutX="-2.0" layoutY="28.0" mnemonicParsing="false" onAction="#Matchesref" text="Matches" textFill="#d71717" />
+                  <Button defaultButton="true" layoutX="53.0" layoutY="28.0" mnemonicParsing="false" onAction="#Equipesref" text="Equipes" textFill="#222897" />
+               </children>
+            </AnchorPane>
+
+         </children>
+      </AnchorPane>
+   </children>
+   
+   
+</AnchorPane>
